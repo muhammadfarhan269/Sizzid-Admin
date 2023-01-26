@@ -26,7 +26,7 @@ function VerificationCode() {
                                                 <input type="password" className='code_input' maxLength={1} tabbable placeholder='*'/>
                                             </AutoTabProvider>
                                             <div className="mb-5 form-check">
-                                                <p className='redirect_login'>Add verification code</p>
+                                                <p className='add_verification_code'>Add verification code</p>
                                             </div>
                                             <button type="submit" className="btn btn_login mt-4">Next <img src="arrow-right.png" className='float-end' alt="" /></button>
                                         </form>

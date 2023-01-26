@@ -33,6 +33,7 @@
     font-size: 40px;
     text-align: center;
     color: #fff;
+    font-family: 'Poppins_SemiBold';
 }
 
 .login_card .card .card-body .login_form {
@@ -49,6 +50,7 @@
     color: rgb(255 255 255 / 30%);
     font-size: 25px;
     padding: 0px 20px;
+    font-family: 'Blinker_Regular';
 }
 
 .forgot_password {
@@ -58,6 +60,12 @@
     text-align: right;
     margin-top: 4px;
     cursor: pointer;
+    font-family: 'Blinker_Regular';
+}
+
+.forgot_password a{
+    color: #FFFFFF !important;
+    text-decoration: none;
 }
 
 .btn_login {
@@ -71,6 +79,7 @@
     line-height: 36px !important;
     color: #FFFFFF !important;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Blinker_SemiBold' !important;
 }
 
 .login_card_bottom {
@@ -78,6 +87,7 @@
     font-size: 30px;
     line-height: 45px;
     color: #FF7337;
+    font-family: 'Poppins_SemiBold' !important;
 }
 
 .view_password{

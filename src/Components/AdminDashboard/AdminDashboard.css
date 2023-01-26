@@ -1,0 +1,14 @@
+.container-scroller {
+    overflow: hidden;
+    display: flex;
+}
+
+.page-body-wrapper {
+    min-height: calc(100vh - 106px);
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
+    background: #01022F;
+}

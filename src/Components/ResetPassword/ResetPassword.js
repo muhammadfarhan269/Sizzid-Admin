@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import './ResetPassword.css'
 
 function ResetPassword() {
@@ -21,10 +22,10 @@ function ResetPassword() {
                                             <div>
                                                 <input type="email" className="form-control" id="reset_password_email" aria-describedby="emailHelp" placeholder='Enter your Email'/>
                                             </div>
-                                            <div className="mb-5 form-check">
+                                            {/* <div className="mb-5 form-check">
                                                 <p className='redirect_login'>Login</p>
-                                            </div>
-                                            <button type="submit" className="btn btn_login mt-4">Next <img src="arrow-right.png" className='float-end' alt="" /></button>
+                                            </div> */}
+                                          <Link to={'/verification'}><button type="button" className="btn btn_login mt-4">Next <img src="arrow-right.png" className='float-end' alt="" /></button></Link>
                                         </form>
                                         <h5 className='verification_code_card_bottom'>Check Your Inbox</h5>
                                     </div>

@@ -1,7 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Login.css'
+import { Signin } from '../../APIS/API'
+import { useNavigate, Link } from "react-router-dom";
 
-function Login() {
+
+function Login({ isAuthenticated, setIsAuthenticated }) {
+
+    const [loginCredentials, setLoginCredentials] = useState({
+        email: '',
+        password: '',
+    })
+    const [isShown, setIsSHown] = useState(false);
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        setLoginCredentials({ ...loginCredentials, [e.target.name]: e.target.value })
+    }
+
+    const LoginApi = async (event) => {
+        event.preventDefault()
+        setIsAuthenticated(true)
+        // if (loginCredentials.email !== 'admin@sizzld.com' && loginCredentials.password !== 'password') {
+        //     alert('Invalid Credentials')
+        // } else {
+            console.log(navigate)
+            navigate("/admin-dashboard");
+        // }
+        let { data } = await Signin(loginCredentials)
+        //    document.cookie = `token = ${data.token}`;
+        //    var value = document.cookie;
+        //    console.log(value)
+    }
+
     return (
         <section className='login_page'>
             <div className='container-fluid'>
@@ -17,16 +47,16 @@ function Login() {
                                 <div className="card">
                                     <div className="card-body">
                                         <h5 className="card-title mt-3">LogIn</h5>
-                                        <form className='login_form'>
+                                        <form className='login_form' onSubmit={LoginApi}>
                                             <div className="mb-4">
-                                                <input type="email" className="form-control" id="login_email" aria-describedby="emailHelp" placeholder='UserName/E-Mail'/>
+                                                <input type="email" className="form-control" name='email' id="login_email" aria-describedby="emailHelp" placeholder='UserName/E-Mail' onChange={(e) => handleChange(e)} />
                                             </div>
                                             <div className="position-relative">
-                                                <input type="password" className="form-control" id="login_password" placeholder='Password'/>
-                                                <img src="view-password.png" className='view_password' alt="" />
+                                                <input type={isShown ? "text" : "password"} name='password' className="form-control" id="login_password" placeholder='Password' onChange={(e) => handleChange(e)} />
+                                                <img src="view-password.png" className='view_password' alt="" onClick={() => setIsSHown((isShown) => !isShown)} />
                                             </div>
                                             <div className="mb-3 form-check">
-                                                <p className='forgot_password'>Forgot Password?</p>
+                                                <p className='forgot_password'><Link to={'/reset-password'}>Forgot Password?</Link></p>
                                             </div>
                                             <button type="submit" className="btn btn_login mt-4">LogIn <img src="arrow-right.png" className='float-end' alt="" /></button>
                                         </form>
