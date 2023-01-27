@@ -9,7 +9,11 @@ function SideBar({ setIsActive, isActive, setTheme, theme}) {
         <nav className="sidebar sidebar-info" id="sidebar" style={{ width: isActive ? '80px' : '304px', background: theme == 'light' ? '#fff' : '#202447' }}>
             <div className='sidenav_top_images'>
                 <img src="/sidebar-close.png" className='sidenav_close' alt="" onClick={() => setIsActive((isActive) => !isActive)} />
+                {theme == 'dark' ? 
                 <img src="/sidenav-logo.svg" className={`sidenav_logo ${isActive ? 'd-none' : ''}`} alt="" />
+                :     
+                <img src="/light-logo.svg" width='157px' height='44px' className={`sidenav_logo ${isActive ? 'd-none' : ''}`} alt="" />
+            }
             </div>
             <div className="sidebar-content-wrapper sidebar-offcanvas">
                 <ul className="nav">
@@ -20,7 +24,7 @@ function SideBar({ setIsActive, isActive, setTheme, theme}) {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="dashboard.html" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+                        <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
                             <img src="/dashboard.png" alt="" />
                             <span className="menu-title">Dashboard</span>
                         </a>
@@ -32,37 +36,37 @@ function SideBar({ setIsActive, isActive, setTheme, theme}) {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="dashboard.html" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+                        <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
                             <img src="/earn.png" alt="" />
                             <span className="menu-title">Earn History</span>
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="dashboard.html" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+                        <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
                             <img src="/reports.png" alt="" />
                             <span className="menu-title">Reports</span>
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="dashboard.html" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+                        <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
                             <img src="/reports.png" alt="" />
                             <span className="menu-title">Reports</span>
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="dashboard.html" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+                        <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
                             <img src="/pending.png" alt="" />
                             <span className="menu-title">Pending Approvals</span>
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="dashboard.html" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+                        <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
                             <img src="/game.png" alt="" />
                             <span className="menu-title">Game Rank</span>
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="dashboard.html" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+                        <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
                             <img src="/payment.png" alt="" />
                             <span className="menu-title">Available Payment</span>
                         </a>
@@ -74,25 +78,25 @@ function SideBar({ setIsActive, isActive, setTheme, theme}) {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="dashboard.html" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+                        <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
                             <img src="/hot.png" alt="" />
                             <span className="menu-title">Games Hot List</span>
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="dashboard.html" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+                        <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
                             <img src="/billboard.png" alt="" />
                             <span className="menu-title">Banners For Contest</span>
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="dashboard.html" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+                        <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
                             <img src="/trophy.png" alt="" />
                             <span className="menu-title">Bets Winners</span>
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="dashboard.html" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+                        <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
                             <img src="/crown.png" alt="" />
                             <span className="menu-title">VIP/SVIP/EVIP <br /> (Perks & Cautions)</span>
                         </a>
@@ -104,19 +108,19 @@ function SideBar({ setIsActive, isActive, setTheme, theme}) {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="dashboard.html" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+                        <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
                             <img src="/live-chat.png" alt="" />
                             <span className="menu-title">Chat & Support</span>
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="dashboard.html" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+                        <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
                             <img src="/languages.png" alt="" />
                             <span className="menu-title">Language Options</span>
                         </a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="dashboard.html" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+                        <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
                             <img src="/affiliate-marketing.png" alt="" />
                             <span className="menu-title">Affiliate <br /> (Rules & Terms)</span>
                         </a>

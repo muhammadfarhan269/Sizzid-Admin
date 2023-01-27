@@ -23,7 +23,7 @@ function Login({ isAuthenticated, setIsAuthenticated }) {
         if (loginCredentials.email !== 'admin@sizzld.com' && loginCredentials.password !== 'password') {
             alert('Invalid Credentials')
         } else {
-            console.log(navigate) 
+            console.log(navigate)
             navigate("/admin-dashboard/home");
         }
         let { data } = await Signin(loginCredentials)
