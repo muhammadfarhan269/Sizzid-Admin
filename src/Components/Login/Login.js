@@ -20,12 +20,12 @@ function Login({ isAuthenticated, setIsAuthenticated }) {
     const LoginApi = async (event) => {
         event.preventDefault()
         setIsAuthenticated(true)
-        // if (loginCredentials.email !== 'admin@sizzld.com' && loginCredentials.password !== 'password') {
-        //     alert('Invalid Credentials')
-        // } else {
+        if (loginCredentials.email !== 'admin@sizzld.com' && loginCredentials.password !== 'password') {
+            alert('Invalid Credentials')
+        } else {
             console.log(navigate)
-            navigate("/admin-dashboard");
-        // }
+            navigate("/admin-dashboard/home");
+        }
         let { data } = await Signin(loginCredentials)
         //    document.cookie = `token = ${data.token}`;
         //    var value = document.cookie;

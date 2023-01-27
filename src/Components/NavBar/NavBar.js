@@ -25,11 +25,11 @@ function NavBar({setIsAuthenticated}) {
                         </li>
                         <li className="nav-item mx-4">
                             <div className='notifications'>
-                                <img src="bell.png" alt="" />
+                                <img src="/bell.png" alt="" />
                             </div>
                         </li>
                         <li className="nav-item ms-4 me-2">
-                            <img src="photo.png" alt="" />
+                            <img src="/photo.png" alt="" />
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

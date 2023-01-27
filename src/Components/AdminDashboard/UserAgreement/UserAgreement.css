@@ -1,0 +1,36 @@
+.user_agreement_card {
+    background: rgb(43 45 80 / 60%);
+    box-shadow: 0px 0px 6px #5F5F6F;
+    border-radius: 8px;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.user_agreement_card .heading_one {
+    font-size: 24px;
+    line-height: 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 1px 2px 4px rgba(175, 175, 175, 0.18);
+    font-family: 'Poppins_Bold';
+}
+
+.user_agreement_card p, .user_agreement_card ol li {
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #E0E0E0;
+    font-family: 'Poppins_Light';
+}
+
+.user_agreement_card h4 {
+    font-size: 20px;
+    line-height: 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 1px 2px 4px rgba(175, 175, 175, 0.18);
+    font-family: 'Poppins_Bold';
+}

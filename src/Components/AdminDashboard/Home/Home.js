@@ -24,6 +24,7 @@ ChartJS.register(
   Legend,
   annotationPlugin
 );
+
 const labels = ['1 Jan', '2 Jan', '3 Jan', '4 Jan', '5 Jan', '6 Jan', '7 Jan'];
 
 export const options = {
@@ -50,7 +51,6 @@ export const options = {
   },
   scales: {
     x: {
-      display: false,
       ticks: {
         color: '#fff'
       }
@@ -135,7 +135,6 @@ export const cardThreeoptions = {
   },
 };
 
-
 export const CardOneChart = {
   labels,
   datasets: [
@@ -208,11 +207,11 @@ function Home() {
             <div className="card-body">
               <div className='row mx-1'>
                 <div className='col-md-2'>
-                  <img src="total-widraw.png" alt="" />
+                  <img src="/total-widraw.png" alt="" />
                 </div>
                 <div className='col-md-10'>
                   <div className='upper_card_title pt-2'>
-                    <p className='title'>Total Widraw <img src="caret-up.png" className='float-end pt-2' alt="" /></p>
+                    <p className='title'>Total Widraw <img src="/caret-up.png" className='float-end pt-2' alt="" /></p>
                     <p className='sub_title'>BTC</p>
                   </div>
                 </div>
@@ -234,11 +233,11 @@ function Home() {
             <div className="card-body">
               <div className='row mx-1'>
                 <div className='col-md-2'>
-                  <img src="total-deposit.png" alt="" />
+                  <img src="/total-deposit.png" alt="" />
                 </div>
                 <div className='col-md-10'>
                   <div className='upper_card_title pt-2'>
-                    <p className='title'>total Deposite <img src="caret-up.png" className='float-end pt-2' alt="" /></p>
+                    <p className='title'>total Deposite <img src="/caret-up.png" className='float-end pt-2' alt="" /></p>
                     <p className='sub_title'>BTC</p>
                   </div>
                 </div>
@@ -260,11 +259,11 @@ function Home() {
             <div className="card-body">
               <div className='row mx-1'>
                 <div className='col-md-2'>
-                  <img src="total-trading.png" alt="" />
+                  <img src="/total-trading.png" alt="" />
                 </div>
                 <div className='col-md-10'>
                   <div className='upper_card_title pt-2'>
-                    <p className='title'>total trading <img src="caret-up.png" className='float-end pt-2' alt="" /></p>
+                    <p className='title'>total trading <img src="/caret-up.png" className='float-end pt-2' alt="" /></p>
                     <p className='sub_title'>BTC</p>
                   </div>
                 </div>
@@ -288,7 +287,7 @@ function Home() {
           <div className='chart_detail_section'>
             <div className='row'>
               <div className='col-md-2'>
-                <h2 className='title'>Crash <img src="caret-down.png" alt="" /></h2>
+                <h2 className='title'>Crash <img src="/caret-down.png" alt="" /></h2>
               </div>
               <div className='col-md-4'>
                 <div className='chart_legends'>
@@ -307,8 +306,8 @@ function Home() {
                 </div>
               </div>
               <div className='col-md-6'>
-                <div class="btn-group float-end">
-                  <button class="btn btn-secondary dropdown-toggle chart_time_line_dropdown" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                <div className="btn-group float-end">
+                  <button className="btn btn-secondary dropdown-toggle chart_time_line_dropdown" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                     Last Week Days
                   </button>
                   {/* <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
