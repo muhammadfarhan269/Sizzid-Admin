@@ -5,10 +5,10 @@ function PromotionsRewards() {
   return (
     <div className='container-fluid'>
       <div className='row'>
-        <div className='col-md-5 mt-4'>
+        <div className='col-md-4 mt-4'>
           <h3 className='page_title'>Promotions & Reward</h3>
         </div>
-        <div className='col-md-7 mt-4'>
+        <div className='col-md-8 mt-4'>
           <div className='promotions_rewards_nav_button'>
             <ul>
               <li className='active'>Promotions</li>

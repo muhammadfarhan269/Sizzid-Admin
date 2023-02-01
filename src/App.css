@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+.main_panel {
+  margin-left: 300px;
+  margin-top: 80px;
+}
+body {
+  background: #01022f !important;
+  /* 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 */
+}
