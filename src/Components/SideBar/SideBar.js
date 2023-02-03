@@ -47,10 +47,10 @@ function SideBar({ setIsActive, isActive, setTheme, theme }) {
             </Link>
           </li>
           <li className="nav-item disabled">
-            <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+            <Link className="nav-link" to={'reports'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
               <img src="/reports.png" alt="" />
               <span className="menu-title">Reports</span>
-            </a>
+            </Link>
           </li>
 
           <li className="nav-item disabled">
@@ -84,10 +84,10 @@ function SideBar({ setIsActive, isActive, setTheme, theme }) {
             </Link>
           </li>
           <li className="nav-item disabled">
-            <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+            <Link className="nav-link" to={'contest-banner'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
               <img src="/billboard.png" alt="" />
               <span className="menu-title">Banners For Contest</span>
-            </a>
+            </Link>
           </li>
           <li className="nav-item disabled">
             <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
@@ -96,10 +96,10 @@ function SideBar({ setIsActive, isActive, setTheme, theme }) {
             </a>
           </li>
           <li className="nav-item disabled">
-            <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+            <Link className="nav-link" to={'gvip-svip-evip'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
               <img src="/crown.png" alt="" />
               <span className="menu-title">VIP/SVIP/EVIP <br /> (Perks & Cautions)</span>
-            </a>
+            </Link>
           </li>
           <li className={`nav-item ${location.pathname == '/admin-dashboard/user-agreement' ? 'active' : ''}`}>
             <Link className="nav-link" to={'user-agreement'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>

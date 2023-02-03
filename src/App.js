@@ -13,6 +13,9 @@ import { useNavigate, Link } from "react-router-dom";
 import EarnHistory from './Components/AdminDashboard/EarnHistroy/EarnHistory';
 import HotGamesList from './Components/AdminDashboard/HotGamesList/HotGamesList';
 import PendingApprovals from './Components/AdminDashboard/PendingApprovals/PendingApprovals';
+import BannerOfContest from './Components/AdminDashboard/BannerOfContest/BannerOfContest';
+import GVIP from './Components/AdminDashboard/GVIP/GVIP';
+import Reports from './Components/AdminDashboard/Reports/Reports';
 
 function App() {
   const [isActive, setIsActive] = useState(false)
@@ -41,6 +44,9 @@ function App() {
         <Route path="earn-history" element={<EarnHistory />} />
         <Route path="hot-games" element={<HotGamesList />} />
         <Route path="pending-approvals" element={<PendingApprovals />} />
+        <Route path="contest-banner" element={<BannerOfContest />} />
+        <Route path="gvip-svip-evip" element={<GVIP />} />
+        <Route path="reports" element={<Reports />} />
       </Route>
       <Route path="/reset-password" element={<ResetPassword />} />
     </Routes>

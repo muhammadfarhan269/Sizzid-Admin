@@ -23,14 +23,13 @@ function Login({ isAuthenticated, setIsAuthenticated }) {
   const LoginApi = async (event) => {
 
     event.preventDefault()
-    // if (loginCredentials.email == 'admin@sizzld.com' && loginCredentials.password == 'password') {
-    //   setIsAuthenticated(true)
-    //   localStorage.setItem('loginCredentials', JSON.stringify(loginCredentials))
+    if (loginCredentials.email == 'admin@sizzld.com' && loginCredentials.password == 'password') {
+      setIsAuthenticated(true)
+      localStorage.setItem('loginCredentials', JSON.stringify(loginCredentials))
       navigate("/admin-dashboard/home");
-    // } else {
-    //   setError(true)
-
-    // }
+    } else {
+      setError(true)
+    }
     // let { data } = await Signin(loginCredentials)
     //    document.cookie = `token = ${data.token}`;
     //    var value = document.cookie;

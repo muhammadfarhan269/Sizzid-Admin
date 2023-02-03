@@ -1,0 +1,74 @@
+.gvip_table {
+    background: rgb(43 45 80 / 60%);
+    box-shadow: 0px 0px 6px #5f5f6f;
+}
+
+.gvip_table thead {
+    background: rgba(14, 6, 61, 0.3);
+    box-shadow: 1px 1px 10px rgb(255 1 62 / 18%);
+}
+
+.gvip_table thead tr th {
+    padding: 24px 10px;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    font-family: 'Poppins_SemiBold';
+    border-bottom: 0px;
+}
+
+.gvip_table thead tr th:first-child {
+    padding-left: 41px;
+}
+
+.gvip_table tbody tr {
+    border-bottom: 0px;
+    position: relative;
+}
+
+.gvip_table tbody tr td:first-child {
+    padding-left: 41px;
+}
+
+.gvip_table tbody tr td {
+    padding: 16.5px 8px;
+    border-bottom: 0px;
+    vertical-align: middle;
+}
+
+.gvip_table tbody tr hr {
+    background: rgb(224 224 224 / 20%);
+    position: absolute;
+    width: 95%;
+    left: 0;
+    bottom: 0;
+    padding: 1px;
+    margin: auto;
+    right: 0;
+}
+
+.gvip_table tbody tr .user_name {
+    font-size: 16px;
+    line-height: 22px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    font-family: 'Poppins_Light';
+}
+
+.gvip_table tbody tr .bet_amount {
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(82, 251, 3, 1);
+    font-family: 'Poppins_Bold';
+}
+
+.gvip_table tbody tr .total_bets div {
+    width: 52px;
+    background-color: rgba(62, 62, 91, 0.6);
+    border-radius: 16px;
+    font-size: 16px;
+    line-height: 22px;
+    color: #FFFFFF;
+    font-family: 'Poppins_Light';
+    padding: 2px 10px;
+}
