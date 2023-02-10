@@ -6,9 +6,9 @@ import { Navigate, Outlet } from "react-router-dom";
 import NotificationRightSideBar from '../NotificationRightSideBar/NotificationRightSideBar';
 
 function AdminDashboard({ setIsActive, isActive, isAuthenticated, setIsAuthenticated, setTheme, theme, setSideBarActive, sideBarActive }) {
-    if (isAuthenticated !==  true) {
-        return <Navigate replace to="/" />;
-    } else {
+    // if (isAuthenticated !==  true) {
+    //     return <Navigate replace to="/" />;
+    // } else {
     return (
         <div className='container-scroller'>
             <SideBar isActive={isActive} setIsActive={setIsActive} setTheme={setTheme} theme={theme} />
@@ -23,7 +23,7 @@ function AdminDashboard({ setIsActive, isActive, isAuthenticated, setIsAuthentic
             </div>
         </div>
     )
-    }
+    // }
 }
 
 export default AdminDashboard

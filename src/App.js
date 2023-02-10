@@ -22,6 +22,7 @@ import GameRank from './Components/AdminDashboard/GameRank/GameRank';
 import AvailablePayment from './Components/AdminDashboard/AvailablePayment/AvailablePayment';
 import LanguageModal from './Components/AdminDashboard/LanguageModal/LanguageModal';
 import ChatSupport from './Components/AdminDashboard/ChatSupport/ChatSupport';
+import EditProfile from './Components/EditProfileModal/EditProfile';
 
 function App() {
   const [isActive, setIsActive] = useState(false)
@@ -42,6 +43,7 @@ function App() {
   return (
     <>
       <LanguageModal />
+      <EditProfile />
       <Routes>
         <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/verification" element={<VerificationCode />} />

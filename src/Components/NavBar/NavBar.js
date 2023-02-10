@@ -28,15 +28,29 @@ function NavBar({ setIsAuthenticated, setSideBarActive }) {
                 <img src="/bell.png" alt="" />
               </div>
             </li>
-            <li className="nav-item ms-4 me-2">
+            {/* <li className="nav-item ms-4 me-2">
               <img src="/photo.png" alt="" />
-            </li>
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            </li> */}
+            <li className="nav-item dropdown profile-link-nav">
+              <a className="nav-link dropdown-toggle pt-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="/photo.png" className='me-3' alt="" />
                 Courtney Henry
               </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li onClick={() => { setIsAuthenticated(false); localStorage.clear() }}>Logout</li>
+              <ul className="dropdown-menu nav-profile" aria-labelledby="navbarDropdown">
+                <div className='position-relative h-100 w-100'>
+                  <div className='profile_section'>
+                    <div className='header position-relative'>
+                      <img src="/edit-profile.svg" className='edit_profile_icon' alt="" data-bs-toggle="modal" data-bs-target="#editProfile" />
+                      <img src="/Photo.svg" alt="" />
+                      <h4 className='fw-bold'>Courtney Henry</h4>
+                      <p>edward786@gamil.com</p>
+                      <div className='footer'>
+                        <img src="/logout.svg" alt="" /> Logout
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* <li onClick={() => { setIsAuthenticated(false); localStorage.clear() }}>Logout</li> */}
               </ul>
             </li>
             <li className="nav-item">
