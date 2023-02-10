@@ -25,14 +25,8 @@ function SideBar({ setIsActive, isActive, setTheme, theme }) {
           <li className={`nav-item ${location.pathname == '/admin-dashboard/home' ? 'active' : ''}`}>
             <Link className="nav-link" to={'home'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
               <img src="/home.png" alt="" />
-              <span className="menu-title">Home</span>
-            </Link>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link disabled" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
-              <img src="/dashboard.png" alt="" />
               <span className="menu-title">Dashboard</span>
-            </a>
+            </Link>
           </li>
           <li className={`nav-item ${location.pathname == '/admin-dashboard/promotions' ? 'active' : ''}`}>
             <Link className="nav-link" to={'promotions'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
@@ -40,36 +34,36 @@ function SideBar({ setIsActive, isActive, setTheme, theme }) {
               <span className="menu-title">Promotions & Reward</span>
             </Link>
           </li>
-          <li className="nav-item">
+          <li className={`nav-item ${location.pathname == '/admin-dashboard/earn-history' ? 'active' : ''}`}>
             <Link className="nav-link" to={'earn-history'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
               <img src="/earn.png" alt="" />
               <span className="menu-title">Earn History</span>
             </Link>
           </li>
-          <li className="nav-item disabled">
+          <li className={`nav-item ${location.pathname == '/admin-dashboard/reports' ? 'active' : ''}`}>
             <Link className="nav-link" to={'reports'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
               <img src="/reports.png" alt="" />
               <span className="menu-title">Reports</span>
             </Link>
           </li>
 
-          <li className="nav-item disabled">
+          <li className={`nav-item ${location.pathname == '/admin-dashboard/pending-approvals' ? 'active' : ''}`}>
             <Link className="nav-link" to={'pending-approvals'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
               <img src="/pending.png" alt="" />
               <span className="menu-title">Pending Approvals</span>
             </Link>
           </li>
-          <li className="nav-item disabled">
-            <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+          <li className={`nav-item ${location.pathname == '/admin-dashboard/game-rank' ? 'active' : ''}`}>
+            <Link className="nav-link" to={'game-rank'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
               <img src="/game.png" alt="" />
               <span className="menu-title">Game Rank</span>
-            </a>
+            </Link>
           </li>
-          <li className="nav-item disabled">
-            <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+          <li className={`nav-item ${location.pathname == '/admin-dashboard/available-payment' ? 'active' : ''}`}>
+            <Link className="nav-link" to={'available-payment'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
               <img src="/payment.png" alt="" />
               <span className="menu-title">Available Payment</span>
-            </a>
+            </Link>
           </li>
           <li className={`nav-item ${location.pathname == '/admin-dashboard/available-games' ? 'active' : ''}`}>
             <Link className="nav-link" to={'available-games'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
@@ -77,25 +71,25 @@ function SideBar({ setIsActive, isActive, setTheme, theme }) {
               <span className="menu-title">Available Games</span>
             </Link>
           </li>
-          <li className="nav-item disabled">
+          <li className={`nav-item ${location.pathname == '/admin-dashboard/hot-games' ? 'active' : ''}`}>
             <Link className="nav-link" to={'hot-games'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
               <img src="/hot.png" alt="" />
               <span className="menu-title">Games Hot List</span>
             </Link>
           </li>
-          <li className="nav-item disabled">
+          <li className={`nav-item ${location.pathname == '/admin-dashboard/contest-banner' ? 'active' : ''}`}>
             <Link className="nav-link" to={'contest-banner'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
               <img src="/billboard.png" alt="" />
               <span className="menu-title">Banners For Contest</span>
             </Link>
           </li>
-          <li className="nav-item disabled">
-            <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+          <li className={`nav-item ${location.pathname == '/admin-dashboard/bet-winners' ? 'active' : ''}`}>
+            <Link className="nav-link" to={'bet-winners'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
               <img src="/trophy.png" alt="" />
               <span className="menu-title">Bets Winners</span>
-            </a>
+            </Link>
           </li>
-          <li className="nav-item disabled">
+          <li className={`nav-item ${location.pathname == '/admin-dashboard/gvip-svip-evip' ? 'active' : ''}`}>
             <Link className="nav-link" to={'gvip-svip-evip'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
               <img src="/crown.png" alt="" />
               <span className="menu-title">VIP/SVIP/EVIP <br /> (Perks & Cautions)</span>
@@ -107,23 +101,23 @@ function SideBar({ setIsActive, isActive, setTheme, theme }) {
               <span className="menu-title">User Agreement & <br /> Privacy Policy</span>
             </Link>
           </li>
-          <li className="nav-item disabled">
-            <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+          <li className={`nav-item ${location.pathname == '/admin-dashboard/support' ? 'active' : ''}`}>
+            <Link className="nav-link" to={'support'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
               <img src="/live-chat.png" alt="" />
               <span className="menu-title">Chat & Support</span>
-            </a>
+            </Link>
           </li>
-          <li className="nav-item disabled">
+          <li className="nav-item language-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
               <img src="/languages.png" alt="" />
               <span className="menu-title">Language Options</span>
             </a>
           </li>
-          <li className="nav-item disabled">
-            <a className="nav-link" style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+          <li className={`nav-item ${location.pathname == '/admin-dashboard/affiliate' ? 'active' : ''}`}>
+            <Link className="nav-link" to={'affiliate'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
               <img src="/affiliate-marketing.png" alt="" />
               <span className="menu-title">Affiliate <br /> (Rules & Terms)</span>
-            </a>
+            </Link>
           </li>
         </ul>
         <ul className="nav nav-tabs toggle_switch border-bottom-0 theme_conversion_buttons ms-3" id="myTab" role="tablist">

@@ -1,7 +1,7 @@
 import React from 'react'
 import "./NavBar.css"
 
-function NavBar({ setIsAuthenticated }) {
+function NavBar({ setIsAuthenticated, setSideBarActive }) {
   return (
     <nav className="navbar navbar-expand-lg pt-4 admin-nav">
       <div className="container-fluid">
@@ -24,7 +24,7 @@ function NavBar({ setIsAuthenticated }) {
               </ul>
             </li>
             <li className="nav-item mx-4">
-              <div className='notifications'>
+              <div className='notifications' onClick={() => setSideBarActive(true)}>
                 <img src="/bell.png" alt="" />
               </div>
             </li>

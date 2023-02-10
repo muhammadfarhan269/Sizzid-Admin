@@ -30,10 +30,10 @@ function Login({ isAuthenticated, setIsAuthenticated }) {
     } else {
       setError(true)
     }
-    // let { data } = await Signin(loginCredentials)
-    //    document.cookie = `token = ${data.token}`;
-    //    var value = document.cookie;
-    //    console.log(value)
+    let { data } = await Signin(loginCredentials)
+    document.cookie = `token = ${data.token}`;
+    var value = document.cookie;
+    console.log(value)
 
   }
 

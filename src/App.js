@@ -16,11 +16,18 @@ import PendingApprovals from './Components/AdminDashboard/PendingApprovals/Pendi
 import BannerOfContest from './Components/AdminDashboard/BannerOfContest/BannerOfContest';
 import GVIP from './Components/AdminDashboard/GVIP/GVIP';
 import Reports from './Components/AdminDashboard/Reports/Reports';
+import Affiliate from './Components/AdminDashboard/Affiliate/Affiliate';
+import BetWinners from './Components/AdminDashboard/BetWinners/BetWinners';
+import GameRank from './Components/AdminDashboard/GameRank/GameRank';
+import AvailablePayment from './Components/AdminDashboard/AvailablePayment/AvailablePayment';
+import LanguageModal from './Components/AdminDashboard/LanguageModal/LanguageModal';
+import ChatSupport from './Components/AdminDashboard/ChatSupport/ChatSupport';
 
 function App() {
   const [isActive, setIsActive] = useState(false)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [theme, setTheme] = useState('dark')
+  const [sideBarActive, setSideBarActive] = useState(false)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,23 +40,32 @@ function App() {
 
   }, [])
   return (
-    <Routes>
-      <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
-      <Route path="/verification" element={<VerificationCode />} />
-      <Route path="/admin-dashboard" element={<AdminDashboard isActive={isActive} setIsActive={setIsActive} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setTheme={setTheme} theme={theme} />} >
-        <Route path="Home" element={<Home />} />
-        <Route path="available-games" element={<AvailableGames />} />
-        <Route path="promotions" element={<PromotionsRewards />} />
-        <Route path="user-agreement" element={<UserAgreement />} />
-        <Route path="earn-history" element={<EarnHistory />} />
-        <Route path="hot-games" element={<HotGamesList />} />
-        <Route path="pending-approvals" element={<PendingApprovals />} />
-        <Route path="contest-banner" element={<BannerOfContest />} />
-        <Route path="gvip-svip-evip" element={<GVIP />} />
-        <Route path="reports" element={<Reports />} />
-      </Route>
-      <Route path="/reset-password" element={<ResetPassword />} />
-    </Routes>
+    <>
+      <LanguageModal />
+      <Routes>
+        <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        <Route path="/verification" element={<VerificationCode />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard sideBarActive={sideBarActive} setSideBarActive={setSideBarActive} isActive={isActive} setIsActive={setIsActive} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setTheme={setTheme} theme={theme} />} >
+          <Route path="Home" element={<Home />} />
+          <Route path="available-games" element={<AvailableGames />} />
+          <Route path="promotions" element={<PromotionsRewards />} />
+          <Route path="user-agreement" element={<UserAgreement />} />
+          <Route path="earn-history" element={<EarnHistory />} />
+          <Route path="hot-games" element={<HotGamesList />} />
+          <Route path="pending-approvals" element={<PendingApprovals />} />
+          <Route path="contest-banner" element={<BannerOfContest />} />
+          <Route path="gvip-svip-evip" element={<GVIP />} />
+          <Route path="reports" element={<Reports />} />
+          <Route path="affiliate" element={<Affiliate />} />
+          <Route path="bet-winners" element={<BetWinners />} />
+          <Route path="game-rank" element={<GameRank />} />
+          <Route path="available-payment" element={<AvailablePayment />} />
+          <Route path="support" element={<ChatSupport />} />
+        </Route>
+        <Route path="/reset-password" element={<ResetPassword />} />
+      </Routes>
+    </>
+
   );
 }
 

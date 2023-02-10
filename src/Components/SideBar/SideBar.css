@@ -118,6 +118,10 @@
   border-radius: 8px 0px 0px 8px;
 }
 
+.language-link{
+  cursor: pointer;
+}
+
 @media (min-width: 992px) {
   .sidebar .sidebar-content-wrapper {
     /* height: calc(100vh - (18px + 18px)); */

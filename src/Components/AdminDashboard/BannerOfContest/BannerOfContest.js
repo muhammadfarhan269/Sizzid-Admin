@@ -4,7 +4,7 @@ import './BannerOfContest.css'
 function BannerOfContest() {
     return (
         <div className='row'>
-            <div className='col-md-4 mt-4 d-flex justify-content-between'>
+            <div className='col-md-5 mt-4 d-flex justify-content-between'>
                 <h3 className='page_title'>Banner of contest</h3>
                 <button className='btn btn_add_banner'>Add Banner <img src="/plus.png" alt="" /></button>
             </div>
