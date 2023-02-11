@@ -44,7 +44,7 @@ function NavBar({ setIsAuthenticated, setSideBarActive }) {
                       <img src="/Photo.svg" alt="" />
                       <h4 className='fw-bold'>Courtney Henry</h4>
                       <p>edward786@gamil.com</p>
-                      <div className='footer'>
+                      <div className='footer' onClick={() => { setIsAuthenticated(false); localStorage.clear() }}>
                         <img src="/logout.svg" alt="" /> Logout
                       </div>
                     </div>

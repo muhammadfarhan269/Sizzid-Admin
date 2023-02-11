@@ -65,7 +65,7 @@
     margin-top: 30px;
 }
 
-.chat_card .title {
+.chat_card .title, .chat .title {
     font-size: 18px;
     line-height: 22px;
     color: #FFFFFF !important;
@@ -117,4 +117,54 @@
     font-family: 'Poppins_Light';
     color: #FFFFFF !important;
     margin-left: 30px;
+}
+
+.urgent_dropdown, .open_dropdown {
+    cursor: pointer;
+}
+
+.chat_box {
+    background: rgb(1 2 47 / 60%);
+    box-shadow: 0px 0px 6px #5F5F6F;
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 40px 25px;
+    margin-top: 30px;
+    height: 764px;
+}
+
+.chat_input {
+    background: rgb(43 45 80 / 80%);
+    box-shadow: 0px 0px 6px #5F5F6F;
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.chat_input {
+    box-shadow: 0px 0px 6px #5F5F6F;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+}
+
+.chat_input input {
+    background: rgb(1 2 47 / 80%);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    border: 1px solid rgb(1 2 47 / 80%);
+    border-left: 0px !important;
+    font-size: 14px;
+    line-height: 22px;
+    color: #8E8E8E;
+
+}
+
+.chat_input .input-group-text {
+    background: rgb(1 2 47 / 80%);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    border: 1px solid rgb(1 2 47 / 80%);
+    border-right: 0px !important;
 }
