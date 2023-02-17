@@ -1,0 +1,56 @@
+.pending_approval_modal {
+    background: rgba(54, 54, 54, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.pending_approval_modal .modal_dialog {
+    max-width: 463px;
+}
+
+.pending_approval_modal .modal_header {
+    background-color: rgba(13, 13, 56, 1);
+    height: 62px;
+    border-bottom: 0px;
+}
+
+.pending_approval_modal .modal_header h5 {
+    font-size: 20px;
+    line-height: 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 1px 2px 4px rgba(175, 175, 175, 0.18);
+    font-family: 'Poppins_Bold';
+}
+
+.pending_approval_modal .modal_body {
+    background-color: rgba(22, 22, 65, 1);
+}
+
+.pending_approval_modal .modal_footer {
+    background-color: rgba(22, 22, 65, 1);
+    border-top: 0px;
+}
+
+.inner_body {
+    background-color: rgba(14, 6, 61, 1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.inner_body p {
+    font-size: 16px;
+    text-transform: capitalize;
+    font-family: 'Poppins_Medium';
+    color: rgba(255, 255, 255, 1);
+}
+
+.inner_body p .label {
+    color: rgba(3, 251, 117, 1);
+}
+
+.inner_body .game_descriptiom{
+    color: rgba(224, 224, 224, 1);
+    margin-bottom: 0px;
+}

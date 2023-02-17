@@ -23,6 +23,9 @@ import AvailablePayment from './Components/AdminDashboard/AvailablePayment/Avail
 import LanguageModal from './Components/AdminDashboard/LanguageModal/LanguageModal';
 import ChatSupport from './Components/AdminDashboard/ChatSupport/ChatSupport';
 import EditProfile from './Components/EditProfileModal/EditProfile';
+import UserDetail from './Components/AdminDashboard/UserDetail/UserDetail';
+import UserDetailPopup from './Components/AdminDashboard/UserDetail/UserDetailPopup/UserDetailPopup';
+import PendingApprovalModal from './Components/AdminDashboard/PendingApprovals/PendingApprovalModal/PendingApprovalModal';
 
 function App() {
   const [isActive, setIsActive] = useState(false)
@@ -44,6 +47,8 @@ function App() {
     <>
       <LanguageModal />
       <EditProfile />
+      <UserDetailPopup />
+      <PendingApprovalModal />
       <Routes>
         <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/verification" element={<VerificationCode />} />
@@ -63,6 +68,7 @@ function App() {
           <Route path="game-rank" element={<GameRank />} />
           <Route path="available-payment" element={<AvailablePayment />} />
           <Route path="support" element={<ChatSupport />} />
+          <Route path="user-detail" element={<UserDetail />} />
         </Route>
         <Route path="/reset-password" element={<ResetPassword />} />
       </Routes>

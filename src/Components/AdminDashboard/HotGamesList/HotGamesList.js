@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function HotGamesList() {
+
+    const [hot, setHot] = useState(false)
+
     return (
         <div className='row'>
             <div className='col-md-12'>
@@ -21,7 +24,7 @@ function HotGamesList() {
                             <td className='date_of_bet'>Hash Dice</td>
                             <td className='bet_amount'>50000</td>
                             <td className='total_bets'><div>786</div></td>
-                            <td><img src="/hot-fire.png" alt="" /></td>
+                            <td><span onClick={() =>setHot(hot => !hot)}>{hot ? <img src="/hot-fire.png" alt="" /> : <img src="/fire.png" alt="" />}</span></td>
                             <hr />
                         </tr>
                         <tr>

@@ -35,35 +35,35 @@ function PendingApprovals() {
                             <td className='game_name'>Name 1</td>
                             <td className='approval_type'><div className='game_upload'>Game Upload</div></td>
                             <td className='total_wining'>0.66667598645 +</td>
-                            <td className='view_all'><span>View All</span></td>
+                            <td className='view_all' data-bs-toggle="modal" data-bs-target="#pendingApprovalModal"><span>View All</span></td>
                             <hr />
                         </tr>
                         <tr>
                             <td className='game_name'>Name 1</td>
                             <td className='approval_type'><div className='game_upload'>Game Upload</div></td>
                             <td className='total_wining'>0.66667598645 +</td>
-                            <td className='view_all'><span>View All</span></td>
+                            <td className='view_all' data-bs-toggle="modal" data-bs-target="#pendingApprovalModal"><span>View All</span></td>
                             <hr />
                         </tr>
                         <tr>
                             <td className='game_name'>Name 1</td>
                             <td className='approval_type'><div className='payment'>Payment</div></td>
                             <td className='total_wining'>0.66667598645 +</td>
-                            <td className='view_all'><span>View All</span></td>
+                            <td className='view_all' data-bs-toggle="modal" data-bs-target="#pendingApprovalModalPayment"><span>View All</span></td>
                             <hr />
                         </tr>
                         <tr>
                             <td className='game_name'>Name 1</td>
                             <td className='approval_type'><div className='payment'>Payment</div></td>
                             <td className='total_wining'>0.66667598645 +</td>
-                            <td className='view_all'><span>View All</span></td>
+                            <td className='view_all' data-bs-toggle="modal" data-bs-target="#pendingApprovalModalPayment"><span>View All</span></td>
                             <hr />
                         </tr>
                         <tr>
                             <td className='game_name'>Name 1</td>
                             <td className='approval_type'><div className='document'>Document</div></td>
                             <td className='total_wining'>0.66667598645 +</td>
-                            <td className='view_all'><span>View All</span></td>
+                            <td className='view_all' data-bs-toggle="modal" data-bs-target="#pendingApprovalModalDocument"><span>View All</span></td>
                             <hr />
                         </tr>
                         <tr>

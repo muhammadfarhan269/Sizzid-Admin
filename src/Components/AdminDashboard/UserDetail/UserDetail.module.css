@@ -1,0 +1,70 @@
+.page_title {
+    font-size: 40px;
+    line-height: 48px;
+    color: #FFFFFF;
+    font-family: 'Blinker_ExtraBold';
+    margin-top: 6px;
+}
+
+.user_detail_table {
+    background: rgb(43 45 80 / 60%);
+    box-shadow: 0px 0px 6px #5f5f6f;
+}
+
+.user_detail_table thead {
+    background: rgba(14, 6, 61, 0.3);
+    box-shadow: 1px 1px 10px rgb(255 1 62 / 18%);
+}
+
+.user_detail_table thead tr th:first-child {
+    padding-left: 41px;
+}
+
+.user_detail_table thead tr th {
+    padding: 24px 10px;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    font-family: 'Poppins_SemiBold';
+    border-bottom: 0px;
+}
+
+.user_detail_table tbody tr {
+    border-bottom: 0px;
+    position: relative;
+}
+
+.user_detail_table tbody tr td:first-child {
+    padding-left: 41px;
+}
+
+.user_detail_table tbody tr .user_id, .user_detail_table tbody tr .name, .user_detail_table tbody tr .ip_address, .user_detail_table tbody tr .view_all {
+    font-size: 16px;
+    line-height: 22px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    font-family: 'Poppins_Light';
+}
+
+.user_detail_table tbody tr td {
+    padding: 16.5px 8px;
+    border-bottom: 0px;
+    vertical-align: middle;
+}
+
+.user_detail_table tbody tr hr {
+    background: rgb(224 224 224 / 20%);
+    position: absolute;
+    width: 95%;
+    left: 0;
+    bottom: 0;
+    padding: 1px;
+    margin: auto;
+    right: 0;
+}
+
+.user_detail_table tbody tr .view_all{
+    color: rgba(255, 233, 80, 1);
+    text-decoration: underline;
+    cursor: pointer;
+}

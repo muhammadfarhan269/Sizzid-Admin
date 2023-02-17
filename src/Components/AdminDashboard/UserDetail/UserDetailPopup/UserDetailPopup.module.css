@@ -1,0 +1,130 @@
+.user_detail {
+    background: rgba(54, 54, 54, 0.2);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.user_detail .modal_header {
+    background-color: rgba(13, 13, 56, 1);
+    border-bottom: 0px;
+    height: 62px;
+}
+
+.user_detail .modal_header h5 {
+    line-height: 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 1px 2px 4px rgba(175, 175, 175, 0.18);
+    font-family: 'Poppins_Bold';
+}
+
+.user_detail .modal_body {
+    background-color: rgba(22, 22, 65, 1);
+    padding: 25px 25px;
+}
+
+.user_detail .modal_footer {
+    background-color: rgba(22, 22, 65, 1);
+    border-top: 0px;
+}
+
+.user_detail .modal_dialog {
+    max-width: 708px;
+}
+
+.user_detail .user_detail_nav {
+    border-bottom: 0px;
+}
+
+.user_detail .user_detail_nav li button {
+    font-size: 16px;
+    line-height: 40px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    color: #FFFFFF !important;
+    font-family: 'Poppins_Medium';
+    background: rgb(255 255 255 / 20%);
+    border: 1px solid rgba(3, 251, 117, 0.22) !important;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(10px);
+    border-radius: 62px;
+    margin-right: 10px;
+    width: 130px;
+    height: 44px;
+    padding: 2px;
+}
+
+.user_detail .user_detail_nav li .current_tab[class="active"] {
+    border-bottom: 1px solid red !important;
+}
+
+.user_detail .activities_table, .user_detail .earnings_table {
+    margin-top: 30px;
+}
+
+.user_detail .activities_table table thead, .user_detail .earnings_table table thead {
+    background: #454567;
+    box-shadow: 1px 1px 10px rgba(255, 1, 62, 0.18);
+    backdrop-filter: blur(50px);
+    border-radius: 6.58745px;
+    height: 54px;
+}
+
+.user_detail .activities_table table thead tr th, .user_detail .earnings_table table thead tr th {
+    vertical-align: middle;
+    font-size: 16px;
+    line-height: 0px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    font-family: 'Poppins_Medium';
+    border: 0px;
+}
+
+.user_detail .activities_table table tbody tr, .user_detail .earnings_table table tbody tr {
+    position: relative;
+}
+
+.activities_table thead tr th:first-child, .earnings_table thead tr th:first-child {
+    padding-left: 20px;
+}
+
+.user_detail .activities_table table tbody tr td:first-child, .user_detail .earnings_table table tbody tr td:first-child {
+    padding-left: 20px;
+}
+
+
+.activities_table tbody tr hr , .earnings_table tbody tr hr {
+    background: rgb(224 224 224 / 20%);
+    position: absolute;
+    width: 95%;
+    left: 0;
+    bottom: 0;
+    padding: 1px;
+    margin: auto;
+    right: 0;
+}
+
+.user_detail .activities_table table tbody tr td, .user_detail .earnings_table table tbody tr td {
+    vertical-align: middle;
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    height: 54px;
+    font-family: 'Poppins_Light';
+    border: 0px;
+}
+
+.user_detail .activities_table table tbody, .user_detail .earnings_table table tbody {
+    background-color: rgba(14, 6, 61, 1);
+}
+
+.user_detail .earnings_table table tbody tr .bet_amount{
+    color: #FFC93C;
+    font-family: 'Poppins_Medium';
+}
+
+.user_detail .earnings_table table tbody tr .earning{
+    color: rgba(3, 251, 117, 1);
+    font-family: 'Poppins_Medium';
+}

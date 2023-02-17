@@ -16,7 +16,7 @@ function AvailableGames() {
                                 <div class="card-body p-2">
                                     <p class="card-text position-relative">35,000 Player <br /> Playing Now
                                         <div className='redirect'>
-                                            <img src="/arrow.png" alt="" />
+                                            <a href="#"><img src="/arrow.png" alt="" /></a>
                                         </div>
                                     </p>
                                 </div>
@@ -28,7 +28,7 @@ function AvailableGames() {
                                 <div class="card-body p-2">
                                     <p class="card-text position-relative">35,000 Player <br /> Playing Now
                                         <div className='redirect'>
-                                            <img src="/arrow.png" alt="" />
+                                            <a href="#"><img src="/arrow.png" alt="" /></a>
                                         </div>
                                     </p>
                                 </div>
@@ -40,7 +40,7 @@ function AvailableGames() {
                                 <div class="card-body p-2">
                                     <p class="card-text position-relative">35,000 Player <br /> Playing Now
                                         <div className='redirect'>
-                                            <img src="/arrow.png" alt="" />
+                                            <a href="#"><img src="/arrow.png" alt="" /></a>
                                         </div>
                                     </p>
                                 </div>
@@ -52,7 +52,7 @@ function AvailableGames() {
                                 <div class="card-body p-2">
                                     <p class="card-text position-relative">35,000 Player <br /> Playing Now
                                         <div className='redirect'>
-                                            <img src="/arrow.png" alt="" />
+                                            <a href="#"><img src="/arrow.png" alt="" /></a>
                                         </div>
                                     </p>
                                 </div>
@@ -64,7 +64,7 @@ function AvailableGames() {
                                 <div class="card-body p-2">
                                     <p class="card-text position-relative">35,000 Player <br /> Playing Now
                                         <div className='redirect'>
-                                            <img src="/arrow.png" alt="" />
+                                            <a href="#"><img src="/arrow.png" alt="" /></a>
                                         </div>
                                     </p>
                                 </div>
@@ -76,7 +76,7 @@ function AvailableGames() {
                                 <div class="card-body p-2">
                                     <p class="card-text position-relative">35,000 Player <br /> Playing Now
                                         <div className='redirect'>
-                                            <img src="/arrow.png" alt="" />
+                                            <a href="#"><img src="/arrow.png" alt="" /></a>
                                         </div>
                                     </p>
                                 </div>
@@ -88,7 +88,7 @@ function AvailableGames() {
                                 <div class="card-body p-2">
                                     <p class="card-text position-relative">35,000 Player <br /> Playing Now
                                         <div className='redirect'>
-                                            <img src="/arrow.png" alt="" />
+                                            <a href="#"><img src="/arrow.png" alt="" /></a>
                                         </div>
                                     </p>
                                 </div>
@@ -100,7 +100,7 @@ function AvailableGames() {
                                 <div class="card-body p-2">
                                     <p class="card-text position-relative">35,000 Player <br /> Playing Now
                                         <div className='redirect'>
-                                            <img src="/arrow.png" alt="" />
+                                            <a href="#"><img src="/arrow.png" alt="" /></a>
                                         </div>
                                     </p>
                                 </div>
@@ -112,7 +112,7 @@ function AvailableGames() {
                                 <div class="card-body p-2">
                                     <p class="card-text position-relative">35,000 Player <br /> Playing Now
                                         <div className='redirect'>
-                                            <img src="/arrow.png" alt="" />
+                                            <a href="#"><img src="/arrow.png" alt="" /></a>
                                         </div>
                                     </p>
                                 </div>
@@ -124,7 +124,7 @@ function AvailableGames() {
                                 <div class="card-body p-2">
                                     <p class="card-text position-relative">35,000 Player <br /> Playing Now
                                         <div className='redirect'>
-                                            <img src="/arrow.png" alt="" />
+                                            <a href="#"><img src="/arrow.png" alt="" /></a>
                                         </div>
                                     </p>
                                 </div>
@@ -136,7 +136,7 @@ function AvailableGames() {
                                 <div class="card-body p-2">
                                     <p class="card-text position-relative">35,000 Player <br /> Playing Now
                                         <div className='redirect'>
-                                            <img src="/arrow.png" alt="" />
+                                            <a href="#"><img src="/arrow.png" alt="" /></a>
                                         </div>
                                     </p>
                                 </div>
@@ -148,7 +148,7 @@ function AvailableGames() {
                                 <div class="card-body p-2">
                                     <p class="card-text position-relative">35,000 Player <br /> Playing Now
                                         <div className='redirect'>
-                                            <img src="/arrow.png" alt="" />
+                                            <a href="#"><img src="/arrow.png" alt="" /></a>
                                         </div>
                                     </p>
                                 </div>

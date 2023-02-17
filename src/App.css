@@ -28,18 +28,28 @@
   color: #61dafb;
 }
 
+.UserDetailPopup_modal_body__qgHjx .UserDetailPopup_user_detail_nav__UBS9W li button.active {
+  background: #03FB75;
+  box-shadow: 0px 2px 8px rgba(3, 251, 117, 0.26);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
 .main_panel {
   margin-left: 300px;
   margin-top: 80px;
 }
+
 body {
   background: #01022f !important;
   /* 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 */

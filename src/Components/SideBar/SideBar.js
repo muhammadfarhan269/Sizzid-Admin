@@ -53,6 +53,14 @@ function SideBar({ setIsActive, isActive, setTheme, theme }) {
               <span className="menu-title">Pending Approvals</span>
             </Link>
           </li>
+
+          <li className={`nav-item ${location.pathname == '/admin-dashboard/user-detail' ? 'active' : ''}`}>
+            <Link className="nav-link" to={'user-detail'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
+              <img src="/man.svg" alt="" />
+              <span className="menu-title">User Detail</span>
+            </Link>
+          </li>
+
           <li className={`nav-item ${location.pathname == '/admin-dashboard/game-rank' ? 'active' : ''}`}>
             <Link className="nav-link" to={'game-rank'} style={{ color: theme == 'light' ? '#000' : '#fff' }}>
               <img src="/game.png" alt="" />
