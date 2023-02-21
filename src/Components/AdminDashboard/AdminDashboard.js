@@ -8,7 +8,7 @@ import NotificationRightSideBar from '../NotificationRightSideBar/NotificationRi
 function AdminDashboard({ setIsActive, isActive, isAuthenticated, setIsAuthenticated, setTheme, theme, setSideBarActive, sideBarActive }) {
     if (isAuthenticated !==  true) {
         return <Navigate replace to="/" />;
-    } else {
+    } else { 
     return (
         <div className='container-scroller'>
             <SideBar isActive={isActive} setIsActive={setIsActive} setTheme={setTheme} theme={theme} />
