@@ -1,0 +1,125 @@
+.page_title {
+    font-size: 40px;
+    line-height: 48px;
+    color: rgba(43, 45, 80, 1);
+    font-family: 'Blinker_ExtraBold';
+    margin-top: 6px;
+}
+
+.earn_history_nav_button ul {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.earn_history_nav_button ul li {
+    list-style: none;
+    border: 1px solid rgba(3, 251, 117, 0.22);
+    filter: drop-shadow(1px 1px 12px rgba(0, 0, 0, 0.18));
+    backdrop-filter: blur(10px);
+    border-radius: 62px;
+    font-size: 16px;
+    line-height: 28px;
+    text-transform: capitalize;
+    color: rgba(181, 178, 183, 1);
+    padding: 7px 19px;
+    font-family: 'Poppins_Light';
+}
+
+.earn_history_nav_button ul li.active {
+    background: rgba(49, 167, 57, 1);
+    box-shadow: 0px 4px 4px rgba(5, 5, 5, 0.25);
+    font-size: 18px;
+    line-height: 27px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    font-family: 'Poppins_SemiBold';
+}
+
+.earn_history_table {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 6px rgba(195, 195, 195, 0.18);
+}
+
+.earn_history_table thead {
+    background: #F6F7FA;
+    box-shadow: 0px 2px 8px rgba(170, 170, 170, 0.18);
+}
+
+.earn_history_table thead tr th {
+    padding: 24px 10px;
+    font-size: 18px;
+    line-height: 22px;
+    color: rgba(195, 195, 195, 1);
+    font-family: 'Poppins_SemiBold';
+    border-bottom: 0px;
+}
+
+.earn_history_table thead tr th:first-child {
+    padding-left: 41px;
+}
+
+.earn_history_table tbody tr {
+    border-bottom: 0px;
+    position: relative;
+}
+
+.earn_history_table tbody tr hr {
+    background: rgba(224, 224, 224, 1);
+    position: absolute;
+    width: 95%;
+    left: 0;
+    bottom: 0;
+    padding: 1px;
+    margin: auto;
+    right: 0;
+}
+
+.earn_history_table tbody tr td {
+    padding: 16.5px 8px;
+    border-bottom: 0px;
+    vertical-align: middle;
+}
+
+.earn_history_table tbody tr td:first-child {
+    padding-left: 41px;
+}
+
+.earn_history_table .date_of_bet {
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(176, 176, 176, 1);
+    font-family: 'Poppins_Light';
+}
+
+.earn_history_table .bet_amount {
+    font-size: 16px;
+    line-height: 22px;
+    color: #FFAD2B;
+    font-family: 'Poppins_Bold';
+}
+
+.earn_history_table .wining_amount {
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(3, 251, 117, 1);
+    font-family: 'Poppins_Bold';
+}
+
+.earn_history_table .lose_amount {
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(255, 15, 38, 1);
+    font-family: 'Poppins_Bold';
+}
+
+.earn_history_table .total_bets div {
+    width: 52px;
+    background-color: rgba(235, 235, 235, 1);
+    border-radius: 16px;
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(176, 176, 176, 1);
+    font-family: 'Poppins_Light';
+    padding: 2px 10px;
+}

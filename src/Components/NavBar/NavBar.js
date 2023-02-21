@@ -1,11 +1,16 @@
 import React from 'react'
-import "./NavBar.css"
+// import "./NavBar.css"
+import styles_dark from './Navbar_Dark.module.css';
+import styles_light from './NavBar_Light.module.css';
 
-function NavBar({ setIsAuthenticated, setSideBarActive }) {
+function NavBar({ setIsAuthenticated, setSideBarActive, theme }) {
+
+  const style = theme === 'dark' ? styles_dark : styles_light
+
   return (
-    <nav className="navbar navbar-expand-lg pt-4 admin-nav">
+    <nav className={`navbar navbar-expand-lg pt-4 ${style.admin_nav}`}>
       <div className="container-fluid">
-        <form className='navbar_search'>
+        <form className={`${style.navbar_search}`}>
           <input className="form-control me-2" type="search" placeholder="Search..." aria-label="Search" />
         </form>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,47 +19,45 @@ function NavBar({ setIsAuthenticated, setSideBarActive }) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item mx-4">
-              <ul className="nav nav-tabs toggle_switch border-bottom-0" id="myTab" role="tablist">
-                <li className="nav-item" role="presentation">
-                  <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Lottery</button>
+              <ul className={`nav nav-tabs ${style.toggle_switch} toggle-switch border-bottom-0`} id="myTab" role="tablist">
+                <li className={`nav-item ${style.nav_item}`} role="presentation">
+                  <button className={`nav-link active ${style.nav_link}`} id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Lottery</button>
                 </li>
-                <li className="nav-item" role="presentation">
-                  <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Lucky Spin</button>
+                <li className={`nav-item ${style.nav_item}`} role="presentation">
+                  <button className={`nav-link ${style.nav_link}`} id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Lucky Spin</button>
                 </li>
               </ul>
             </li>
             <li className="nav-item mx-4">
-              <div className='notifications' onClick={() => setSideBarActive(true)}>
-                <img src="/bell.png" alt="" />
+              <div className={`${style.notifications}`} onClick={() => setSideBarActive(true)}>
+                {theme == 'dark' ?
+                  <img src="/bell.png"  />
+                  :
+                  <img src="/light-bell.svg" />
+
+                }
               </div>
             </li>
-            {/* <li className="nav-item ms-4 me-2">
-              <img src="/photo.png" alt="" />
-            </li> */}
-            <li className="nav-item dropdown profile-link-nav">
-              <a className="nav-link dropdown-toggle pt-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <li className={`nav-item dropdown ${style.profile_link_nav}`}>
+              <a className={`nav-link dropdown-toggle pt-1 ${style.name}`} href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="/photo.png" className='me-3' alt="" />
                 Courtney Henry
               </a>
-              <ul className="dropdown-menu nav-profile" aria-labelledby="navbarDropdown">
+              <ul className={`dropdown-menu ${style.nav_profile}`} aria-labelledby="navbarDropdown">
                 <div className='position-relative h-100 w-100'>
-                  <div className='profile_section'>
-                    <div className='header position-relative'>
-                      <img src="/edit-profile.svg" className='edit_profile_icon' alt="" data-bs-toggle="modal" data-bs-target="#editProfile" />
+                  <div className={`${style.profile_section}`}>
+                    <div className={`${style.header} position-relative`}>
+                      <img src="/edit-profile.svg" className={`${style.edit_profile_icon}`} alt="" data-bs-toggle="modal" data-bs-target="#editProfile" />
                       <img src="/Photo.svg" alt="" />
                       <h4 className='fw-bold'>Courtney Henry</h4>
                       <p>edward786@gamil.com</p>
-                      <div className='footer' onClick={() => { setIsAuthenticated(false); localStorage.clear() }}>
+                      <div className={`${style.footer}`} onClick={() => { setIsAuthenticated(false); localStorage.clear() }}>
                         <img src="/logout.svg" alt="" /> Logout
                       </div>
                     </div>
                   </div>
                 </div>
-                {/* <li onClick={() => { setIsAuthenticated(false); localStorage.clear() }}>Logout</li> */}
               </ul>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Disabled</a>
             </li>
           </ul>
         </div>

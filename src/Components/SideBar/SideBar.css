@@ -65,12 +65,12 @@
   font-family: 'Poppins_Light';
 }
 
-.sidebar .nav .nav-item.active > .nav-link {
+.sidebar .nav .nav-item.active>.nav-link {
   background: initial;
   position: relative;
 }
 
-.sidebar .nav:not(.sub-menu) > .nav-item > .nav-link {
+.sidebar .nav:not(.sub-menu)>.nav-item>.nav-link {
   margin: 0;
 }
 
@@ -118,8 +118,18 @@
   border-radius: 8px 0px 0px 8px;
 }
 
-.language-link{
+.language-link {
   cursor: pointer;
+}
+
+.active_light {
+  background: linear-gradient(92.26deg, #5943F5 22.32%, rgba(177, 2, 205, 0.82) 98.62%);
+  color: #fff;
+}
+
+.active_light .nav-link .menu-title{
+  color: #fff !important;
+  font-family: 'Poppins_Bold';
 }
 
 @media (min-width: 992px) {
@@ -129,6 +139,7 @@
     position: relative;
   }
 }
+
 .disabled {
   cursor: not-allowed;
 }

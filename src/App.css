@@ -35,6 +35,16 @@
   border-radius: 50px;
 }
 
+.toggle-switch .nav-item .nav-link.active {
+  background: rgb(247 247 247 / 60%);
+  box-shadow: 0px 0px 6px #5f5f6f;
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  font-family: 'Poppins_SemiBold';
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -48,9 +58,11 @@
 .main_panel {
   margin-left: 300px;
   margin-top: 80px;
+  <<<<<<< HEAD
 }
 
 body {
   background: #01022f !important;
   /* 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 */
+  =======>>>>>>>c8a10a2 (light theme implementation in progress)
 }

@@ -1,16 +1,21 @@
 import React from 'react'
-import './PromotionsRewards.css'
+// import './PromotionsRewards.css'
+import styles_dark from './PromotionsRewards_Dark.module.css';
+import styles_light from './PromotionsRewards_Light.module.css';
 
-function PromotionsRewards() {
+function PromotionsRewards({ theme }) {
+
+  const style = theme === 'dark' ? styles_dark : styles_light
+
   return (
     <div className='row'>
       <div className='col-md-4 mt-4'>
-        <h3 className='page_title'>Promotions & Reward</h3>
+        <h3 className={`${style.page_title}`}>Promotions & Reward</h3>
       </div>
       <div className='col-md-8 mt-4'>
-        <div className='promotions_rewards_nav_button'>
+        <div className={`${style.promotions_rewards_nav_button}`}>
           <ul>
-            <li className='active'>Promotions</li>
+            <li className={`${style.active}`}>Promotions</li>
             <li>Lucky Spin</li>
             <li>Lottery</li>
             <li>Rewards</li>
@@ -20,12 +25,12 @@ function PromotionsRewards() {
         </div>
       </div>
       <div className='col-md-12 mt-4'>
-        <div className='promotions_card'>
-          <h1 className='title'>Promotions & Reward</h1>
-          <h3 className='sub_title'>COMPAIN 1</h3>
+        <div className={`${style.promotions_card}`}>
+          <h1 className={`${style.title}`}>Promotions & Reward</h1>
+          <h3 className={`${style.sub_title}`}>COMPAIN 1</h3>
           <div className='row'>
             <div className='col-md-4'>
-              <div className='card_one'>
+              <div className={`${style.card_one}`}>
                 <p>RED BEAR <span>VS</span> GREEN BULL <br /> WAR IS ON</p>
                 <div>
                   <img src="/arrow.png" alt="" />
@@ -33,7 +38,7 @@ function PromotionsRewards() {
               </div>
             </div>
             <div className='col-md-4'>
-              <div className='card_two'>
+              <div className={`${style.card_two}`}>
                 <p>RED BEAR <span>VS</span> GREEN BULL <br /> WAR IS ON</p>
                 <div>
                   <img src="/arrow.png" alt="" />
@@ -41,7 +46,7 @@ function PromotionsRewards() {
               </div>
             </div>
             <div className='col-md-4'>
-              <div className='card_three'>
+              <div className={`${style.card_three}`}>
                 <p>RED BEAR <span>VS</span> GREEN BULL <br /> WAR IS ON</p>
                 <div>
                   <img src="/arrow.png" alt="" />

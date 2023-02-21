@@ -1,5 +1,5 @@
 import React from 'react'
-import './Home.css'
+// import './Home.css'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,6 +13,8 @@ import {
 import { Line } from 'react-chartjs-2';
 import faker from 'faker'
 import annotationPlugin from 'chartjs-plugin-annotation';
+import styles_dark from './Home_Dark.module.css';
+import styles_light from './Home_Light.module.css';
 
 ChartJS.register(
   CategoryScale,
@@ -27,44 +29,7 @@ ChartJS.register(
 
 const labels = ['1 Jan', '2 Jan', '3 Jan', '4 Jan', '5 Jan', '6 Jan', '7 Jan'];
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      display: false
-    },
-    title: {
-      display: false,
-      text: 'Chart.js Line Chart',
-    },
-    annotation: {
-      annotations: {
-        line1: {
-          type: 'line',
-          xMin: '4 Jan',
-          xMax: '4 Jan',
-          borderColor: 'rgba(255, 107, 44, 1)',
-          borderWidth: 2,
-        }
-      }
-    }
-  },
-  scales: {
-    x: {
-      ticks: {
-        color: '#fff'
-      }
-    },
-    y: {
-      ticks: {
-        color: '#fff'
-      },
-      grid: {
-        color: "rgba(255, 255, 255, 0.3)"
-      }
-    }
-  },
-};
+
 
 export const cardOneoptions = {
   responsive: true,
@@ -195,29 +160,71 @@ export const data = {
   ],
 };
 
-function Home() {
+function Home({ theme }) {
+
+  const style = theme === 'dark' ? styles_dark : styles_light
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false
+      },
+      title: {
+        display: false,
+        text: 'Chart.js Line Chart',
+      },
+      annotation: {
+        annotations: {
+          line1: {
+            type: 'line',
+            xMin: '4 Jan',
+            xMax: '4 Jan',
+            borderColor: 'rgba(255, 107, 44, 1)',
+            borderWidth: 2,
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: theme === 'dark' ?  '#fff' : '#000'
+        }
+      },
+      y: {
+        ticks: {
+          color: theme === 'dark' ?  '#fff' : '#000'
+        },
+        grid: {
+          color: "rgba(255, 255, 255, 0.3)"
+        }
+      }
+    },
+  };
+
   return (
     <div className='row'>
       <div className='col-md-12'>
-        <h3 className='page_title'>Home</h3>
+        <h3 className={`${style.page_title}`}>Dashboard</h3>
       </div>
       <div className="col-12 col-sm-6 col-xl-4 grid-margin">
-        <div className="card upper_cards">
+        <div className={`card ${style.upper_cards}`}>
           <div className="card-body">
             <div className='row mx-1'>
               <div className='col-md-2'>
                 <img src="/total-widraw.png" alt="" />
               </div>
               <div className='col-md-10'>
-                <div className='upper_card_title pt-2'>
-                  <p className='title'>Total Widraw <img src="/caret-up.png" className='float-end pt-2' alt="" /></p>
-                  <p className='sub_title'>BTC</p>
+                <div className={`${style.upper_card_title} pt-2`}>
+                  <p className={`${style.title}`}>Total Widraw <img src="/caret-up.png" className='float-end pt-2' alt="" /></p>
+                  <p className={`${style.sub_title}`}>BTC</p>
                 </div>
               </div>
               <div className='col-md-6'>
-                <div className='card_lower_section mt-2'>
-                  <h3 className='amount'>$52,291</h3>
-                  <p className='change_in_flow_red'>+0.25%</p>
+                <div className={`${style.card_lower_section} mt-2`}>
+                  <h3 className={`${style.amount}`}>$52,291</h3>
+                  <p className={`${style.change_in_flow_red}`}>+0.25%</p>
                 </div>
               </div>
               <div className='col-md-6'>
@@ -227,23 +234,24 @@ function Home() {
           </div>
         </div>
       </div>
+
       <div className="col-12 col-sm-6 col-xl-4 grid-margin">
-        <div className="card upper_cards">
+        <div className={`card ${style.upper_cards}`}>
           <div className="card-body">
             <div className='row mx-1'>
               <div className='col-md-2'>
                 <img src="/total-deposit.png" alt="" />
               </div>
               <div className='col-md-10'>
-                <div className='upper_card_title pt-2'>
-                  <p className='title'>total Deposite <img src="/caret-up.png" className='float-end pt-2' alt="" /></p>
-                  <p className='sub_title'>BTC</p>
+                <div className={`${style.upper_card_title} pt-2`}>
+                  <p className={`${style.title}`}>total Deposite <img src="/caret-up.png" className='float-end pt-2' alt="" /></p>
+                  <p className={`${style.sub_title}`}>BTC</p>
                 </div>
               </div>
               <div className='col-md-6'>
-                <div className='card_lower_section mt-2'>
-                  <h3 className='amount'>$52,291</h3>
-                  <p className='change_in_flow_neon'>+0.25%</p>
+                <div className={`${style.card_lower_section} mt-2`}>
+                  <h3 className={`${style.amount}`}>$52,291</h3>
+                  <p className={`${style.change_in_flow_neon}`}>+0.25%</p>
                 </div>
               </div>
               <div className='col-md-6'>
@@ -253,23 +261,24 @@ function Home() {
           </div>
         </div>
       </div>
+
       <div className="col-12 col-sm-6 col-xl-4 grid-margin">
-        <div className="card upper_cards">
+        <div className={`card ${style.upper_cards}`}>
           <div className="card-body">
             <div className='row mx-1'>
               <div className='col-md-2'>
-                <img src="/total-trading.png" alt="" />
+                <img src="/total-deposit.png" alt="" />
               </div>
               <div className='col-md-10'>
-                <div className='upper_card_title pt-2'>
-                  <p className='title'>total trading <img src="/caret-up.png" className='float-end pt-2' alt="" /></p>
-                  <p className='sub_title'>BTC</p>
+                <div className={`${style.upper_card_title} pt-2`}>
+                  <p className={`${style.title}`}>total trading <img src="/caret-up.png" className='float-end pt-2' alt="" /></p>
+                  <p className={`${style.sub_title}`}>BTC</p>
                 </div>
               </div>
               <div className='col-md-6'>
-                <div className='card_lower_section mt-2'>
-                  <h3 className='amount'>$52,291</h3>
-                  <p className='change_in_flow_green'>+0.25%</p>
+                <div className={`${style.card_lower_section} mt-2`}>
+                  <h3 className={`${style.amount}`}>$52,291</h3>
+                  <p className={`${style.change_in_flow_green}`}>+0.25%</p>
                 </div>
               </div>
               <div className='col-md-6'>
@@ -279,26 +288,28 @@ function Home() {
           </div>
         </div>
       </div>
+
+
       <div className='col-md-12'>
-        <div className='separater'></div>
+        <div className={`${style.separater}`}></div>
       </div>
       <div className='col-md-12'>
-        <div className='chart_detail_section'>
+        <div className={`${style.chart_detail_section}`}>
           <div className='row'>
             <div className='col-md-2'>
-              <h2 className='title'>Crash <img src="/caret-down.png" alt="" /></h2>
+              <h2 className={`${style.title}`}>Crash <img src="/caret-down.png" alt="" /></h2>
             </div>
             <div className='col-md-4'>
-              <div className='chart_legends'>
-                <div className='legend_one d-flex'>
+              <div className={`${style.chart_legends}`}>
+                <div className={`${style.legend_one} d-flex`}>
                   <span></span>
                   <p>Value 1</p>
                 </div>
-                <div className='legend_two d-flex'>
+                <div className={`${style.legend_two} d-flex`}>
                   <span></span>
                   <p>Value 2</p>
                 </div>
-                <div className='legend_three d-flex'>
+                <div className={`${style.legend_three} d-flex`}>
                   <span></span>
                   <p>Value 3</p>
                 </div>
@@ -306,7 +317,7 @@ function Home() {
             </div>
             <div className='col-md-6'>
               <div className="btn-group float-end">
-                <button className="btn btn-secondary dropdown-toggle chart_time_line_dropdown" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                <button className={`btn btn-secondary dropdown-toggle ${style.chart_time_line_dropdown}`} type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                   Last Week Days
                 </button>
                 {/* <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
@@ -320,7 +331,7 @@ function Home() {
         </div>
       </div>
       <div className='col-md-12'>
-        <div className='main_chart_card'>
+        <div className={`${style.main_chart_card}`}>
           <Line options={options} data={data} />
         </div>
       </div>

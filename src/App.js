@@ -53,16 +53,16 @@ function App() {
         <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/verification" element={<VerificationCode />} />
         <Route path="/admin-dashboard" element={<AdminDashboard sideBarActive={sideBarActive} setSideBarActive={setSideBarActive} isActive={isActive} setIsActive={setIsActive} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setTheme={setTheme} theme={theme} />} >
-          <Route path="Home" element={<Home />} />
+          <Route path="Home" element={<Home theme={theme} />} />
           <Route path="available-games" element={<AvailableGames />} />
-          <Route path="promotions" element={<PromotionsRewards />} />
+          <Route path="promotions" element={<PromotionsRewards theme={theme} />} />
           <Route path="user-agreement" element={<UserAgreement />} />
-          <Route path="earn-history" element={<EarnHistory />} />
+          <Route path="earn-history" element={<EarnHistory theme={theme} />} />
           <Route path="hot-games" element={<HotGamesList />} />
           <Route path="pending-approvals" element={<PendingApprovals />} />
           <Route path="contest-banner" element={<BannerOfContest />} />
           <Route path="gvip-svip-evip" element={<GVIP />} />
-          <Route path="reports" element={<Reports />} />
+          <Route path="reports" element={<Reports theme={theme} />} />
           <Route path="affiliate" element={<Affiliate />} />
           <Route path="bet-winners" element={<BetWinners />} />
           <Route path="game-rank" element={<GameRank />} />

@@ -1,0 +1,116 @@
+.page_title {
+    font-size: 40px;
+    line-height: 48px;
+    color: rgba(43, 45, 80, 1);
+    font-family: 'Blinker_ExtraBold';
+    margin-top: 6px;
+}
+
+.promotions_rewards_nav_button ul {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.promotions_rewards_nav_button ul li {
+    list-style: none;
+    border-radius: 62px;
+    font-size: 16px;
+    line-height: 28px;
+    text-transform: capitalize;
+    color: rgba(196, 196, 196, 1);
+    padding: 7px 19px;
+    font-family: 'Poppins_Light';
+    border: 1px solid #C3C3C3;
+    filter: drop-shadow(1px 1px 12px rgba(0, 0, 0, 0.18));
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+}
+
+.promotions_rewards_nav_button ul li.active {
+    background: rgba(69, 217, 30, 1);
+    box-shadow: 0px 2px 12px rgba(69, 217, 30, 0.18);
+    backdrop-filter: blur(10px);
+    font-size: 18px;
+    line-height: 27px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    font-family: 'Poppins_SemiBold';
+}
+
+.promotions_card {
+    background: #FFFFFF;
+    box-shadow: 0px 2px 6px rgba(185, 185, 185, 0.18);
+    border-radius: 8px;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.promotions_card .title {
+    font-size: 30px;
+    line-height: 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(43, 45, 80, 1);
+    text-shadow: 1px 2px 4px rgba(175, 175, 175, 0.18);
+    font-family: 'Poppins_ExtraBold';
+}
+
+.promotions_card .sub_title {
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    font-family: 'Poppins_SemiBold';
+    color: rgba(43, 45, 80, 1);
+    margin-top: 50px;
+}
+
+.promotions_card .card_one {
+    background-image: url('../../../../public/card-one.svg');
+}
+
+.promotions_card .card_two {
+    background-image: url('../../../../public/card-two.svg');
+}
+
+.promotions_card .card_three {
+    background-image: url('../../../../public/card-threee.svg');
+}
+
+.promotions_card .card_one, .promotions_card .card_two, .promotions_card .card_three {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 310px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.promotions_card .card_one p, .promotions_card .card_two p, .promotions_card .card_three p {
+    font-size: 18.1769px;
+    line-height: 25px;
+    letter-spacing: 0.247867px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    font-family: 'Poppins_SemiBold';
+    position: absolute;
+    bottom: 0px;
+    left: 20px;
+}
+
+.promotions_card .card_one div, .promotions_card .card_two div, .promotions_card .card_three div {
+    width: 31px;
+    height: 31px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    padding: 2px 11px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;
+}
+
+.promotions_card .card_one p span, .promotions_card .card_two p span, .promotions_card .card_three p span {
+    color: #03FB75;
+    font-style: italic;
+}
