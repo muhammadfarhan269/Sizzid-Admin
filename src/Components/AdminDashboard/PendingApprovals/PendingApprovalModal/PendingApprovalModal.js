@@ -1,7 +1,10 @@
 import React from 'react'
-import style from './PendingApprovalModal.module.css'
+import style_dark from './PendingApprovalModal_Dark.module.css'
+import style_light from './PendingApprovalModal_Light.module.css'
 
-function PendingApprovalModal() {
+function PendingApprovalModal({ theme }) {
+
+    const style = theme === 'dark' ? style_dark : style_light
 
     return (
         <>

@@ -47,8 +47,8 @@ function App() {
     <>
       <LanguageModal theme={theme} />
       <EditProfile theme={theme} />
-      <UserDetailPopup />
-      <PendingApprovalModal />
+      <UserDetailPopup theme={theme} />
+      <PendingApprovalModal theme={theme} />
       <Routes>
         <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/verification" element={<VerificationCode />} />

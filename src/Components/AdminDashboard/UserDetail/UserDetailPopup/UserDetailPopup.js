@@ -1,7 +1,11 @@
 import React from 'react'
-import style from './UserDetailPopup.module.css'
+import style_dark from './UserDetailPopup_Dark.module.css'
+import style_light from './UserDetailPopup_Light.module.css'
 
-function UserDetailPopup() {
+function UserDetailPopup({ theme }) {
+
+    const style = theme === 'dark' ? style_dark : style_light
+
     return (
         <div className={`${style.user_detail} modal fade`} id="userDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className={`${style.modal_dialog} modal-dialog`}>

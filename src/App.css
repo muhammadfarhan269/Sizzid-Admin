@@ -28,11 +28,19 @@
   color: #61dafb;
 }
 
-.UserDetailPopup_modal_body__qgHjx .UserDetailPopup_user_detail_nav__UBS9W li button.active {
+.UserDetailPopup_Dark_modal_body__RxmB4 .UserDetailPopup_Dark_user_detail_nav__Igetx li button.active {
   background: #03FB75;
   box-shadow: 0px 2px 8px rgba(3, 251, 117, 0.26);
   backdrop-filter: blur(10px);
   border-radius: 50px;
+}
+
+.UserDetailPopup_Light_user_detail_nav__M4tzc li button.active{
+  background: rgba(49, 167, 57, 1) !important;
+  box-shadow: 0px 2px 8px rgba(3, 251, 117, 0.26);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  color: #FFFFFF !important;
 }
 
 .Navbar_Dark_nav_link__m-yeb.active {
