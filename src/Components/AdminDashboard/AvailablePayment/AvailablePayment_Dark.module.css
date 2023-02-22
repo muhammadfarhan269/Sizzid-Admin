@@ -1,0 +1,137 @@
+.page_title {
+    font-size: 40px;
+    line-height: 48px;
+    color: #FFFFFF;
+    font-family: 'Blinker_ExtraBold';
+    margin-top: 6px;
+}
+
+.avaiable_payment_upper_cards .upper_card_title .sub_title {
+    font-size: 14px;
+    line-height: 21px;
+    color: #FFFFFF;
+    font-family: 'Poppins_Medium';
+}
+
+.avaiable_payment_upper_cards .upper_card_title .sub_title span {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.avaiable_payment_upper_cards .change_in_flow_red {
+    color: rgba(247, 147, 26, 1) !important;
+}
+
+.avaiable_payment_upper_cards .change_in_flow_neon {
+    color: rgba(98, 126, 234, 1) !important;
+}
+
+.avaiable_payment_upper_cards .change_in_flow_green {
+    color: rgba(29, 224, 180, 1) !important;
+}
+
+.upper_card_title .title {
+    font-size: 15.2812px;
+    line-height: 23px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    font-family: 'Poppins_SemiBold';
+    margin-bottom: 0px;
+}
+
+.upper_cards {
+    background: rgb(43 45 80 / 60%) !important;
+    box-shadow: 0px 0px 6px #5F5F6F;
+    border-radius: 8px !important;
+    margin-top: 20px;
+}
+
+.upper_cards .card_lower_section .amount {
+    font-size: 20.0565px;
+    line-height: 30px;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    font-family: 'Poppins_SemiBold';
+    /* margin-bottom: 0px; */
+}
+
+.pending_approval_table thead tr th {
+    padding: 24px 10px;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    font-family: 'Poppins_SemiBold';
+    border-bottom: 0px;
+}
+
+.pending_approval_table thead tr th:first-child {
+    padding-left: 41px;
+}
+
+.pending_approval_table thead {
+    background: rgba(14, 6, 61, 0.3);
+    box-shadow: 1px 1px 10px rgb(255 1 62 / 18%);
+}
+
+.pending_approval_table {
+    background: rgb(43 45 80 / 60%);
+    box-shadow: 0px 0px 6px #5f5f6f;
+}
+
+.pending_approval_table tbody tr {
+    border-bottom: 0px;
+    position: relative;
+}
+
+.pending_approval_table tbody tr td:first-child {
+    padding-left: 41px;
+}
+
+.pending_approval_table tbody tr td {
+    padding: 16.5px 8px;
+    border-bottom: 0px;
+    vertical-align: middle;
+}
+
+.pending_approval_table tbody tr hr {
+    background: rgb(224 224 224 / 20%);
+    position: absolute;
+    width: 95%;
+    left: 0;
+    bottom: 0;
+    padding: 1px;
+    margin: auto;
+    right: 0;
+}
+
+.pending_approval_table tbody tr .game_name {
+    font-size: 16px;
+    line-height: 22px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    font-family: 'Poppins_Light';
+}
+
+.pending_approval_table tbody tr .approval_type .game_upload, .pending_approval_table tbody tr .approval_type .payment, .pending_approval_table tbody tr .approval_type .document {
+    border-radius: 48px;
+    width: 143px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 18px;
+    color: #FFFFFF;
+    font-family: 'Poppins_Medium';
+    padding: 7px 0px;
+    cursor: pointer;
+    box-shadow: 0px 0px 6px #5F5F6F;
+}
+
+.pending_approval_table tbody tr .approval_type .game_upload {
+    background: rgba(255, 173, 43, 0.6);
+}
+
+.pending_approval_table tbody tr .approval_type .payment {
+    background: #039B50;
+}
+
+.pending_approval_table tbody tr .approval_type .document {
+    background: #693F9D;
+}

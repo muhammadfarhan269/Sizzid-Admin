@@ -1,17 +1,21 @@
 import React from 'react'
-import './LanguageModal.css'
+import styles_dark from './LanguageModal_Dark.module.css';
+import styles_light from './LanguageModal_Light.module.css';
 
-function LanguageModal() {
+function LanguageModal({ theme }) {
+
+    const style = theme === 'dark' ? styles_dark : styles_light
+
     return (
-        <div className="modal fade language_modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">SELECT LANGUAGE</h5>
+        <div className={`modal fade ${style.language_modal}`} id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className={`modal-dialog ${style.modal_dialog}`}>
+                <div className={`modal-content ${style.modal_content}`}>
+                    <div className={`modal-header ${style.modal_header}`}>
+                        <h5 className={`modal-title ${style.modal_title}`} id="exampleModalLabel">SELECT LANGUAGE</h5>
                         <p>SELECTED LANUAGE: <span>SPANISH</span></p>
                     </div>
-                    <div className="modal-body">
-                        <div className='flag_container'>
+                    <div className={`modal-body ${style.modal_body}`}>
+                        <div className={`${style.flag_container}`}>
                             <div>
                                 <img src="/czech-republic.svg" alt="" />
                             </div>
@@ -83,7 +87,7 @@ function LanguageModal() {
                             </div>
                         </div>
                     </div>
-                    <div className="modal-footer">
+                    <div className={`modal-footer ${style.modal_footer}`}>
                         <button type="button" className="btn" data-bs-dismiss="modal"><img src="/discard.svg" alt="" /></button>
                         <button type="button" className="btn" data-bs-dismiss="modal"><img src="/save.svg" alt="" /></button>
                     </div>

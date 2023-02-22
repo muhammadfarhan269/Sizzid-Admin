@@ -15,14 +15,14 @@
 }
 
 .toggle_switch .nav_item .nav_link {
-  background: rgb(43 45 80 / 60%);
+  background: rgba(255, 255, 255, 1);
   box-shadow: 0px 0px 6px #5f5f6f;
   backdrop-filter: blur(10px);
   border-radius: 8px;
   font-size: 18px;
   line-height: 27px;
   text-transform: capitalize;
-  color: #ffffff;
+  color: rgba(195, 195, 195, 1);
   border-bottom: 0px;
   border-radius: 0px;
   border-color: transparent !important;
@@ -80,8 +80,8 @@
   top: -3px !important;
   height: 401px;
   left: auto !important;
-  background-color: rgba(54, 54, 54, 0.2) !important;
-  backdrop-filter: blur(10px) !important;
+  background-color: #ffffff !important;
+  border: 0px !important;
 }
 
 .profile_link_nav {
@@ -90,7 +90,7 @@
 
 .profile_section {
   text-align: center;
-  color: #ffffff;
+  color: rgba(141, 141, 141, 1);
   width: 443px;
   margin-left: auto;
   margin-right: auto;
@@ -101,17 +101,14 @@
 }
 
 .profile_section .header {
-  background: #1F1D47;
-  box-shadow: 1px 1px 10px rgba(255, 1, 62, 0.18);
+  background: rgba(245, 245, 245, 1);
   backdrop-filter: blur(50px);
   border-radius: 6.58745px;
   padding: 43px 0px 0px 0px;
 }
 
 .profile_section .footer {
-  background: #292B4D;
-  box-shadow: 1px 1px 10px rgba(255, 1, 62, 0.18);
-  backdrop-filter: blur(50px);
+  background: rgba(54, 54, 54, 0.2);
   border-radius: 6.58745px;
   color: rgba(255, 0, 19, 1);
   padding: 20px 0px;

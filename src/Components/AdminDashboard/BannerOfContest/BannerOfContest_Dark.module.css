@@ -1,3 +1,11 @@
+.page_title {
+    font-size: 40px;
+    line-height: 48px;
+    color: #FFFFFF;
+    font-family: 'Blinker_ExtraBold';
+    margin-top: 6px;
+}
+
 .btn_add_banner {
     background-color: rgba(255, 173, 43, 0.6) !important;
     box-shadow: 0px 0px 6px #5F5F6F;

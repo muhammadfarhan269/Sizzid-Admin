@@ -1,0 +1,147 @@
+.page_title {
+    font-size: 40px;
+    line-height: 48px;
+    color: #FFFFFF;
+    font-family: 'Blinker_ExtraBold';
+    margin-top: 6px;
+}
+
+.btn_upload_games {
+    background: rgb(255 173 43 / 60%) !important;
+    box-shadow: 0px 0px 6px #5F5F6F !important;
+    border-radius: 48px !important;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF !important;
+    width: 169px;
+    height: 44px;
+    margin-top: 11px;
+    margin-left: 15px;
+}
+
+.pending_approval_nav_button ul {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.pending_approval_nav_button ul li.active {
+    background: #31A739;
+    box-shadow: 0px 4px 4px rgb(5 5 5 / 25%);
+    font-size: 18px;
+    line-height: 27px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    font-family: 'Poppins_SemiBold';
+}
+
+.pending_approval_nav_button ul li {
+    list-style: none;
+    border: 1px solid rgba(3, 251, 117, 0.22);
+    filter: drop-shadow(1px 1px 12px rgba(0, 0, 0, 0.18));
+    border-radius: 62px;
+    font-size: 16px;
+    line-height: 28px;
+    text-transform: capitalize;
+    color: #B5B2B7;
+    padding: 7px 19px;
+    font-family: 'Poppins_Light';
+}
+
+.pending_approval_table thead tr th {
+    padding: 24px 10px;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    font-family: 'Poppins_SemiBold';
+    border-bottom: 0px;
+}
+
+.pending_approval_table thead tr th:first-child {
+    padding-left: 41px;
+}
+
+.pending_approval_table thead {
+    background: rgba(14, 6, 61, 0.3);
+    box-shadow: 1px 1px 10px rgb(255 1 62 / 18%);
+}
+
+.pending_approval_table {
+    background: rgb(43 45 80 / 60%);
+    box-shadow: 0px 0px 6px #5f5f6f;
+}
+
+.pending_approval_table tbody tr {
+    border-bottom: 0px;
+    position: relative;
+}
+
+.pending_approval_table tbody tr td:first-child {
+    padding-left: 41px;
+}
+
+.pending_approval_table tbody tr td {
+    padding: 16.5px 8px;
+    border-bottom: 0px;
+    vertical-align: middle;
+}
+
+.pending_approval_table tbody tr hr {
+    background: rgb(224 224 224 / 20%);
+    position: absolute;
+    width: 95%;
+    left: 0;
+    bottom: 0;
+    padding: 1px;
+    margin: auto;
+    right: 0;
+}
+
+.pending_approval_table tbody tr .game_name {
+    font-size: 16px;
+    line-height: 22px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+    font-family: 'Poppins_Light';
+}
+
+.pending_approval_table tbody tr .approval_type .game_upload, .pending_approval_table tbody tr .approval_type .payment, .pending_approval_table tbody tr .approval_type .document {
+    border-radius: 48px;
+    width: 143px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 18px;
+    color: #FFFFFF;
+    font-family: 'Poppins_Medium';
+    padding: 7px 0px;
+    cursor: pointer;
+    box-shadow: 0px 0px 6px #5F5F6F;
+}
+
+.pending_approval_table tbody tr .approval_type .game_upload {
+    background: rgba(255, 173, 43, 0.6);
+}
+
+.pending_approval_table tbody tr .approval_type .payment {
+    background: #039B50;
+}
+
+.pending_approval_table tbody tr .approval_type .document {
+    background: #693F9D;
+}
+
+.pending_approval_table tbody tr .total_wining {
+    font-size: 16px;
+    line-height: 22px;
+    color: #03FB75;
+    font-family: 'Poppins_SemiBold';
+}
+
+.pending_approval_table tbody tr .view_all span {
+    font-size: 16px;
+    line-height: 22px;
+    text-decoration-line: underline;
+    color: #AD63F5;
+    font-family: 'Poppins_Light';
+    cursor: pointer;
+}

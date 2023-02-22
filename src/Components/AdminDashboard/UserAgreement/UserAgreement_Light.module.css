@@ -1,6 +1,6 @@
 .user_agreement_card {
-    background: rgb(43 45 80 / 60%);
-    box-shadow: 0px 0px 6px #5F5F6F;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 6px rgba(185, 185, 185, 0.18);
     border-radius: 8px;
     padding: 20px;
     min-height: 100vh;
@@ -11,9 +11,17 @@
     line-height: 40px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #FFFFFF;
+    color: rgba(43, 45, 80, 1);
     text-shadow: 1px 2px 4px rgba(175, 175, 175, 0.18);
     font-family: 'Poppins_Bold';
+}
+
+.page_title {
+    font-size: 40px;
+    line-height: 48px;
+    color: rgba(43, 45, 80, 1);
+    font-family: 'Blinker_ExtraBold';
+    margin-top: 6px;
 }
 
 .user_agreement_card p, .user_agreement_card ol li {
@@ -21,7 +29,7 @@
     line-height: 28px;
     letter-spacing: 0.01em;
     text-transform: uppercase;
-    color: #E0E0E0;
+    color: rgba(144, 144, 144, 1);
     font-family: 'Poppins_Light';
 }
 
@@ -30,7 +38,7 @@
     line-height: 40px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #FFFFFF;
+    color: rgba(43, 45, 80, 1);
     text-shadow: 1px 2px 4px rgba(175, 175, 175, 0.18);
     font-family: 'Poppins_Bold';
 }
@@ -43,7 +51,7 @@
     font-size: 24px;
     line-height: 40px;
     letter-spacing: 1px;
-    color: #FFFFFF;
+    color: rgba(43, 45, 80, 1);
     text-shadow: 1px 2px 4px rgba(175, 175, 175, 0.18);
     font-family: 'Poppins_Bold';
     margin: 15px 0px 30px 0px;
@@ -55,8 +63,9 @@
 }
 
 .edit_textarea {
-    background: rgba(14, 6, 61, 0.3) !important;
-    box-shadow: 1px 1px 10px rgba(255, 1, 62, 0.18);
+    background: #F5F5F5 !important;
+    box-shadow: 1px 2px 10px rgba(155, 155, 155, 0.18) !important;
+    backdrop-filter: blur(50px);
     border-radius: 6.58745px;
     border: 0px !important;
     box-shadow: none !important;
@@ -64,7 +73,7 @@
     line-height: 28px !important;
     letter-spacing: 0.01em !important;
     text-transform: uppercase !important;
-    color: #7A7A7A !important;
+    color: rgba(188, 188, 188, 1) !important;
     padding: 30px !important;
     font-family: 'Poppins_Light';
 

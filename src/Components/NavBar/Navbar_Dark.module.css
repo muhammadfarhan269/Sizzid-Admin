@@ -61,7 +61,7 @@
   }
   
   .profile_link_nav .name {
-    color: #ffffff;
+    color: #ffffff !important;
     font-family: 'Poppins_Medium';
   }
   

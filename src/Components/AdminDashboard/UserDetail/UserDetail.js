@@ -1,7 +1,11 @@
 import React from 'react'
-import style from './UserDetail.module.css'
+import styles_dark from './UserDetail_Dark.module.css'
+import styles_light from './UserDetail_Light.module.css'
 
-function UserDetail() {
+function UserDetail({ theme }) {
+
+    const style = theme === 'dark' ? styles_dark : styles_light
+
     return (
         <div className='row'>
             <div className='col-md-12'>

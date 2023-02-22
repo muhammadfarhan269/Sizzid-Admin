@@ -1,5 +1,4 @@
 import React from 'react'
-// import './EarnHistory.css'
 import styles_dark from './EarnHistory_Dark.module.css';
 import styles_light from './EarnHistory_Light.module.css';
 

@@ -35,14 +35,64 @@
   border-radius: 50px;
 }
 
-.toggle-switch .nav-item .nav-link.active {
-  background: rgb(247 247 247 / 60%);
-  box-shadow: 0px 0px 6px #5f5f6f;
+.Navbar_Dark_nav_link__m-yeb.active {
+  background: rgb(247 247 247 / 60%) !important;
+  box-shadow: 0px 0px 6px #5f5f6f !important;
   backdrop-filter: blur(10px);
-  border-radius: 8px;
   color: #ffffff !important;
   border-color: transparent !important;
   font-family: 'Poppins_SemiBold';
+}
+
+.NavBar_Light_nav_link__wZmgx.active {
+  background: #2E3867 !important;
+  box-shadow: 0px 0px 6px #5F5F6F !important;
+  backdrop-filter: blur(10px) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  font-family: 'Poppins_SemiBold';
+}
+
+.ChatSupport_Dark_chat_nav__ETzhT .ChatSupport_Dark_nav_link__nS21l.active {
+  color: #FFFFFF !important;
+  background-color: transparent !important;
+  border-bottom: 1px solid rgba(218, 218, 218, 1) !important;
+}
+
+.ChatSupport_Light_chat_nav__eoa-d .ChatSupport_Light_nav_link__EVXdR.active {
+  color: rgba(43, 45, 80, 1) !important;
+  background-color: transparent !important;
+  border-bottom: 1px solid rgba(43, 45, 80, 1) !important;
+}
+
+.NotificationRightSideBar_Dark_sidenav__MVNuc .NotificationRightSideBar_Dark_notification_panel__jyFkR .NotificationRightSideBar_Dark_notification_nav__nh1Sl .NotificationRightSideBar_Dark_nav_link__wZcuK.active {
+  background: rgb(31 187 103) !important;
+  color: #FFFFFF !important;
+  border: 0px !important;
+  border-radius: 8px !important;
+}
+
+.NotificationRightSideBar_Light_nav_link__eZQrP.active {
+  background: rgb(31 187 103) !important;
+  color: #FFFFFF !important;
+  border: 0px !important;
+  border-radius: 8px !important;
+}
+
+.SideBar_dark_nav_link__cL8NS.active {
+  background: rgba(1, 2, 47, 0.6) !important;
+  border: 1px solid rgba(1, 2, 47, 0.6) !important;
+  box-shadow: 0px 0px 6px #5F5F6F !important;
+  backdrop-filter: blur(10px);
+  color: #ffffff !important;
+}
+
+.SideBar_Light_nav_link__fcSuf.active {
+  background: #2B2D50 !important;
+  box-shadow: 0px 0px 6px #5F5F6F !important;
+  border: 1px solid rgba(1, 2, 47, 0.6) !important;
+  backdrop-filter: blur(10px);
+  color: #ffffff !important;
 }
 
 @keyframes App-logo-spin {
@@ -58,11 +108,8 @@
 .main_panel {
   margin-left: 300px;
   margin-top: 80px;
-  <<<<<<< HEAD
 }
 
 body {
   background: #01022f !important;
-  /* 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 */
-  =======>>>>>>>c8a10a2 (light theme implementation in progress)
 }

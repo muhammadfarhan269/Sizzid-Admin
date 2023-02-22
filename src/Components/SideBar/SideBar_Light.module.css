@@ -115,10 +115,12 @@
     flex-direction: row !important;
 }
 
-.theme_conversion_buttons .nav_item .nav_link.active {
-    background: #01022f !important;
-    box-shadow: 0px 0px 6px #5f5f6f !important;
-    border-radius: 8px 0px 0px 8px;
+.theme_conversion_buttons .nav_item .nav_link {
+    background-color: rgba(195, 195, 195, 1);
+    color: rgba(43, 45, 80, 1);
+    height: 52px;
+    border: 0px !important;
+    border-radius: 0px;
 }
 
 .language_link {

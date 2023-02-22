@@ -1,5 +1,4 @@
 import React from 'react'
-// import './SideBar.css'
 import { Link, useLocation } from 'react-router-dom'
 import styles_dark from './SideBar_dark.module.css';
 import styles_light from './SideBar_Light.module.css';
@@ -59,6 +58,13 @@ function SideBar({ setIsActive, isActive, setTheme, theme }) {
             <Link className={`nav-link ${style.nav_link}`} to={'pending-approvals'}>
               <img src="/pending.png" alt="" />
               <span className={`menu-title`}>Pending Approvals</span>
+            </Link>
+          </li>
+
+          <li className={`${style.nav_item} nav-item ${location.pathname == '/admin-dashboard/user-detail' ? `${style.active}` : ''}`}>
+            <Link className={`nav-link ${style.nav_link}`} to={'user-detail'}>
+              <img src="/man.svg" alt="" />
+              <span className={`menu-title`}>User Detail</span>
             </Link>
           </li>
 
@@ -139,12 +145,12 @@ function SideBar({ setIsActive, isActive, setTheme, theme }) {
             </Link>
           </li>
         </ul>
-        <ul className="nav nav-tabs toggle_switch border-bottom-0 theme_conversion_buttons ms-3" id="myTab" role="tablist">
-          <li className="nav-item" role="presentation">
-            <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true" onClick={() => setTheme('dark')} style={{ borderTopRightRadius: theme == 'dark' ? '0px' : '0px', borderBottomRightRadius: theme == 'dark' ? '0px' : '0px' }}><img className='me-1 pt-1' src="/dark.png" alt="" /> Dark</button>
+        <ul className={`nav nav-tabs mb-5 ${style.nav_tabs} ${style.toggle_switch} border-bottom-0 ${style.theme_conversion_buttons} ms-3`} id="myTab" role="tablist">
+          <li className={`${style.nav_item} nav-item`} role="presentation">
+            <button className={`${style.nav_link} nav-link active rounded-start`} id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true" onClick={() => setTheme('dark')}><img className='me-1 pt-1' src="/dark.png" alt="" /> Dark</button>
           </li>
-          <li className="nav-item" role="presentation">
-            <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false" onClick={() => setTheme('light')} style={{ borderTopLeftRadius: theme == 'light' ? '0px' : '0px', borderBottomLeftRadius: theme == 'light' ? '0px' : '0px' }}><img className='me-1' src="/light.png" alt="" /> LIGHT</button>
+          <li className={`${style.nav_item} nav-item`} role="presentation">
+            <button className={`${style.nav_link} nav-link rounded-end`}  id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false" onClick={() => setTheme('light')}><img className='me-1' src="/light.png" alt="" /> LIGHT</button>
           </li>
         </ul>
       </div>

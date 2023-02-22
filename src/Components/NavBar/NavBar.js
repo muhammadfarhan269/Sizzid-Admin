@@ -1,5 +1,4 @@
 import React from 'react'
-// import "./NavBar.css"
 import styles_dark from './Navbar_Dark.module.css';
 import styles_light from './NavBar_Light.module.css';
 
@@ -19,12 +18,12 @@ function NavBar({ setIsAuthenticated, setSideBarActive, theme }) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item mx-4">
-              <ul className={`nav nav-tabs ${style.toggle_switch} toggle-switch border-bottom-0`} id="myTab" role="tablist">
+              <ul className={`nav nav-tabs ${style.toggle_switch} border-bottom-0`} id="myTab" role="tablist">
                 <li className={`nav-item ${style.nav_item}`} role="presentation">
-                  <button className={`nav-link active ${style.nav_link}`} id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Lottery</button>
+                  <button className={`nav-link active ${style.nav_link} rounded-start`} id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Lottery</button>
                 </li>
                 <li className={`nav-item ${style.nav_item}`} role="presentation">
-                  <button className={`nav-link ${style.nav_link}`} id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Lucky Spin</button>
+                  <button className={`nav-link ${style.nav_link} rounded-end`} id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Lucky Spin</button>
                 </li>
               </ul>
             </li>

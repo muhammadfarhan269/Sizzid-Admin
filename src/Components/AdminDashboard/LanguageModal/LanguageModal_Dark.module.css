@@ -3,7 +3,7 @@
     backdrop-filter: blur(10px);
 }
 
-.language_modal .modal-header {
+.language_modal .modal_header {
     display: flex;
     justify-content: space-between;
     background-color: rgba(13, 13, 56, 1);
@@ -12,44 +12,44 @@
     border-bottom: 1px solid rgba(13, 13, 56, 1);
 }
 
-.language_modal .modal-dialog {
+.language_modal .modal_dialog {
     max-width: 978px !important;
 }
 
-.language_modal .modal-content {
+.language_modal .modal_content {
     width: 978px !important;
 }
 
-.language_modal .modal-header .modal-title {
+.language_modal .modal_header .modal_title {
     font-family: 'Poppins_Bold';
 }
 
-.language_modal .modal-header p {
+.language_modal .modal_header p {
     font-family: 'Poppins_Bold';
     margin-bottom: 0px;
 }
 
-.language_modal .modal-header p span {
+.language_modal .modal_header p span {
     color: rgba(255, 218, 68, 1);
 }
 
-.language_modal .modal-body {
+.language_modal .modal_body {
     background-color: rgba(22, 22, 65, 1);
     color: #fff;
 }
 
-.language_modal .modal-body .flag_container {
+.language_modal .modal_body .flag_container {
     display: flex;
     flex-wrap: wrap;
     padding: 40px 0px 190px 0px;
 }
 
-.language_modal .modal-body .flag_container div {
+.language_modal .modal_body .flag_container div {
     margin: 23px 21px;
     cursor: pointer;
 }
 
-.language_modal .modal-footer {
+.language_modal .modal_footer {
     background-color: rgba(22, 22, 65, 1);
     border-top: 0px;
 }

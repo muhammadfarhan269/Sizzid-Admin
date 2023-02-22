@@ -1,5 +1,4 @@
 import React from 'react'
-// import './PromotionsRewards.css'
 import styles_dark from './PromotionsRewards_Dark.module.css';
 import styles_light from './PromotionsRewards_Light.module.css';
 

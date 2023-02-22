@@ -1,20 +1,22 @@
 import React, { useState } from 'react'
-import './UserAgreement.css'
+import styles_dark from './UserAgreement_Dark.module.css';
+import styles_light from './UserAgreement_Light.module.css';
 
-function UserAgreement() {
+function UserAgreement({ theme }) {
 
+    const style = theme === 'dark' ? styles_dark : styles_light
     const [editAgreement, setEditAgreement] = useState(false)
 
     return (
         <div className='row'>
             <div className='col-md-12 mt-4'>
-                <h3 className='page_title float-start'>User agreement & Privacy Policy</h3> <img className='float-end mt-3 edit_user_agreement' src="/edit.svg" alt="" onClick={() => setEditAgreement(true)} />
+                <h3 className={`${style.page_title} float-start`}>User agreement & Privacy Policy</h3> <img className={`float-end mt-3 ${style.edit_user_agreement}`} src="/edit.svg" alt="" onClick={() => setEditAgreement(true)} />
             </div>
             <div className='col-md-12 mt-4'>
-                <div className='user_agreement_card'>
+                <div className={`${style.user_agreement_card}`}>
                     {!editAgreement ?
                         <>
-                            <h3 className='heading_one'>Is The Game Fair?</h3>
+                            <h3 className={`${style.heading_one}`}>Is The Game Fair?</h3>
                             <p>We are a fair and impartial prediction and guessing platform. Our goal is to eliminate all unfair factors and make players feel comfortable and have fun.</p>
                             <p>We have generated a total of 10 million hashes (the generation chain is verifiable), and each hash corresponds to a curve crash multiplier.</p>
                             <p>We release these 10 million numbers in reverse order, each corresponding to one turn of the game (i.e. we have 10 million turns in total).</p>
@@ -59,17 +61,17 @@ function UserAgreement() {
                         <>
                             <div className='row'>
                                 <div className='col-md-6'>
-                                    <h3 className='edit_title'>EDIT</h3>
+                                    <h3 className={`${style.edit_title}`}>EDIT</h3>
                                 </div>
                                 <div className='col-md-6'>
-                                    <div className='float-end mt-2 edit_button'>
+                                    <div className={`float-end mt-2 ${style.edit_button}`}>
                                         <img src="/discard.svg" alt="" onClick={() => setEditAgreement(false)} />
                                         <img src="/save.svg" alt="" onClick={() => setEditAgreement(false)} />
                                     </div>
                                 </div>
                                 <div className='col-md-12'>
                                     <div className="input-group">
-                                        <textarea className="form-control vh-100 edit_textarea" placeholder='Type Here' aria-label="With textarea"></textarea>
+                                        <textarea className={`form-control vh-100 ${style.edit_textarea}`} placeholder='Type Here' aria-label="With textarea"></textarea>
                                     </div>
                                 </div>
                             </div>

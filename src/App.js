@@ -45,8 +45,8 @@ function App() {
   }, [])
   return (
     <>
-      <LanguageModal />
-      <EditProfile />
+      <LanguageModal theme={theme} />
+      <EditProfile theme={theme} />
       <UserDetailPopup />
       <PendingApprovalModal />
       <Routes>
@@ -54,21 +54,21 @@ function App() {
         <Route path="/verification" element={<VerificationCode />} />
         <Route path="/admin-dashboard" element={<AdminDashboard sideBarActive={sideBarActive} setSideBarActive={setSideBarActive} isActive={isActive} setIsActive={setIsActive} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setTheme={setTheme} theme={theme} />} >
           <Route path="Home" element={<Home theme={theme} />} />
-          <Route path="available-games" element={<AvailableGames />} />
+          <Route path="available-games" element={<AvailableGames theme={theme} />} />
           <Route path="promotions" element={<PromotionsRewards theme={theme} />} />
-          <Route path="user-agreement" element={<UserAgreement />} />
+          <Route path="user-agreement" element={<UserAgreement theme={theme} />} />
           <Route path="earn-history" element={<EarnHistory theme={theme} />} />
-          <Route path="hot-games" element={<HotGamesList />} />
-          <Route path="pending-approvals" element={<PendingApprovals />} />
-          <Route path="contest-banner" element={<BannerOfContest />} />
-          <Route path="gvip-svip-evip" element={<GVIP />} />
+          <Route path="hot-games" element={<HotGamesList theme={theme} />} />
+          <Route path="pending-approvals" element={<PendingApprovals theme={theme} />} />
+          <Route path="contest-banner" element={<BannerOfContest theme={theme} />} />
+          <Route path="gvip-svip-evip" element={<GVIP theme={theme} />} />
           <Route path="reports" element={<Reports theme={theme} />} />
-          <Route path="affiliate" element={<Affiliate />} />
-          <Route path="bet-winners" element={<BetWinners />} />
-          <Route path="game-rank" element={<GameRank />} />
-          <Route path="available-payment" element={<AvailablePayment />} />
-          <Route path="support" element={<ChatSupport />} />
-          <Route path="user-detail" element={<UserDetail />} />
+          <Route path="affiliate" element={<Affiliate theme={theme} />} />
+          <Route path="bet-winners" element={<BetWinners theme={theme} />} />
+          <Route path="game-rank" element={<GameRank theme={theme} />} />
+          <Route path="available-payment" element={<AvailablePayment theme={theme} />} />
+          <Route path="support" element={<ChatSupport theme={theme} />} />
+          <Route path="user-detail" element={<UserDetail theme={theme} />} />
         </Route>
         <Route path="/reset-password" element={<ResetPassword />} />
       </Routes>
