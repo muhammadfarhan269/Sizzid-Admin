@@ -1,0 +1,77 @@
+.page_title {
+    font-size: 40px;
+    line-height: 48px;
+    color: rgba(43, 45, 80, 1);
+    font-family: 'Blinker_ExtraBold';
+    margin-top: 6px;
+}
+
+.affiliate_table {
+    background: #FFFFFF;
+    box-shadow: 0px 2px 6px rgba(185, 185, 185, 0.18);
+}
+
+.affiliate_table thead {
+    background: #F6F7FA;
+    box-shadow: 0px 2px 8px rgba(170, 170, 170, 0.18);
+}
+
+.affiliate_table thead tr th:first-child {
+    padding-left: 41px;
+}
+
+.affiliate_table thead tr th {
+    padding: 24px 10px;
+    font-size: 18px;
+    line-height: 22px;
+    color: rgba(195, 195, 195, 1);
+    font-family: 'Poppins_SemiBold';
+    border-bottom: 0px;
+}
+
+.affiliate_table tbody tr {
+    border-bottom: 0px;
+    position: relative;
+}
+
+.affiliate_table tbody tr td:first-child {
+    padding-left: 41px;
+}
+
+.affiliate_table .user_id, .affiliate_table .invite {
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(195, 195, 195, 1);
+    font-family: 'Poppins_Light';
+}
+
+.affiliate_table tbody tr td {
+    padding: 16.5px 8px;
+    border-bottom: 0px;
+    vertical-align: middle;
+}
+
+.affiliate_table tbody tr hr {
+    background: rgb(224 224 224 / 20%);
+    position: absolute;
+    width: 95%;
+    left: 0;
+    bottom: 0;
+    padding: 1px;
+    margin: auto;
+    right: 0;
+}
+
+.affiliate_table .referral_code {
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(255, 15, 38, 1);
+    font-family: 'Poppins_Bold';
+}
+
+.affiliate_table .reward {
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(3, 251, 117, 1);
+    font-family: 'Poppins_Bold';
+}

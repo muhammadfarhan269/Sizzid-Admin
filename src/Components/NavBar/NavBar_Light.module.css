@@ -1,0 +1,123 @@
+.navbar_search input {
+  background: #fff !important;
+  box-shadow: 0px 2px 6px rgba(185, 185, 185, 0.18) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid #fff !important;
+  width: 407px;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(195, 195, 195, 1) !important;
+  font-family: 'Poppins_Light';
+}
+
+.navbar_search input::placeholder {
+  color: rgba(195, 195, 195, 1) !important;
+}
+
+.toggle_switch .nav_item .nav_link {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 6px #5f5f6f;
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  font-size: 18px;
+  line-height: 27px;
+  text-transform: capitalize;
+  color: rgba(195, 195, 195, 1);
+  border-bottom: 0px;
+  border-radius: 0px;
+  border-color: transparent !important;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  width: 130px;
+  height: 52px;
+  font-family: 'Poppins_Medium';
+}
+
+.toggle_switch .nav_item .nav_link.active {
+  background: rgb(247 247 247 / 60%);
+  box-shadow: 0px 0px 6px #5f5f6f;
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  font-family: 'Poppins_SemiBold';
+}
+
+.notifications {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 1);
+  position: relative;
+  cursor: pointer;
+}
+
+.notifications img {
+  position: absolute;
+  float: left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.profile_link_nav .name {
+  color: rgba(46, 56, 103, 1);
+  font-family: 'Poppins_Medium';
+}
+
+.admin_nav {
+  position: fixed !important;
+  margin-left: 300px;
+  width: 100%;
+  background: #f5f5f5;
+  width: 80%;
+  z-index: 1;
+}
+
+.nav_profile {
+  width: 529px;
+  right: 0 !important;
+  top: -3px !important;
+  height: 401px;
+  left: auto !important;
+  background-color: #ffffff !important;
+  border: 0px !important;
+}
+
+.profile_link_nav {
+  position: initial !important;
+}
+
+.profile_section {
+  text-align: center;
+  color: rgba(141, 141, 141, 1);
+  width: 443px;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.profile_section .header {
+  background: rgba(245, 245, 245, 1);
+  backdrop-filter: blur(50px);
+  border-radius: 6.58745px;
+  padding: 43px 0px 0px 0px;
+}
+
+.profile_section .footer {
+  background: rgba(54, 54, 54, 0.2);
+  border-radius: 6.58745px;
+  color: rgba(255, 0, 19, 1);
+  padding: 20px 0px;
+  cursor: pointer;
+}
+
+.edit_profile_icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}

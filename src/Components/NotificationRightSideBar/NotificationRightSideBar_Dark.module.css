@@ -1,0 +1,125 @@
+.sidenav {
+    height: 100%;
+    width: 0px;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    background: rgba(54, 54, 54, 0.2);
+    backdrop-filter: blur(10px);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding: 0px;
+}
+
+.sidenav .notification_panel {
+    background: #2B2D50;
+    border-radius: 8px;
+    margin-top: 70px;
+}
+
+.sidenav .notification_panel .notification_panel_head {
+    background: rgba(14, 6, 61, 0.3);
+    box-shadow: 1px 1px 10px rgb(255 1 62 / 18%);
+    height: 85px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.sidenav .notification_panel .notification_panel_head h3 {
+    font-size: 30px;
+    line-height: 48px;
+    color: #FFFFFF;
+    font-family: 'Blinker_ExtraBold';
+    margin-top: 6px;
+}
+
+.sidenav .notification_panel .notification_panel_head .close_nav {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    padding-left: 9px;
+    padding-top: 1px;
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.sidenav .notification_panel .notification_nav .nav_tabs .nav_link {
+    border: 0px !important;
+    border-radius: 0px !important;
+    height: 46px;
+    color: #FFFFFF;
+    font-family: 'Poppins_Bold';
+    padding: 0px 22px !important;
+}
+
+.sidenav .notification_panel .notification_nav .nav_tabs {
+    border: 0px !important;
+    background: rgba(14, 6, 61, 0.3) !important;
+    box-shadow: 1px 1px 10px rgb(255 1 62 / 18%) !important;
+}
+
+.notification_panel .notification_card {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+}
+
+.notification_panel .notification_card .card_head h5 {
+    font-size: 20px;
+    line-height: 48px;
+    color: #FFFFFF;
+    font-family: 'Blinker_ExtraBold';
+    margin-top: 6px;
+    letter-spacing: 1px;
+}
+
+.notification_panel .notification_card .card_head {
+    padding: 10px 15px 0px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.notification_panel .notification_card .card_head p {
+    color: #fff;
+}
+
+.notification_panel .notification_card .card_head p span {
+    float: right;
+    margin-top: 5px;
+    color: rgba(255, 255, 255, 0.6);
+    ;
+}
+
+.notification_panel .notification_card .card_head p div {
+    color: rgba(255, 255, 255, 0.6);
+    ;
+}
+
+.notification_panel .notification_card .card_body {
+    padding: 10px 15px;
+    color: #FFFFFF;
+}
+
+.notification_panel .notification_card .card_bottom {
+    background-color: #282445;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.notification_panel .notification_card .card_bottom p {
+    color: rgb(31 187 103) !important;
+}
+
+.top_icon {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}

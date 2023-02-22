@@ -1,0 +1,180 @@
+.page_title {
+    font-size: 40px;
+    line-height: 48px;
+    color: #FFFFFF;
+    font-family: 'Blinker_ExtraBold';
+    margin-top: 6px;
+}
+
+.chat_cards {
+    background: rgba(43, 45, 80, 0.6);
+    box-shadow: 0px 0px 6px #5F5F6F;
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.chat_search {
+    border: 1px solid #23254B !important;
+    filter: drop-shadow(0px 0px 6px #5F5F6F) !important;
+    border-radius: 68px !important;
+    box-shadow: none !important;
+    background-color: rgba(35, 37, 75, 1) !important;
+    margin-top: 20px;
+    color: rgba(177, 177, 177, 1) !important;
+}
+
+.chat_search::placeholder {
+    color: rgba(177, 177, 177, 1) !important;
+}
+
+.btn_filter {
+    background: #1A1C43 !important;
+    box-shadow: 0px 0px 6px #5F5F6F !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 58px !important;
+    margin-top: 20px;
+    color: rgba(177, 177, 177, 1) !important;
+    width: 100%;
+    text-align: left !important;
+}
+
+.btn_filter img {
+    float: right;
+    margin-top: 3px;
+}
+
+.chat_nav {
+    border-bottom: 0px !important;
+}
+
+.chat_nav .nav_link {
+    font-size: 18px !important;
+    line-height: 22px !important;
+    color: #C2C2C2;
+    font-family: 'Poppins_SemiBold' !important;
+    border: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin: 0px 10px;
+}
+
+.chat_nav .nav_link:hover {
+    font-size: 18px !important;
+    line-height: 22px !important;
+    color: #C2C2C2;
+    font-family: 'Poppins_SemiBold' !important;
+}
+
+.chat_card {
+    background: rgb(1 2 47 / 60%);
+    box-shadow: 0px 0px 6px #5F5F6F;
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 25px 15px;
+    margin-top: 30px;
+}
+
+.chat_card .title, .chat .title {
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF !important;
+    font-family: 'Poppins_SemiBold' !important;
+}
+
+.chat_card .time_stamp {
+    font-size: 14px;
+    line-height: 22px;
+    color: #FFFFFF;
+    text-align: right;
+    font-family: 'Poppins_Light';
+}
+
+.chat_card .description {
+    font-size: 16px;
+    line-height: 22px;
+    color: #FFFFFF;
+    font-family: 'Poppins_Light';
+}
+
+.chat_card .btn_alarm {
+    background: #D10028 !important;
+    box-shadow: 0px 4px 4px rgba(5, 5, 5, 0.25);
+    border-radius: 50px;
+    letter-spacing: 0.3px;
+    text-transform: capitalize;
+    font-size: 18px;
+    line-height: 30px;
+    font-family: 'Poppins_Light';
+    color: #FFFFFF !important;
+}
+
+.chat_card .btn_alarm img, .chat_card .btn_mk img {
+    background: #fff;
+    border-radius: 50%;
+    padding: 6px;
+    margin-left: 25px;
+}
+
+.chat_card .btn_mk {
+    background: rgba(49, 167, 57, 1) !important;
+    box-shadow: 0px 4px 4px rgba(5, 5, 5, 0.25);
+    border-radius: 50px;
+    letter-spacing: 0.3px;
+    text-transform: capitalize;
+    font-size: 18px;
+    line-height: 30px;
+    font-family: 'Poppins_Light';
+    color: #FFFFFF !important;
+    margin-left: 30px;
+}
+
+.urgent_dropdown, .open_dropdown {
+    cursor: pointer;
+}
+
+.chat_box {
+    background: rgb(1 2 47 / 60%);
+    box-shadow: 0px 0px 6px #5F5F6F;
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 40px 25px;
+    margin-top: 30px;
+    height: 764px;
+}
+
+.chat_input {
+    background: rgb(43 45 80 / 80%);
+    box-shadow: 0px 0px 6px #5F5F6F;
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.chat_input {
+    box-shadow: 0px 0px 6px #5F5F6F;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+}
+
+.chat_input input {
+    background: rgb(1 2 47 / 80%);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    border: 1px solid rgb(1 2 47 / 80%);
+    border-left: 0px !important;
+    font-size: 14px;
+    line-height: 22px;
+    color: #8E8E8E;
+
+}
+
+.chat_input .input_group_text {
+    background: rgb(1 2 47 / 80%);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    border: 1px solid rgb(1 2 47 / 80%);
+    border-right: 0px !important;
+}

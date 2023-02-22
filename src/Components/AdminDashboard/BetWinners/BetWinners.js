@@ -1,13 +1,18 @@
 import React from 'react'
+import styles_dark from './BetWinners_Dark.module.css';
+import styles_light from './BetWinners_Light.module.css';
 
-function BetWinners() {
+function BetWinners({ theme }) {
+
+    const style = theme === 'dark' ? styles_dark : styles_light
+
     return (
         <div className='row'>
             <div className='col-md-12'>
-                <h3 className='page_title'>Bets winners</h3>
+                <h3 className={`${style.page_title}`}>Bets winners</h3>
             </div>
             <div className='col-md-12'>
-                <table class="table earn_history_table mt-4">
+                <table class={`table ${style.earn_history_table} mt-4`}>
                     <thead>
                         <tr>
                             <th >User ID</th>
@@ -18,87 +23,94 @@ function BetWinners() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td className='date_of_bet'>65549538423</td>
-                            <td className='bet_amount'>John S.</td>
-                            <td className='wining_amount'>0.66667598645 +</td>
-                            <td className='lose_amount'>0.26598855623 -</td>
-                            <td className='total_bets'><div>786</div></td>
+                    <tr>
+                            <td className={`${style.date_of_bet}`}>65549538423</td>
+                            <td className={`${style.bet_amount}`}>John S.</td>
+                            <td className={`${style.wining_amount}`}>0.66667598645 +</td>
+                            <td className={`${style.lose_amount}`}>0.26598855623 -</td>
+                            <td className={`${style.total_bets}`}><div>786</div></td>
                             <hr />
                         </tr>
                         <tr>
-                            <td className='date_of_bet'>65549538423</td>
-                            <td className='bet_amount'>John S.</td>
-                            <td className='wining_amount'>0.66667598645 +</td>
-                            <td className='lose_amount'>0.26598855623 -</td>
-                            <td className='total_bets'><div>786</div></td>
+                            <td className={`${style.date_of_bet}`}>65549538423</td>
+                            <td className={`${style.bet_amount}`}>John S.</td>
+                            <td className={`${style.wining_amount}`}>0.66667598645 +</td>
+                            <td className={`${style.lose_amount}`}>0.26598855623 -</td>
+                            <td className={`${style.total_bets}`}><div>786</div></td>
                             <hr />
                         </tr>
                         <tr>
-                            <td className='date_of_bet'>65549538423</td>
-                            <td className='bet_amount'>John S.</td>
-                            <td className='wining_amount'>0.66667598645 +</td>
-                            <td className='lose_amount'>0.26598855623 -</td>
-                            <td className='total_bets'><div>786</div></td>
+                            <td className={`${style.date_of_bet}`}>65549538423</td>
+                            <td className={`${style.bet_amount}`}>John S.</td>
+                            <td className={`${style.wining_amount}`}>0.66667598645 +</td>
+                            <td className={`${style.lose_amount}`}>0.26598855623 -</td>
+                            <td className={`${style.total_bets}`}><div>786</div></td>
                             <hr />
                         </tr>
                         <tr>
-                            <td className='date_of_bet'>65549538423</td>
-                            <td className='bet_amount'>John S.</td>
-                            <td className='wining_amount'>0.66667598645 +</td>
-                            <td className='lose_amount'>0.26598855623 -</td>
-                            <td className='total_bets'><div>786</div></td>
+                            <td className={`${style.date_of_bet}`}>65549538423</td>
+                            <td className={`${style.bet_amount}`}>John S.</td>
+                            <td className={`${style.wining_amount}`}>0.66667598645 +</td>
+                            <td className={`${style.lose_amount}`}>0.26598855623 -</td>
+                            <td className={`${style.total_bets}`}><div>786</div></td>
                             <hr />
                         </tr>
                         <tr>
-                            <td className='date_of_bet'>65549538423</td>
-                            <td className='bet_amount'>John S.</td>
-                            <td className='wining_amount'>0.66667598645 +</td>
-                            <td className='lose_amount'>0.26598855623 -</td>
-                            <td className='total_bets'><div>786</div></td>
+                            <td className={`${style.date_of_bet}`}>65549538423</td>
+                            <td className={`${style.bet_amount}`}>John S.</td>
+                            <td className={`${style.wining_amount}`}>0.66667598645 +</td>
+                            <td className={`${style.lose_amount}`}>0.26598855623 -</td>
+                            <td className={`${style.total_bets}`}><div>786</div></td>
                             <hr />
                         </tr>
                         <tr>
-                            <td className='date_of_bet'>65549538423</td>
-                            <td className='bet_amount'>John S.</td>
-                            <td className='wining_amount'>0.66667598645 +</td>
-                            <td className='lose_amount'>0.26598855623 -</td>
-                            <td className='total_bets'><div>786</div></td>
+                            <td className={`${style.date_of_bet}`}>65549538423</td>
+                            <td className={`${style.bet_amount}`}>John S.</td>
+                            <td className={`${style.wining_amount}`}>0.66667598645 +</td>
+                            <td className={`${style.lose_amount}`}>0.26598855623 -</td>
+                            <td className={`${style.total_bets}`}><div>786</div></td>
                             <hr />
                         </tr>
                         <tr>
-                            <td className='date_of_bet'>65549538423</td>
-                            <td className='bet_amount'>John S.</td>
-                            <td className='wining_amount'>0.66667598645 +</td>
-                            <td className='lose_amount'>0.26598855623 -</td>
-                            <td className='total_bets'><div>786</div></td>
+                            <td className={`${style.date_of_bet}`}>65549538423</td>
+                            <td className={`${style.bet_amount}`}>John S.</td>
+                            <td className={`${style.wining_amount}`}>0.66667598645 +</td>
+                            <td className={`${style.lose_amount}`}>0.26598855623 -</td>
+                            <td className={`${style.total_bets}`}><div>786</div></td>
                             <hr />
                         </tr>
                         <tr>
-                            <td className='date_of_bet'>65549538423</td>
-                            <td className='bet_amount'>John S.</td>
-                            <td className='wining_amount'>0.66667598645 +</td>
-                            <td className='lose_amount'>0.26598855623 -</td>
-                            <td className='total_bets'><div>786</div></td>
+                            <td className={`${style.date_of_bet}`}>65549538423</td>
+                            <td className={`${style.bet_amount}`}>John S.</td>
+                            <td className={`${style.wining_amount}`}>0.66667598645 +</td>
+                            <td className={`${style.lose_amount}`}>0.26598855623 -</td>
+                            <td className={`${style.total_bets}`}><div>786</div></td>
                             <hr />
                         </tr>
                         <tr>
-                            <td className='date_of_bet'>65549538423</td>
-                            <td className='bet_amount'>John S.</td>
-                            <td className='wining_amount'>0.66667598645 +</td>
-                            <td className='lose_amount'>0.26598855623 -</td>
-                            <td className='total_bets'><div>786</div></td>
+                            <td className={`${style.date_of_bet}`}>65549538423</td>
+                            <td className={`${style.bet_amount}`}>John S.</td>
+                            <td className={`${style.wining_amount}`}>0.66667598645 +</td>
+                            <td className={`${style.lose_amount}`}>0.26598855623 -</td>
+                            <td className={`${style.total_bets}`}><div>786</div></td>
                             <hr />
                         </tr>
                         <tr>
-                            <td className='date_of_bet'>65549538423</td>
-                            <td className='bet_amount'>John S.</td>
-                            <td className='wining_amount'>0.66667598645 +</td>
-                            <td className='lose_amount'>0.26598855623 -</td>
-                            <td className='total_bets'><div>786</div></td>
+                            <td className={`${style.date_of_bet}`}>65549538423</td>
+                            <td className={`${style.bet_amount}`}>John S.</td>
+                            <td className={`${style.wining_amount}`}>0.66667598645 +</td>
+                            <td className={`${style.lose_amount}`}>0.26598855623 -</td>
+                            <td className={`${style.total_bets}`}><div>786</div></td>
                             <hr />
                         </tr>
-                        
+                        <tr>
+                            <td className={`${style.date_of_bet}`}>65549538423</td>
+                            <td className={`${style.bet_amount}`}>John S.</td>
+                            <td className={`${style.wining_amount}`}>0.66667598645 +</td>
+                            <td className={`${style.lose_amount}`}>0.26598855623 -</td>
+                            <td className={`${style.total_bets}`}><div>786</div></td>
+                            <hr />
+                        </tr>
                     </tbody>
                 </table>
             </div>
