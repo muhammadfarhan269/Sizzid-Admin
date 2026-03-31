@@ -1,16 +1,17 @@
-const express = require("express");
-const controller = require("./affiliates.controller");
+import express from "express";
+import { requireAdmin, requireAuth } from "../../middleware/auth.js";
+import {
+  claimReferralBonusController,
+  getAllAffiliatesController,
+  getMyAffiliateStatsController,
+  getMyReferralsController,
+} from "./affiliates.controller.js";
 
 const router = express.Router();
 
-// GET    /api/v1/affiliates/me            -> my affiliate stats
-// GET    /api/v1/affiliates/referrals     -> list my referrals
-// POST   /api/v1/affiliates/link          -> connect referral code
-// GET    /api/v1/affiliates/admin         -> admin affiliate overview
-router.get("/", controller.comingSoon);
-router.get("/me", controller.comingSoon);
-router.get("/referrals", controller.comingSoon);
-router.post("/link", controller.comingSoon);
-router.get("/admin", controller.comingSoon);
+router.get("/my-referrals", requireAuth, getMyReferralsController);
+router.get("/stats", requireAuth, getMyAffiliateStatsController);
+router.get("/all", requireAdmin, getAllAffiliatesController);
+router.post("/claim", requireAuth, claimReferralBonusController);
 
-module.exports = router;
+export default router;

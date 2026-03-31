@@ -1,17 +1,24 @@
-const express = require("express");
-const controller = require("./promotions.controller");
+import express from "express";
+import { requireAdmin } from "../../middleware/auth.js";
+import {
+  createPromotionController,
+  deletePromotionController,
+  getPromotionController,
+  listActivePromotionsController,
+  listPromotionsController,
+  togglePromotionController,
+  updatePromotionController,
+} from "./promotions.controller.js";
 
 const router = express.Router();
 
-// GET    /api/v1/promotions           -> list active promotions
-// GET    /api/v1/promotions/:id       -> promotion details
-// POST   /api/v1/promotions           -> create promotion (admin only)
-// PUT    /api/v1/promotions/:id       -> update promotion (admin only)
-// DELETE /api/v1/promotions/:id       -> delete promotion (admin only)
-router.get("/", controller.comingSoon);
-router.get("/:id", controller.comingSoon);
-router.post("/", controller.comingSoon);
-router.put("/:id", controller.comingSoon);
-router.delete("/:id", controller.comingSoon);
+router.get("/", listPromotionsController);
+router.get("/active", listActivePromotionsController);
+router.get("/:id", getPromotionController);
 
-module.exports = router;
+router.post("/", requireAdmin, createPromotionController);
+router.put("/:id", requireAdmin, updatePromotionController);
+router.delete("/:id", requireAdmin, deletePromotionController);
+router.patch("/:id/toggle", requireAdmin, togglePromotionController);
+
+export default router;

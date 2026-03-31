@@ -1,18 +1,23 @@
-const express = require("express");
-const controller = require("./support.controller");
+import express from "express";
+import { requireAdmin, requireAuth } from "../../middleware/auth.js";
+import {
+  createTicketController,
+  getAllTicketsController,
+  getMyTicketsController,
+  getTicketController,
+  sendMessageController,
+  updateTicketPriorityController,
+  updateTicketStatusController,
+} from "./support.controller.js";
 
 const router = express.Router();
 
-// GET    /api/v1/support/tickets             -> list my tickets / admin list
-// POST   /api/v1/support/tickets             -> create ticket
-// GET    /api/v1/support/tickets/:id         -> ticket details with messages
-// POST   /api/v1/support/tickets/:id/messages -> send ticket message
-// PATCH  /api/v1/support/tickets/:id/status  -> update status (admin)
-router.get("/", controller.comingSoon);
-router.get("/tickets", controller.comingSoon);
-router.post("/tickets", controller.comingSoon);
-router.get("/tickets/:id", controller.comingSoon);
-router.post("/tickets/:id/messages", controller.comingSoon);
-router.patch("/tickets/:id/status", controller.comingSoon);
+router.post("/", requireAuth, createTicketController);
+router.get("/mine", requireAuth, getMyTicketsController);
+router.get("/admin/all", requireAdmin, getAllTicketsController);
+router.patch("/admin/:id/status", requireAdmin, updateTicketStatusController);
+router.patch("/admin/:id/priority", requireAdmin, updateTicketPriorityController);
+router.get("/:id", requireAuth, getTicketController);
+router.post("/:id/message", requireAuth, sendMessageController);
 
-module.exports = router;
+export default router;
