@@ -1,39 +1,49 @@
-const { verifyToken } = require("../utils/jwt");
+import prisma from "../config/db.js";
+import { verifyToken } from "../utils/jwt.js";
+import { AppError } from "../utils/AppError.js";
 
 const getBearerToken = (headerValue = "") => {
   if (!headerValue.startsWith("Bearer ")) return null;
   return headerValue.split(" ")[1];
 };
 
-const requireAuth = (req, res, next) => {
+export const requireAuth = async (req, res, next) => {
   try {
     const token = getBearerToken(req.headers.authorization || "");
     if (!token) {
-      return res.status(401).json({ success: false, message: "Unauthorized" });
+      throw new AppError("Unauthorized", 401);
     }
-    req.user = verifyToken(token);
+
+    const payload = verifyToken(token);
+    const user = await prisma.user.findUnique({
+      where: { id: payload.id },
+    });
+
+    if (!user || user.isBanned) {
+      throw new AppError("Unauthorized", 401);
+    }
+
+    req.user = user;
     return next();
   } catch (err) {
-    return res.status(401).json({ success: false, message: "Invalid token" });
+    return next(err.isOperational ? err : new AppError("Invalid token", 401));
   }
 };
 
-const requireAdmin = (req, res, next) => {
-  requireAuth(req, res, () => {
+export const requireAdmin = (req, res, next) => {
+  requireAuth(req, res, async () => {
     if (!["ADMIN", "SUPER_ADMIN"].includes(req.user?.role)) {
-      return res.status(403).json({ success: false, message: "Forbidden" });
+      return next(new AppError("Forbidden", 403));
     }
     return next();
   });
 };
 
-const requireSuperAdmin = (req, res, next) => {
+export const requireSuperAdmin = (req, res, next) => {
   requireAuth(req, res, () => {
     if (req.user?.role !== "SUPER_ADMIN") {
-      return res.status(403).json({ success: false, message: "Forbidden" });
+      return next(new AppError("Forbidden", 403));
     }
     return next();
   });
 };
-
-module.exports = { requireAuth, requireAdmin, requireSuperAdmin };

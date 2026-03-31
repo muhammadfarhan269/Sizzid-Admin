@@ -3,6 +3,8 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
+import authRoutes from "./modules/auth/auth.routes.js";
+import errorHandler from "./middleware/errorHandler.js";
 
 const app = express();
 
@@ -26,10 +28,9 @@ app.use(
   })
 );
 
-const comingSoon = (req, res) =>
-  res.status(200).json({ success: true, message: "coming soon" });
+const comingSoon = (req, res) => res.status(200).json({ success: true, message: "coming soon" });
 
-app.use("/api/v1/auth", comingSoon);
+app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", comingSoon);
 app.use("/api/v1/games", comingSoon);
 app.use("/api/v1/leaderboard", comingSoon);
@@ -46,12 +47,6 @@ app.get("/health", (req, res) => {
   res.status(200).json({ success: true, message: "ok" });
 });
 
-app.use((err, req, res, next) => {
-  return res.status(err.statusCode || 500).json({
-    success: false,
-    message: err.message || "Internal server error",
-    ...(process.env.NODE_ENV === "development" ? { stack: err.stack } : {}),
-  });
-});
+app.use(errorHandler);
 
 export default app;

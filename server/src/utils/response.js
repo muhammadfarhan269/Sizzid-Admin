@@ -1,4 +1,4 @@
-const success = (res, data = null, message = "success", statusCode = 200) => {
+export const success = (res, data = null, message = "success", statusCode = 200) => {
   return res.status(statusCode).json({
     success: true,
     message,
@@ -6,14 +6,14 @@ const success = (res, data = null, message = "success", statusCode = 200) => {
   });
 };
 
-const error = (res, message = "error", statusCode = 400) => {
+export const error = (res, message = "error", statusCode = 400) => {
   return res.status(statusCode).json({
     success: false,
     message,
   });
 };
 
-const paginated = (res, data, total, page, limit) => {
+export const paginated = (res, data, total, page, limit) => {
   return res.status(200).json({
     success: true,
     data,
@@ -25,5 +25,3 @@ const paginated = (res, data, total, page, limit) => {
     },
   });
 };
-
-module.exports = { success, error, paginated };

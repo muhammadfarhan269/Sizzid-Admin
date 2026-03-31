@@ -1,9 +1,7 @@
-const env = require("../config/env");
-
 const errorHandler = (err, req, res, next) => {
   if (res.headersSent) return next(err);
 
-  let statusCode = err.statusCode || 500;
+  let statusCode = err.isOperational ? err.statusCode : err.statusCode || 500;
   let message = err.message || "Internal server error";
 
   if (err.code === "P2002") {
@@ -17,8 +15,8 @@ const errorHandler = (err, req, res, next) => {
   return res.status(statusCode).json({
     success: false,
     message,
-    ...(env.nodeEnv === "development" ? { stack: err.stack } : {}),
+    ...(process.env.NODE_ENV === "development" ? { stack: err.stack } : {}),
   });
 };
 
-module.exports = errorHandler;
+export default errorHandler;
