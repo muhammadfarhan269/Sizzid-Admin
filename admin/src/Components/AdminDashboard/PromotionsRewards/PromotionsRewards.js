@@ -1,10 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles_dark from './PromotionsRewards_Dark.module.css';
 import styles_light from './PromotionsRewards_Light.module.css';
+import { deletePromotion, getPromotions, togglePromotion } from '../../../api';
 
 function PromotionsRewards({ theme }) {
 
   const style = theme === 'dark' ? styles_dark : styles_light
+  const [promotions, setPromotions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await getPromotions();
+        setPromotions(res.data.data || []);
+      } catch (err) {
+        setError('Failed to load data');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const onToggle = async (id) => {
+    try {
+      await togglePromotion(id);
+      setPromotions((prev) => prev.map((p) => (p.id === id ? { ...p, isActive: !p.isActive } : p)));
+    } catch (err) {
+      setError('Failed to update promotion');
+    }
+  };
+
+  const onDelete = async (id) => {
+    try {
+      await deletePromotion(id);
+      setPromotions((prev) => prev.filter((p) => p.id !== id));
+    } catch (err) {
+      setError('Failed to delete promotion');
+    }
+  };
 
   return (
     <div className='row'>
@@ -26,32 +62,23 @@ function PromotionsRewards({ theme }) {
       <div className='col-md-12 mt-4'>
         <div className={`${style.promotions_card}`}>
           <h1 className={`${style.title}`}>Promotions & Reward</h1>
-          <h3 className={`${style.sub_title}`}>COMPAIN 1</h3>
+          <h3 className={`${style.sub_title}`}>Active Promotions</h3>
+          {loading && <p>Loading...</p>}
+          {error && <p style={{ color: 'red' }}>{error}</p>}
           <div className='row'>
-            <div className='col-md-4'>
-              <div className={`${style.card_one}`}>
-                <p>RED BEAR <span>VS</span> GREEN BULL <br /> WAR IS ON</p>
-                <div>
-                  <img src="/arrow.png" alt="" />
+            {!loading && !error && promotions.map((promotion, idx) => (
+              <div className='col-md-4' key={promotion.id}>
+                <div className={idx % 3 === 0 ? `${style.card_one}` : idx % 3 === 1 ? `${style.card_two}` : `${style.card_three}`}>
+                  <p>{promotion.title}<br />{promotion.description || promotion.type}</p>
+                  <div style={{ display: 'flex', gap: '8px' }}>
+                    <button className='btn btn-sm btn-success' onClick={() => onToggle(promotion.id)}>
+                      {promotion.isActive ? 'Disable' : 'Enable'}
+                    </button>
+                    <button className='btn btn-sm btn-danger' onClick={() => onDelete(promotion.id)}>Delete</button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className='col-md-4'>
-              <div className={`${style.card_two}`}>
-                <p>RED BEAR <span>VS</span> GREEN BULL <br /> WAR IS ON</p>
-                <div>
-                  <img src="/arrow.png" alt="" />
-                </div>
-              </div>
-            </div>
-            <div className='col-md-4'>
-              <div className={`${style.card_three}`}>
-                <p>RED BEAR <span>VS</span> GREEN BULL <br /> WAR IS ON</p>
-                <div>
-                  <img src="/arrow.png" alt="" />
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

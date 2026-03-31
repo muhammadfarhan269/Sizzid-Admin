@@ -1,21 +1,39 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles_dark from './HotGamesList_Dark.module.css';
 import styles_light from './HotGamesList_Light.module.css';
+import { getGames, toggleHotGame } from '../../../api';
 
 function HotGamesList({ theme }) {
 
     const style = theme === 'dark' ? styles_dark : styles_light
 
-    const [hot, setHot] = useState(false)
-    const [hotOne, setHotOne] = useState(false)
-    const [hotTwo, setHotTwo] = useState(false)
-    const [hotThree, setHotThree] = useState(false)
-    const [hotFour, setHotFour] = useState(false)
-    const [hotFive, setHotFive] = useState(false)
-    const [hotSix, setHotSix] = useState(false)
-    const [hotSeven, setHotSeven] = useState(false)
-    const [hotEight, setHotEight] = useState(false)
-    const [hotNine, setHotNine] = useState(false)
+    const [games, setGames] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await getGames({ isHot: true });
+                const all = res.data.data || [];
+                setGames(all.filter((g) => g.isHot));
+            } catch (err) {
+                setError('Failed to load data');
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, []);
+
+    const onToggle = async (id) => {
+        try {
+            await toggleHotGame(id);
+            setGames((prev) => prev.map((g) => (g.id === id ? { ...g, isHot: !g.isHot } : g)));
+        } catch (err) {
+            setError('Failed to update hot toggle');
+        }
+    };
 
     return (
         <div className='row'>
@@ -33,76 +51,21 @@ function HotGamesList({ theme }) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td className={`${style.date_of_bet}`}>Hash Dice</td>
-                            <td className={`${style.bet_amount}`}>50000</td>
-                            <td className={`${style.total_bets}`}><div>786</div></td>
-                            <td><span onClick={() => setHot(hot => !hot)}>{hot ? <img src="/hot-fire.png" alt="" /> : <img src="/fire.png" alt="" />}</span></td>
-                            <hr />
-                        </tr>
-                        <tr>
-                            <td className={`${style.date_of_bet}`}>Hash Dice</td>
-                            <td className={`${style.bet_amount}`}>50000</td>
-                            <td className={`${style.total_bets}`}><div>786</div></td>
-                            <td><span onClick={() => setHotOne(hotOne => !hotOne)}>{hotOne ? <img src="/hot-fire.png" alt="" /> : <img src="/fire.png" alt="" />}</span></td>
-                            <hr />
-                        </tr>
-                        <tr>
-                            <td className={`${style.date_of_bet}`}>Hash Dice</td>
-                            <td className={`${style.bet_amount}`}>50000</td>
-                            <td className={`${style.total_bets}`}><div>786</div></td>
-                            <td><span onClick={() => setHotTwo(hotTwo => !hotTwo)}>{hotTwo ? <img src="/hot-fire.png" alt="" /> : <img src="/fire.png" alt="" />}</span></td>
-                            <hr />
-                        </tr>
-                        <tr>
-                            <td className={`${style.date_of_bet}`}>Hash Dice</td>
-                            <td className={`${style.bet_amount}`}>50000</td>
-                            <td className={`${style.total_bets}`}><div>786</div></td>
-                            <td><span onClick={() => setHotThree(hotThree => !hotThree)}>{hotThree ? <img src="/hot-fire.png" alt="" /> : <img src="/fire.png" alt="" />}</span></td>
-                            <hr />
-                        </tr>
-                        <tr>
-                            <td className={`${style.date_of_bet}`}>Hash Dice</td>
-                            <td className={`${style.bet_amount}`}>50000</td>
-                            <td className={`${style.total_bets}`}><div>786</div></td>
-                            <td><span onClick={() => setHotFour(hotFour => !hotFour)}>{hotFour ? <img src="/hot-fire.png" alt="" /> : <img src="/fire.png" alt="" />}</span></td>
-                            <hr />
-                        </tr>
-                        <tr>
-                            <td className={`${style.date_of_bet}`}>Hash Dice</td>
-                            <td className={`${style.bet_amount}`}>50000</td>
-                            <td className={`${style.total_bets}`}><div>786</div></td>
-                            <td><span onClick={() => setHotFive(hotFive => !hotFive)}>{hotFive ? <img src="/hot-fire.png" alt="" /> : <img src="/fire.png" alt="" />}</span></td>
-                            <hr />
-                        </tr>
-                        <tr>
-                            <td className={`${style.date_of_bet}`}>Hash Dice</td>
-                            <td className={`${style.bet_amount}`}>50000</td>
-                            <td className={`${style.total_bets}`}><div>786</div></td>
-                            <td><span onClick={() => setHotSix(hotSix => !hotSix)}>{hotSix ? <img src="/hot-fire.png" alt="" /> : <img src="/fire.png" alt="" />}</span></td>
-                            <hr />
-                        </tr>
-                        <tr>
-                            <td className={`${style.date_of_bet}`}>Hash Dice</td>
-                            <td className={`${style.bet_amount}`}>50000</td>
-                            <td className={`${style.total_bets}`}><div>786</div></td>
-                            <td><span onClick={() => setHotSeven(hotSeven => !hotSeven)}>{hotSeven ? <img src="/hot-fire.png" alt="" /> : <img src="/fire.png" alt="" />}</span></td>
-                            <hr />
-                        </tr>
-                        <tr>
-                            <td className={`${style.date_of_bet}`}>Hash Dice</td>
-                            <td className={`${style.bet_amount}`}>50000</td>
-                            <td className={`${style.total_bets}`}><div>786</div></td>
-                            <td><span onClick={() => setHotEight(hotEight => !hotEight)}>{hotEight ? <img src="/hot-fire.png" alt="" /> : <img src="/fire.png" alt="" />}</span></td>
-                            <hr />
-                        </tr>
-                        <tr>
-                            <td className={`${style.date_of_bet}`}>Hash Dice</td>
-                            <td className={`${style.bet_amount}`}>50000</td>
-                            <td className={`${style.total_bets}`}><div>786</div></td>
-                            <td><span onClick={() => setHotNine(hotNine => !hotNine)}>{hotNine ? <img src="/hot-fire.png" alt="" /> : <img src="/fire.png" alt="" />}</span></td>
-                            <hr />
-                        </tr>
+                        {loading && <tr><td colSpan={4}>Loading...</td></tr>}
+                        {error && <tr><td colSpan={4} style={{ color: 'red' }}>{error}</td></tr>}
+                        {!loading && !error && games.map((game) => (
+                            <tr key={game.id}>
+                                <td className={`${style.date_of_bet}`}>{game.title}</td>
+                                <td className={`${style.bet_amount}`}>{game.activePlayers || 0}</td>
+                                <td className={`${style.total_bets}`}><div>{game.category}</div></td>
+                                <td>
+                                    <span onClick={() => onToggle(game.id)} style={{ cursor: 'pointer' }}>
+                                        {game.isHot ? <img src="/hot-fire.png" alt="" /> : <img src="/fire.png" alt="" />}
+                                    </span>
+                                </td>
+                                <hr />
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

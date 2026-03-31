@@ -50,7 +50,15 @@ function NavBar({ setIsAuthenticated, setSideBarActive, theme }) {
                       <img src="/Photo.svg" alt="" />
                       <h4 className='fw-bold'>Courtney Henry</h4>
                       <p>edward786@gamil.com</p>
-                      <div className={`${style.footer}`} onClick={() => { setIsAuthenticated(false); localStorage.clear() }}>
+                      <div
+                        className={`${style.footer}`}
+                        onClick={() => {
+                          setIsAuthenticated(false);
+                          localStorage.removeItem('sizzld_admin_token');
+                          localStorage.removeItem('sizzld_admin_user');
+                          window.location.href = '/';
+                        }}
+                      >
                         <img src="/logout.svg" alt="" /> Logout
                       </div>
                     </div>

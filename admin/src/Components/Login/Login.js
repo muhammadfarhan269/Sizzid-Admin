@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Login.css'
-import { Signin } from '../../APIS/API'
 import { useNavigate, Link } from "react-router-dom";
+import { adminLogin } from '../../api';
 
 
 function Login({ isAuthenticated, setIsAuthenticated }) {
@@ -11,7 +11,7 @@ function Login({ isAuthenticated, setIsAuthenticated }) {
     password: '',
   })
   const [isShown, setIsSHown] = useState(false);
-  const [isError, setError] = useState(false);
+  const [isError, setError] = useState(null);
 
   const navigate = useNavigate();
 
@@ -21,21 +21,18 @@ function Login({ isAuthenticated, setIsAuthenticated }) {
   }
 
   const LoginApi = async (event) => {
-
     event.preventDefault()
-    if (loginCredentials.email == 'admin@sizzld.com' && loginCredentials.password == 'password') {
-      setIsAuthenticated(true)
-      localStorage.setItem('loginCredentials', JSON.stringify(loginCredentials))
-      navigate("/admin-dashboard/home");
-    } else {
-      setError(true)
+    try {
+      const res = await adminLogin(loginCredentials.email, loginCredentials.password);
+      const { accessToken, user } = res.data.data;
+      localStorage.setItem('sizzld_admin_token', accessToken);
+      localStorage.setItem('sizzld_admin_user', JSON.stringify(user));
+      setIsAuthenticated(true);
+      navigate('/admin-dashboard/home');
+    } catch (err) {
+      setError(err.response?.data?.message || 'Invalid credentials');
     }
-    let { data } = await Signin(loginCredentials)
-    document.cookie = `token = ${data.token}`;
-    var value = document.cookie;
-    console.log(value)
-
-  }
+  };
 
   return (
     <section className='login_page'>
@@ -63,7 +60,7 @@ function Login({ isAuthenticated, setIsAuthenticated }) {
                       <div className="mb-3 form-check">
                         <p className='forgot_password'><Link to={'/reset-password'}>Forgot Password?</Link></p>
                       </div>
-                      {isError && <span style={{ color: 'red', float: 'left' }}>Invalid Credentials, Please Try again!</span>}
+                      {isError && <span style={{ color: 'red', float: 'left' }}>{isError}</span>}
                       <button type="submit" className="btn btn_login mt-4">LogIn <img src="arrow-right.png" className='float-end' alt="" /></button>
                     </form>
                     <h5 className='login_card_bottom'>Better Controls for better Product.</h5>

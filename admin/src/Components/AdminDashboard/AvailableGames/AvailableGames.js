@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles_dark from './AvailableGames_Dark.module.css';
 import styles_light from './AvailableGames_Light.module.css';
+import { getGames } from '../../../api';
 
 function AvailableGames({ theme }) {
 
     const style = theme === 'dark' ? styles_dark : styles_light
+    const [games, setGames] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await getGames();
+                setGames(res.data.data || []);
+            } catch (err) {
+                setError('Failed to load data');
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, []);
 
     return (
         <div className='row'>
@@ -13,151 +31,25 @@ function AvailableGames({ theme }) {
             </div>
             <div className='col-md-12 mt-4'>
                 <div className={`${style.games_card}`}>
+                    {loading && <p>Loading...</p>}
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
                     <div className='row'>
-                        <div className='col-md-3 mt-3'>
-                            <div className={`card ${style.individual_game_card}`}>
-                                <img src="/game-one.png" class="card-img-top w-100" alt="..." />
-                                <div className={`card-body p-2 ${style.card_body}`}>
-                                    <p className={`card-text position-relative ${style.card_text}`}>35,000 Player <br /> Playing Now
-                                        <div className={`${style.redirect}`}>
-                                            <a href="#"><img src="/arrow.png" alt="" /></a>
-                                        </div>
-                                    </p>
+                        {!loading && !error && games.map((game) => (
+                            <div className='col-md-3 mt-3' key={game.id}>
+                                <div className={`card ${style.individual_game_card}`}>
+                                    <img src={game.thumbnailUrl || "/game-one.png"} className="card-img-top w-100" alt={game.title} />
+                                    <div className={`card-body p-2 ${style.card_body}`}>
+                                        <p className={`card-text position-relative ${style.card_text}`}>
+                                            {game.title}<br />
+                                            {game.category} | {game.activePlayers || 0} Playing Now
+                                            <div className={`${style.redirect}`}>
+                                                <a href={game.gameUrl || "#"} target="_blank" rel="noreferrer"><img src="/arrow.png" alt="" /></a>
+                                            </div>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className='col-md-3 mt-3'>
-                            <div className={`card ${style.individual_game_card}`}>
-                                <img src="/game-two.png" class="card-img-top w-100" alt="..." />
-                                <div className={`card-body p-2 ${style.card_body}`}>
-                                    <p className={`card-text position-relative ${style.card_text}`}>35,000 Player <br /> Playing Now
-                                        <div className={`${style.redirect}`}>
-                                            <a href="#"><img src="/arrow.png" alt="" /></a>
-                                        </div>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-md-3 mt-3'>
-                            <div className={`card ${style.individual_game_card}`}>
-                                <img src="/game-three.png" class="card-img-top w-100" alt="..." />
-                                <div className={`card-body p-2 ${style.card_body}`}>
-                                    <p className={`card-text position-relative ${style.card_text}`}>35,000 Player <br /> Playing Now
-                                        <div className={`${style.redirect}`}>
-                                            <a href="#"><img src="/arrow.png" alt="" /></a>
-                                        </div>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-md-3 mt-3'>
-                            <div className={`card ${style.individual_game_card}`}>
-                                <img src="/game-four.png" class="card-img-top w-100" alt="..." />
-                                <div className={`card-body p-2 ${style.card_body}`}>
-                                    <p className={`card-text position-relative ${style.card_text}`}>35,000 Player <br /> Playing Now
-                                        <div className={`${style.redirect}`}>
-                                            <a href="#"><img src="/arrow.png" alt="" /></a>
-                                        </div>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-md-3 mt-3'>
-                            <div className={`card ${style.individual_game_card}`}>
-                                <img src="/game-five.png" class="card-img-top w-100" alt="..." />
-                                <div className={`card-body p-2 ${style.card_body}`}>
-                                    <p className={`card-text position-relative ${style.card_text}`}>35,000 Player <br /> Playing Now
-                                        <div className={`${style.redirect}`}>
-                                            <a href="#"><img src="/arrow.png" alt="" /></a>
-                                        </div>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-md-3 mt-3'>
-                            <div className={`card ${style.individual_game_card}`}>
-                                <img src="/game-six.png" class="card-img-top w-100" alt="..." />
-                                <div className={`card-body p-2 ${style.card_body}`}>
-                                    <p className={`card-text position-relative ${style.card_text}`}>35,000 Player <br /> Playing Now
-                                        <div className={`${style.redirect}`}>
-                                            <a href="#"><img src="/arrow.png" alt="" /></a>
-                                        </div>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-md-3 mt-3'>
-                            <div className={`card ${style.individual_game_card}`}>
-                                <img src="/game-seven.png" class="card-img-top w-100" alt="..." />
-                                <div className={`card-body p-2 ${style.card_body}`}>
-                                    <p className={`card-text position-relative ${style.card_text}`}>35,000 Player <br /> Playing Now
-                                        <div className={`${style.redirect}`}>
-                                            <a href="#"><img src="/arrow.png" alt="" /></a>
-                                        </div>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-md-3 mt-3'>
-                            <div className={`card ${style.individual_game_card}`}>
-                                <img src="/game-eight.png" class="card-img-top w-100" alt="..." />
-                                <div className={`card-body p-2 ${style.card_body}`}>
-                                    <p className={`card-text position-relative ${style.card_text}`}>35,000 Player <br /> Playing Now
-                                        <div className={`${style.redirect}`}>
-                                            <a href="#"><img src="/arrow.png" alt="" /></a>
-                                        </div>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-md-3 mt-3'>
-                            <div className={`card ${style.individual_game_card}`}>
-                                <img src="/game-one.png" class="card-img-top w-100" alt="..." />
-                                <div className={`card-body p-2 ${style.card_body}`}>
-                                    <p className={`card-text position-relative ${style.card_text}`}>35,000 Player <br /> Playing Now
-                                        <div className={`${style.redirect}`}>
-                                            <a href="#"><img src="/arrow.png" alt="" /></a>
-                                        </div>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-md-3 mt-3'>
-                            <div className={`card ${style.individual_game_card}`}>
-                                <img src="/game-two.png" class="card-img-top w-100" alt="..." />
-                                <div className={`card-body p-2 ${style.card_body}`}>
-                                    <p className={`card-text position-relative ${style.card_text}`}>35,000 Player <br /> Playing Now
-                                        <div className={`${style.redirect}`}>
-                                            <a href="#"><img src="/arrow.png" alt="" /></a>
-                                        </div>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-md-3 mt-3'>
-                            <div className={`card ${style.individual_game_card}`}>
-                                <img src="/game-three.png" class="card-img-top w-100" alt="..." />
-                                <div className={`card-body p-2 ${style.card_body}`}>
-                                    <p className={`card-text position-relative ${style.card_text}`}>35,000 Player <br /> Playing Now
-                                        <div className={`${style.redirect}`}>
-                                            <a href="#"><img src="/arrow.png" alt="" /></a>
-                                        </div>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-md-3 mt-3'>
-                            <div className={`card ${style.individual_game_card}`}>
-                                <img src="/game-four.png" class="card-img-top w-100" alt="..." />
-                                <div className={`card-body p-2 ${style.card_body}`}>
-                                    <p className={`card-text position-relative ${style.card_text}`}>35,000 Player <br /> Playing Now
-                                        <div className={`${style.redirect}`}>
-                                            <a href="#"><img src="/arrow.png" alt="" /></a>
-                                        </div>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>

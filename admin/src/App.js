@@ -26,6 +26,7 @@ import EditProfile from './Components/EditProfileModal/EditProfile';
 import UserDetail from './Components/AdminDashboard/UserDetail/UserDetail';
 import UserDetailPopup from './Components/AdminDashboard/UserDetail/UserDetailPopup/UserDetailPopup';
 import PendingApprovalModal from './Components/AdminDashboard/PendingApprovals/PendingApprovalModal/PendingApprovalModal';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const [isActive, setIsActive] = useState(false)
@@ -35,16 +36,17 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const getLogin = localStorage.getItem('loginCredentials')
-    if (getLogin != null) {
+    const token = localStorage.getItem('sizzld_admin_token')
+    if (token) {
       setIsAuthenticated(true)
       navigate("/admin-dashboard/home");
-
+    } else {
+      setIsAuthenticated(false)
     }
-
   }, [])
   return (
     <>
+      <Toaster position="top-right" />
       <LanguageModal theme={theme} />
       <EditProfile theme={theme} />
       <UserDetailPopup theme={theme} />

@@ -6,7 +6,9 @@ import { Navigate, Outlet } from "react-router-dom";
 import NotificationRightSideBar from '../NotificationRightSideBar/NotificationRightSideBar';
 
 function AdminDashboard({ setIsActive, isActive, isAuthenticated, setIsAuthenticated, setTheme, theme, setSideBarActive, sideBarActive }) {
-    if (isAuthenticated !==  true) {
+    const token = localStorage.getItem('sizzld_admin_token');
+    const isLoggedIn = !!token;
+    if (isLoggedIn !== true) {
         return <Navigate replace to="/" />;
     } else {
     return (
