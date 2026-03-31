@@ -1,41 +1,38 @@
-import { useQuery } from "@tanstack/react-query";
-import { getNotificationsApi, markAllNotificationsReadApi, markNotificationReadApi } from "../api/notifications";
-import NotificationItem from "../components/notifications/NotificationItem";
-import Button from "../components/ui/Button";
-import EmptyState from "../components/ui/EmptyState";
+import { useEffect, useState } from "react";
+import { getNotifications, markAllRead, markRead } from "../api/notifications";
+
+const iconFor = (type) =>
+  ({ TOURNAMENT: "fa-trophy", REWARD: "fa-gift", SYSTEM: "fa-bell", SUPPORT: "fa-headset" }[type] || "fa-bell");
+
+const rel = (d) => {
+  const m = Math.floor((Date.now() - new Date(d).getTime()) / 60000);
+  if (m < 60) return `${m} minutes ago`;
+  const h = Math.floor(m / 60);
+  if (h < 24) return `${h} hours ago`;
+  return `${Math.floor(h / 24)} days ago`;
+};
 
 export default function Notifications() {
-  const { data, refetch } = useQuery({ queryKey: ["notifications"], queryFn: () => getNotificationsApi({ page: 1, limit: 50 }) });
-  const items = data?.items || [];
-
-  const onRead = async (id) => {
-    await markNotificationReadApi(id);
-    refetch();
-  };
-
-  const onReadAll = async () => {
-    await markAllNotificationsReadApi();
-    refetch();
-  };
+  const [items, setItems] = useState([]);
+  const [unread, setUnread] = useState(0);
+  const load = () => getNotifications({ page: 1, limit: 50 }).then((r) => { setItems(r.data.data || []); setUnread(r.data.unreadCount || 0); });
+  useEffect(() => { load(); }, []);
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Notifications</h1>
-        <Button size="sm" variant="ghost" onClick={onReadAll}>
-          Mark all as read
-        </Button>
+    <div>
+      <h1>Notifications <span className="sizzld-badge badge-purple">{unread}</span></h1>
+      <button className="sizzld-btn sizzld-btn-outline sizzld-btn-sm" onClick={() => markAllRead().then(load)}>Mark all read</button>
+      <div style={{ marginTop: 12, display: "grid", gap: 10 }}>
+        {items.map((n) => (
+          <button key={n.id} className="sizzld-card" onClick={() => markRead(n.id).then(load)} style={{ textAlign: "left", background: n.isRead ? "var(--bg-card)" : "var(--bg-card-hover)" }}>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div><i className={`fa ${iconFor(n.type)}`} /> <strong>{n.title}</strong></div>
+              <small style={{ color: "var(--text-secondary)" }}>{rel(n.createdAt)}</small>
+            </div>
+            <p style={{ color: "var(--text-secondary)", marginTop: 4 }}>{n.body}</p>
+          </button>
+        ))}
       </div>
-      <p className="text-sm text-slate-300">Unread: {data?.unreadCount || 0}</p>
-      {!items.length ? (
-        <EmptyState title="No notifications" />
-      ) : (
-        <div className="space-y-2">
-          {items.map((item) => (
-            <NotificationItem key={item.id} item={item} onRead={onRead} />
-          ))}
-        </div>
-      )}
     </div>
   );
 }

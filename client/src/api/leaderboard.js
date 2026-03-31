@@ -1,16 +1,6 @@
 import api from "./axios";
 
-export const getGlobalLeaderboardApi = async (params) => {
-  const { data } = await api.get("/leaderboard/global", { params });
-  return data.data || [];
-};
-
-export const getGameLeaderboardApi = async (gameId, params) => {
-  const { data } = await api.get(`/leaderboard/game/${gameId}`, { params });
-  return data.data || [];
-};
-
-export const getMyRankApi = async () => {
-  const { data } = await api.get("/leaderboard/me");
-  return data.data;
-};
+export const getGlobal = (params) => api.get("/leaderboard/global", { params });
+export const getByGame = (gameId) => api.get(`/leaderboard/game/${gameId}`);
+export const getTournamentBoard = (id) => api.get(`/leaderboard/tournament/${id}`);
+export const getMyRank = () => api.get("/leaderboard/me");

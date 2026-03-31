@@ -1,25 +1,18 @@
 import { Link } from "react-router-dom";
-import Badge from "../ui/Badge";
-import Button from "../ui/Button";
-import Card from "../ui/Card";
 
 export default function GameCard({ game }) {
   return (
-    <Card hover className="space-y-3">
-      <div className="h-28 rounded-lg bg-gradient-to-br from-brand-primary/40 to-brand-secondary/30" />
-      <div className="flex items-center justify-between">
-        <h3 className="font-semibold">{game.title}</h3>
-        {game.isHot && <Badge variant="warning">HOT</Badge>}
+    <div className="sizzld-card" style={{ minWidth: 250 }}>
+      <div style={{ height: 120, borderRadius: 10, background: "linear-gradient(135deg, #4c1d95, #2563eb)" }} />
+      <div style={{ display: "flex", justifyContent: "space-between", marginTop: 12 }}>
+        <h4>{game.title}</h4>
+        {game.isHot && <span className="sizzld-badge badge-hot">HOT</span>}
       </div>
-      <div className="flex items-center justify-between text-xs text-slate-300">
-        <Badge variant="info">{game.category}</Badge>
-        <span>{game.activePlayers || 0} active</span>
-      </div>
-      <Link to={`/games/${game.id}`}>
-        <Button fullWidth size="sm">
-          Play
-        </Button>
+      <p style={{ color: "var(--text-secondary)", fontSize: 13 }}>{game.category} • <i className="fa fa-users" /> {game.activePlayers || 0}</p>
+      <p style={{ color: "var(--text-secondary)", fontSize: 12 }}>Earn up to {(game.pointsHint || 100)} pts</p>
+      <Link className="sizzld-btn sizzld-btn-primary" to={`/games/${game.id}`} style={{ marginTop: 8 }}>
+        Play
       </Link>
-    </Card>
+    </div>
   );
 }

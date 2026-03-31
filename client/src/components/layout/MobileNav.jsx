@@ -1,23 +1,38 @@
 import { NavLink } from "react-router-dom";
 
-const links = [
-  ["🏠", "/home"],
-  ["🎮", "/games"],
-  ["🏆", "/leaderboard"],
-  ["🎁", "/rewards"],
-  ["👤", "/profile"],
+const tabs = [
+  ["/home", "fa-home", "Home"],
+  ["/games", "fa-gamepad", "Games"],
+  ["/leaderboard", "fa-trophy", "Board"],
+  ["/rewards", "fa-gift", "Rewards"],
+  ["/profile", "fa-user", "Profile"],
 ];
 
 export default function MobileNav() {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-20 border-t border-dark-600 bg-dark-800 p-2 lg:hidden">
-      <div className="flex items-center justify-around">
-        {links.map(([icon, path]) => (
-          <NavLink key={path} to={path} className={({ isActive }) => `${isActive ? "text-brand-primary" : "text-slate-300"} text-xl`}>
-            {icon}
-          </NavLink>
-        ))}
-      </div>
+    <nav
+      style={{
+        position: "fixed",
+        left: 0,
+        right: 0,
+        bottom: 0,
+        height: 64,
+        background: "var(--bg-secondary)",
+        borderTop: "1px solid var(--border-color)",
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "center",
+        zIndex: 100,
+      }}
+    >
+      {tabs.map(([to, icon, label]) => (
+        <NavLink key={to} to={to} style={({ isActive }) => ({ color: isActive ? "var(--accent-primary)" : "var(--text-secondary)", fontSize: 12 })}>
+          <div style={{ display: "grid", placeItems: "center" }}>
+            <i className={`fa ${icon}`} />
+            {label}
+          </div>
+        </NavLink>
+      ))}
     </nav>
   );
 }

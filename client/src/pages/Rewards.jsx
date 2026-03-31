@@ -1,59 +1,67 @@
-import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { listRewardsApi, myRedemptionsApi, redeemRewardApi } from "../api/rewards";
-import { getMyPointsApi } from "../api/points";
-import RewardCard from "../components/rewards/RewardCard";
-import Badge from "../components/ui/Badge";
-import Card from "../components/ui/Card";
+import { getMyPoints } from "../api/points";
+import { getMyRedemptions, getRewards, redeemReward } from "../api/rewards";
 import Modal from "../components/ui/Modal";
-import { formatPoints } from "../utils/formatters";
 
 export default function Rewards() {
-  const [selected, setSelected] = useState(null);
-  const { data: rewards = [], refetch } = useQuery({ queryKey: ["rewards"], queryFn: listRewardsApi });
-  const { data: redemptions = [], refetch: refetchRedemptions } = useQuery({ queryKey: ["my-redemptions"], queryFn: myRedemptionsApi });
-  const { data: points } = useQuery({ queryKey: ["my-points"], queryFn: getMyPointsApi });
+  const [tab, setTab] = useState("store");
+  const [points, setPoints] = useState(0);
+  const [rewards, setRewardsList] = useState([]);
+  const [redemptions, setRedemptions] = useState([]);
+  const [pick, setPick] = useState(null);
+
+  const load = () => {
+    getMyPoints().then((r) => setPoints(r.data.data.totalPoints || 0)).catch(() => setPoints(0));
+    getRewards().then((r) => setRewardsList(r.data.data || [])).catch(() => setRewardsList([]));
+    getMyRedemptions().then((r) => setRedemptions(r.data.data || [])).catch(() => setRedemptions([]));
+  };
+  useEffect(load, []);
 
   const onRedeem = async () => {
-    if (!selected) return;
     try {
-      await redeemRewardApi(selected.id);
-      toast.success("Reward redeemed");
-      setSelected(null);
-      refetch();
-      refetchRedemptions();
-    } catch (err) {
-      toast.error(err?.response?.data?.message || "Redeem failed");
+      await redeemReward(pick.id);
+      toast.success("Redeemed successfully");
+      setPick(null);
+      load();
+    } catch (e) {
+      toast.error(e?.response?.data?.message || "Redeem failed");
     }
   };
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Rewards Store</h1>
-      <Card>Balance: {formatPoints(points?.totalPoints || 0)}</Card>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {rewards.map((reward) => (
-          <RewardCard key={reward.id} reward={reward} onRedeem={setSelected} />
-        ))}
+    <div>
+      <h1>Rewards Store</h1>
+      <div className="sizzld-card" style={{ marginTop: 12 }}>
+        <div style={{ fontSize: 28, fontWeight: 700 }}>{points}</div>
+        <div style={{ color: "var(--text-secondary)" }}>SIZZL Points</div>
       </div>
-      <section>
-        <h2 className="mb-2 text-xl font-semibold">My Redemptions</h2>
-        <div className="space-y-2">
-          {redemptions.map((x) => (
-            <Card key={x.id} className="flex items-center justify-between">
-              <span>{x.reward?.title || "Reward"}</span>
-              <Badge variant={x.status === "APPROVED" ? "success" : x.status === "REJECTED" ? "danger" : "info"}>{x.status}</Badge>
-            </Card>
+      <div style={{ marginTop: 12, display: "flex", gap: 8 }}>
+        <button className={`sizzld-btn ${tab === "store" ? "sizzld-btn-primary" : "sizzld-btn-outline"}`} onClick={() => setTab("store")}>Store</button>
+        <button className={`sizzld-btn ${tab === "mine" ? "sizzld-btn-primary" : "sizzld-btn-outline"}`} onClick={() => setTab("mine")}>My Redemptions</button>
+      </div>
+      {tab === "store" ? (
+        <div style={{ marginTop: 12, display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))" }}>
+          {rewards.map((r, i) => (
+            <div key={r.id} className="sizzld-card">
+              <h4><i className={`fa ${["fa-gift", "fa-ticket", "fa-diamond", "fa-star"][i % 4]}`} /> {r.title}</h4>
+              <p style={{ color: "var(--gold)" }}>{r.pointsCost} pts</p>
+              <p style={{ color: "var(--text-secondary)" }}>Stock: {r.stockInfo ?? r.stock}</p>
+              <button disabled={points < r.pointsCost} className={`sizzld-btn ${points < r.pointsCost ? "sizzld-btn-outline" : "sizzld-btn-gold"} sizzld-btn-sm`} onClick={() => setPick(r)}>
+                Redeem
+              </button>
+            </div>
           ))}
         </div>
-      </section>
-      <Modal isOpen={!!selected} title="Confirm redemption" onClose={() => setSelected(null)}>
-        <p className="text-sm text-slate-300">Redeem {selected?.title} for {formatPoints(selected?.pointsCost)}?</p>
-        <div className="mt-4 flex justify-end gap-2">
-          <button onClick={() => setSelected(null)} className="rounded bg-dark-600 px-3 py-1">Cancel</button>
-          <button onClick={onRedeem} className="rounded bg-brand-primary px-3 py-1">Confirm</button>
+      ) : (
+        <div className="sizzld-card" style={{ marginTop: 12 }}>
+          {redemptions.map((r) => <div key={r.id} style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid var(--border-color)", padding: "10px 0" }}><span>{r.reward?.title || r.rewardId}</span><span className="sizzld-badge badge-purple">{r.status}</span></div>)}
         </div>
+      )}
+      <Modal open={!!pick} title="Confirm redemption" onClose={() => setPick(null)}>
+        <p>{pick?.title} for {pick?.pointsCost} points?</p>
+        <p style={{ color: "var(--text-secondary)" }}>Remaining balance: {(points - (pick?.pointsCost || 0))}</p>
+        <button className="sizzld-btn sizzld-btn-gold" style={{ marginTop: 8 }} onClick={onRedeem}>Confirm</button>
       </Modal>
     </div>
   );

@@ -1,6 +1,4 @@
 import api from "./axios";
 
-export const getMyPointsApi = async () => {
-  const { data } = await api.get("/points");
-  return data.data;
-};
+export const getMyPoints = () => api.get("/points");
+export const getHistory = (params) => api.get("/points/history", { params });

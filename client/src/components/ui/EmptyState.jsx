@@ -1,8 +1,9 @@
-export default function EmptyState({ title = "No data", description = "Nothing to show right now." }) {
+export default function EmptyState({ title = "Nothing here yet", text = "No records found." }) {
   return (
-    <div className="rounded-xl border border-dashed border-dark-500 bg-dark-800 p-8 text-center">
-      <p className="text-lg font-semibold">{title}</p>
-      <p className="mt-1 text-sm text-slate-300">{description}</p>
+    <div className="empty-state sizzld-card">
+      <i className="fa fa-inbox" />
+      <h3>{title}</h3>
+      <p>{text}</p>
     </div>
   );
 }

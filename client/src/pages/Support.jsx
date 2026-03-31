@@ -1,87 +1,72 @@
-import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { createTicketApi, getMyTicketsApi, getTicketApi, sendTicketMessageApi } from "../api/support";
-import Button from "../components/ui/Button";
-import Card from "../components/ui/Card";
-import EmptyState from "../components/ui/EmptyState";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { createTicket, getMyTickets, getTicket, sendMessage } from "../api/support";
 import Modal from "../components/ui/Modal";
 
 export default function Support() {
+  const [tickets, setTickets] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
+  const [detail, setDetail] = useState(null);
   const [message, setMessage] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
-  const [newTicket, setNewTicket] = useState({ subject: "", message: "" });
-  const { data: tickets = [], refetch } = useQuery({ queryKey: ["tickets"], queryFn: getMyTicketsApi });
-  const { data: detail, refetch: refetchDetail } = useQuery({
-    queryKey: ["ticket-detail", selectedId],
-    queryFn: () => getTicketApi(selectedId),
-    enabled: !!selectedId,
-  });
+  const [open, setOpen] = useState(false);
+  const [form, setForm] = useState({ subject: "", message: "", priority: "MEDIUM" });
 
-  const send = async () => {
+  const load = useCallback(() => getMyTickets().then((r) => { const list = r.data.data || []; setTickets(list); if (list[0] && !selectedId) setSelectedId(list[0].id); }), [selectedId]);
+  useEffect(() => { load(); }, [load]);
+  useEffect(() => { if (selectedId) getTicket(selectedId).then((r) => setDetail(r.data.data)); }, [selectedId]);
+  const msgs = useMemo(() => detail?.messages || [], [detail]);
+
+  const reply = async () => {
     if (!selectedId || !message.trim()) return;
-    await sendTicketMessageApi(selectedId, { message });
+    await sendMessage(selectedId, message.trim());
     setMessage("");
-    refetchDetail();
+    const r = await getTicket(selectedId);
+    setDetail(r.data.data);
   };
 
-  const create = async (e) => {
-    e.preventDefault();
-    await createTicketApi(newTicket);
-    setIsOpen(false);
-    setNewTicket({ subject: "", message: "" });
-    refetch();
+  const create = async () => {
+    await createTicket(form.subject, form.message, form.priority);
+    setOpen(false);
+    setForm({ subject: "", message: "", priority: "MEDIUM" });
+    load();
   };
 
   return (
-    <div className="grid gap-4 lg:grid-cols-3">
-      <Card className="lg:col-span-1">
-        <div className="mb-3 flex items-center justify-between">
-          <h2 className="font-semibold">My Tickets</h2>
-          <Button size="sm" onClick={() => setIsOpen(true)}>
-            New
-          </Button>
-        </div>
-        <div className="space-y-2">
-          {tickets.map((ticket) => (
-            <button
-              key={ticket.id}
-              className="w-full rounded bg-dark-800 p-2 text-left"
-              onClick={() => setSelectedId(ticket.id)}
-            >
-              <p className="font-medium">{ticket.subject}</p>
-              <p className="text-xs text-slate-400">{ticket.status}</p>
+    <div>
+      <h1>Support</h1>
+      <div style={{ display: "grid", gridTemplateColumns: "320px 1fr", gap: 12 }}>
+        <div className="sizzld-card">
+          {tickets.map((t) => (
+            <button key={t.id} className="sizzld-card" style={{ width: "100%", textAlign: "left", marginBottom: 8, borderColor: selectedId === t.id ? "var(--accent-primary)" : "var(--border-color)" }} onClick={() => setSelectedId(t.id)}>
+              <h4>{t.subject}</h4>
+              <span className="sizzld-badge badge-purple">{t.status}</span>
             </button>
           ))}
         </div>
-      </Card>
-      <Card className="lg:col-span-2">
-        {!detail ? (
-          <EmptyState title="Select a ticket" />
-        ) : (
-          <div className="space-y-3">
-            <h2 className="font-semibold">{detail.subject}</h2>
-            <div className="max-h-96 space-y-2 overflow-auto">
-              {(detail.messages || []).map((msg) => (
-                <div key={msg.id} className="rounded bg-dark-800 p-2 text-sm">
-                  <p className="text-xs text-slate-400">{msg.sender?.username || "User"}</p>
-                  <p>{msg.message}</p>
-                </div>
-              ))}
-            </div>
-            <div className="flex gap-2">
-              <input className="w-full rounded border-dark-500 bg-dark-800" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Reply..." />
-              <Button onClick={send}>Send</Button>
-            </div>
+        <div className="sizzld-card" style={{ minHeight: 480, display: "flex", flexDirection: "column" }}>
+          <h3>{detail?.subject || "Select a ticket"}</h3>
+          <div style={{ flex: 1, marginTop: 10, overflow: "auto", display: "grid", gap: 8 }}>
+            {msgs.map((m) => (
+              <div key={m.id} style={{ justifySelf: m.isAdminReply ? "start" : "end", maxWidth: "75%", background: m.isAdminReply ? "var(--bg-card)" : "var(--accent-primary)", padding: 10, borderRadius: 10 }}>
+                {m.message}
+              </div>
+            ))}
           </div>
-        )}
-      </Card>
-      <Modal isOpen={isOpen} title="Create ticket" onClose={() => setIsOpen(false)}>
-        <form className="space-y-2" onSubmit={create}>
-          <input className="w-full rounded border-dark-500 bg-dark-800" placeholder="Subject" value={newTicket.subject} onChange={(e) => setNewTicket((s) => ({ ...s, subject: e.target.value }))} />
-          <textarea className="w-full rounded border-dark-500 bg-dark-800" placeholder="Message" value={newTicket.message} onChange={(e) => setNewTicket((s) => ({ ...s, message: e.target.value }))} />
-          <Button fullWidth>Create</Button>
-        </form>
+          <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
+            <input value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Reply..." />
+            <button className="sizzld-btn sizzld-btn-primary" onClick={reply}>Send</button>
+          </div>
+        </div>
+      </div>
+      <button className="sizzld-btn sizzld-btn-primary" style={{ position: "fixed", right: 20, bottom: 90 }} onClick={() => setOpen(true)}>
+        <i className="fa fa-plus" /> Ticket
+      </button>
+      <Modal open={open} title="Create ticket" onClose={() => setOpen(false)}>
+        <input placeholder="Subject" value={form.subject} onChange={(e) => setForm((s) => ({ ...s, subject: e.target.value }))} />
+        <textarea placeholder="Message" value={form.message} onChange={(e) => setForm((s) => ({ ...s, message: e.target.value }))} style={{ marginTop: 8 }} />
+        <select value={form.priority} onChange={(e) => setForm((s) => ({ ...s, priority: e.target.value }))} style={{ marginTop: 8 }}>
+          <option>LOW</option><option>MEDIUM</option><option>HIGH</option><option>URGENT</option>
+        </select>
+        <button className="sizzld-btn sizzld-btn-primary" style={{ marginTop: 8 }} onClick={create}>Create</button>
       </Modal>
     </div>
   );

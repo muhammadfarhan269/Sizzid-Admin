@@ -1,28 +1,28 @@
-import { useQuery } from "@tanstack/react-query";
-import { getNotificationsApi } from "../../api/notifications";
-import { useAuth } from "../../hooks/useAuth";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { getNotifications } from "../../api/notifications";
 import MobileNav from "./MobileNav";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 
 export default function Layout({ children }) {
-  const { user, logout } = useAuth();
-  const { data } = useQuery({
-    queryKey: ["notifications", "count"],
-    queryFn: () => getNotificationsApi({ limit: 1 }),
-    enabled: !!user,
-  });
+  const { user, logout } = useContext(AuthContext);
+  const [unread, setUnread] = useState(0);
+
+  useEffect(() => {
+    getNotifications({ limit: 1 })
+      .then((res) => setUnread(res.data.unreadCount || 0))
+      .catch(() => setUnread(0));
+  }, []);
 
   return (
-    <div className="min-h-screen bg-dark-900 text-white">
-      <div className="flex">
-        <Sidebar user={user} />
-        <div className="flex-1 pb-20 lg:pb-0">
-          <Navbar user={user} unreadCount={data?.unreadCount || 0} onLogout={logout} />
-          <main className="p-4 lg:p-6">{children}</main>
-        </div>
+    <div className="page-wrapper">
+      <Sidebar user={user} unreadCount={unread} />
+      <Navbar user={user} unreadCount={unread} onLogout={logout} />
+      <main className="main-content">{children}</main>
+      <div className="mobile-only">
+        <MobileNav />
       </div>
-      <MobileNav />
     </div>
   );
 }
