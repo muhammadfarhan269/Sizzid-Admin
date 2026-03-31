@@ -1,111 +1,102 @@
-const { PrismaClient, UserRole, GameCategory, PromoType } = require("@prisma/client");
-const bcrypt = require("bcryptjs");
-const { v4: uuidv4 } = require("uuid");
+import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  const adminPasswordHash = await bcrypt.hash("Admin@1234", 10);
+  const hashedPassword = await bcrypt.hash("Admin@1234", 10);
 
   await prisma.user.upsert({
-    where: { email: "admin@sizzld.com" },
+    where: { email: 'admin@sizzld.com' },
     update: {},
     create: {
-      email: "admin@sizzld.com",
-      username: "sizzld_admin",
-      passwordHash: adminPasswordHash,
-      role: UserRole.SUPER_ADMIN,
-      referralCode: `SIZZLD-${uuidv4().slice(0, 8).toUpperCase()}`,
+      email: 'admin@sizzld.com',
+      username: 'sizzld_admin',
+      passwordHash: hashedPassword,
+      role: 'SUPER_ADMIN',
+      referralCode: 'ADMIN001',
     },
   });
 
-  const games = [
-    {
-      title: "Mind Maze Masters",
-      description: "Fast-paced puzzle duels with score multipliers.",
-      category: GameCategory.PUZZLE,
-      gameUrl: "https://games.sizzld.com/mind-maze-masters",
-    },
-    {
-      title: "Neon Drift Blitz",
-      description: "Arcade reaction challenge with weekly ladders.",
-      category: GameCategory.ARCADE,
-      gameUrl: "https://games.sizzld.com/neon-drift-blitz",
-    },
-    {
-      title: "Quiz Clash Arena",
-      description: "Competitive trivia battles across multiple topics.",
-      category: GameCategory.TRIVIA,
-      gameUrl: "https://games.sizzld.com/quiz-clash-arena",
-    },
-    {
-      title: "Tactic Titans",
-      description: "Turn-based strategy skirmishes for ranked play.",
-      category: GameCategory.STRATEGY,
-      gameUrl: "https://games.sizzld.com/tactic-titans",
-    },
-    {
-      title: "Street Goal Showdown",
-      description: "Skill-shot sports mini game with streak rewards.",
-      category: GameCategory.SPORTS,
-      gameUrl: "https://games.sizzld.com/street-goal-showdown",
-    },
-  ];
+  await prisma.game.createMany({
+    data: [
+      {
+        title: 'Mind Maze Masters',
+        description: 'Fast-paced puzzle duels with score multipliers.',
+        category: 'PUZZLE',
+        gameUrl: 'https://games.sizzld.com/mind-maze-masters',
+        isActive: true,
+      },
+      {
+        title: 'Turbo Trivia Clash',
+        description: 'Real-time trivia battles across 10 categories.',
+        category: 'TRIVIA',
+        gameUrl: 'https://games.sizzld.com/turbo-trivia-clash',
+        isActive: true,
+      },
+      {
+        title: 'Pixel Strike Arena',
+        description: 'Top-down arcade shooter with skill-based matchmaking.',
+        category: 'ARCADE',
+        gameUrl: 'https://games.sizzld.com/pixel-strike-arena',
+        isActive: true,
+        isHot: true,
+      },
+      {
+        title: 'Kingdom Tactics',
+        description: 'Turn-based strategy game with global leaderboards.',
+        category: 'STRATEGY',
+        gameUrl: 'https://games.sizzld.com/kingdom-tactics',
+        isActive: true,
+      },
+      {
+        title: 'Street Kick Champions',
+        description: 'Skill-based football penalty shootout competition.',
+        category: 'SPORTS',
+        gameUrl: 'https://games.sizzld.com/street-kick-champions',
+        isActive: true,
+        isHot: true,
+      },
+    ],
+    skipDuplicates: true,
+  });
 
-  for (const game of games) {
-    await prisma.game.upsert({
-      where: { gameUrl: game.gameUrl },
-      update: game,
-      create: game,
-    });
-  }
-
-  const rewards = [
-    { title: "Bronze Reward Pack", pointsCost: 500 },
-    { title: "Silver Mystery Box", pointsCost: 1500 },
-    { title: "Gold Prize Voucher", pointsCost: 5000 },
-  ];
-
-  for (const reward of rewards) {
-    await prisma.reward.upsert({
-      where: { title: reward.title },
-      update: reward,
-      create: reward,
-    });
-  }
+  await prisma.reward.createMany({
+    data: [
+      { title: "Bronze Reward Pack", pointsCost: 500 },
+      { title: "Silver Mystery Box", pointsCost: 1500 },
+      { title: "Gold Prize Voucher", pointsCost: 5000 },
+    ],
+    skipDuplicates: true,
+  });
 
   const now = new Date();
   const inSevenDays = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
   const inThirtyDays = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
 
-  const promotions = [
-    {
-      title: "Welcome Bonus",
-      description: "2x points for first 7 days",
-      type: PromoType.BONUS_POINTS,
-      pointsBonus: 2,
-      startsAt: now,
-      endsAt: inSevenDays,
-      isActive: true,
-    },
-    {
-      title: "Weekend Warrior",
-      description: "Bonus points every weekend",
-      type: PromoType.SPECIAL_EVENT,
-      pointsBonus: 200,
-      startsAt: now,
-      endsAt: inThirtyDays,
-      isActive: true,
-    },
-  ];
-
-  for (const promo of promotions) {
-    await prisma.promotion.upsert({
-      where: { title: promo.title },
-      update: promo,
-      create: promo,
-    });
-  }
+  await prisma.promotion.createMany({
+    data: [
+      {
+        title: "Welcome Bonus",
+        description: "2x points for first 7 days",
+        type: "BONUS_POINTS",
+        pointsBonus: 2,
+        startsAt: now,
+        endsAt: inSevenDays,
+        isActive: true,
+      },
+      {
+        title: "Weekend Warrior",
+        description: "Bonus points every weekend",
+        type: "SPECIAL_EVENT",
+        pointsBonus: 200,
+        startsAt: now,
+        endsAt: inThirtyDays,
+        isActive: true,
+      },
+    ],
+    skipDuplicates: true,
+  });
 
   console.log("Seed complete");
 }

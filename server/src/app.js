@@ -1,30 +1,18 @@
-const express = require("express");
-const cors = require("cors");
-const helmet = require("helmet");
-const morgan = require("morgan");
-const rateLimit = require("express-rate-limit");
-const env = require("./config/env");
-const errorHandler = require("./middleware/errorHandler");
-
-const authRoutes = require("./modules/auth/auth.routes");
-const usersRoutes = require("./modules/users/users.routes");
-const gamesRoutes = require("./modules/games/games.routes");
-const leaderboardRoutes = require("./modules/leaderboard/leaderboard.routes");
-const pointsRoutes = require("./modules/points/points.routes");
-const rewardsRoutes = require("./modules/rewards/rewards.routes");
-const vipRoutes = require("./modules/vip/vip.routes");
-const promotionsRoutes = require("./modules/promotions/promotions.routes");
-const approvalsRoutes = require("./modules/approvals/approvals.routes");
-const supportRoutes = require("./modules/support/support.routes");
-const affiliatesRoutes = require("./modules/affiliates/affiliates.routes");
-const adminRoutes = require("./modules/admin/admin.routes");
+import express from "express";
+import cors from "cors";
+import helmet from "helmet";
+import morgan from "morgan";
+import rateLimit from "express-rate-limit";
 
 const app = express();
 
 app.use(helmet());
 app.use(
   cors({
-    origin: [env.clientUrl, env.adminUrl],
+    origin: [
+      process.env.CLIENT_URL || "http://localhost:3000",
+      process.env.ADMIN_URL || "http://localhost:3001",
+    ],
     credentials: true,
   })
 );
@@ -38,23 +26,32 @@ app.use(
   })
 );
 
-app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/users", usersRoutes);
-app.use("/api/v1/games", gamesRoutes);
-app.use("/api/v1/leaderboard", leaderboardRoutes);
-app.use("/api/v1/points", pointsRoutes);
-app.use("/api/v1/rewards", rewardsRoutes);
-app.use("/api/v1/vip", vipRoutes);
-app.use("/api/v1/promotions", promotionsRoutes);
-app.use("/api/v1/approvals", approvalsRoutes);
-app.use("/api/v1/support", supportRoutes);
-app.use("/api/v1/affiliates", affiliatesRoutes);
-app.use("/api/v1/admin", adminRoutes);
+const comingSoon = (req, res) =>
+  res.status(200).json({ success: true, message: "coming soon" });
+
+app.use("/api/v1/auth", comingSoon);
+app.use("/api/v1/users", comingSoon);
+app.use("/api/v1/games", comingSoon);
+app.use("/api/v1/leaderboard", comingSoon);
+app.use("/api/v1/points", comingSoon);
+app.use("/api/v1/rewards", comingSoon);
+app.use("/api/v1/vip", comingSoon);
+app.use("/api/v1/promotions", comingSoon);
+app.use("/api/v1/approvals", comingSoon);
+app.use("/api/v1/support", comingSoon);
+app.use("/api/v1/affiliates", comingSoon);
+app.use("/api/v1/admin", comingSoon);
 
 app.get("/health", (req, res) => {
   res.status(200).json({ success: true, message: "ok" });
 });
 
-app.use(errorHandler);
+app.use((err, req, res, next) => {
+  return res.status(err.statusCode || 500).json({
+    success: false,
+    message: err.message || "Internal server error",
+    ...(process.env.NODE_ENV === "development" ? { stack: err.stack } : {}),
+  });
+});
 
-module.exports = app;
+export default app;
