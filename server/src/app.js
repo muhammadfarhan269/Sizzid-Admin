@@ -12,17 +12,38 @@ import rewardsRoutes from "./modules/rewards/rewards.routes.js";
 import promotionsRoutes from "./modules/promotions/promotions.routes.js";
 import affiliatesRoutes from "./modules/affiliates/affiliates.routes.js";
 import supportRoutes from "./modules/support/support.routes.js";
+import vipRoutes from "./modules/vip/vip.routes.js";
+import adminRoutes from "./modules/admin/admin.routes.js";
 import errorHandler from "./middleware/errorHandler.js";
 
 const app = express();
 
+app.get("/health", (req, res) => {
+  return res.status(200).json({
+    status: "ok",
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV,
+    version: "1.0.0",
+  });
+});
+
 app.use(helmet());
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  process.env.ADMIN_URL,
+  process.env.PRODUCTION_CLIENT_URL,
+  process.env.PRODUCTION_ADMIN_URL,
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: [
-      process.env.CLIENT_URL || "http://localhost:3000",
-      process.env.ADMIN_URL || "http://localhost:3001",
-    ],
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
@@ -44,16 +65,12 @@ app.use("/api/v1/games", gamesRoutes);
 app.use("/api/v1/leaderboard", leaderboardRoutes);
 app.use("/api/v1/points", pointsRoutes);
 app.use("/api/v1/rewards", rewardsRoutes);
-app.use("/api/v1/vip", comingSoon);
+app.use("/api/v1/vip", vipRoutes);
 app.use("/api/v1/promotions", promotionsRoutes);
 app.use("/api/v1/approvals", comingSoon);
 app.use("/api/v1/support", supportRoutes);
 app.use("/api/v1/affiliates", affiliatesRoutes);
-app.use("/api/v1/admin", comingSoon);
-
-app.get("/health", (req, res) => {
-  res.status(200).json({ success: true, message: "ok" });
-});
+app.use("/api/v1/admin", adminRoutes);
 
 app.use(errorHandler);
 

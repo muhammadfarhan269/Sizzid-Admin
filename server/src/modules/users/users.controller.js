@@ -1,5 +1,13 @@
 import { success } from "../../utils/response.js";
-import { getMyNotifications, markAllAsRead, markAsRead } from "./users.service.js";
+import {
+  changePassword,
+  getMyNotifications,
+  getMyProfile,
+  getMyStats,
+  markAllAsRead,
+  markAsRead,
+  updateMyProfile,
+} from "./users.service.js";
 
 const toNumber = (value, fallback) => {
   const n = Number(value);
@@ -40,6 +48,43 @@ export const markAllAsReadController = async (req, res, next) => {
   try {
     const data = await markAllAsRead(req.user.id);
     return success(res, data, data.message);
+  } catch (err) {
+    return next(err);
+  }
+};
+
+export const getMyProfileController = async (req, res, next) => {
+  try {
+    const data = await getMyProfile(req.user.id);
+    return success(res, data, "Profile fetched");
+  } catch (err) {
+    return next(err);
+  }
+};
+
+export const updateMyProfileController = async (req, res, next) => {
+  try {
+    const data = await updateMyProfile(req.user.id, req.body);
+    return success(res, data, "Profile updated");
+  } catch (err) {
+    return next(err);
+  }
+};
+
+export const changePasswordController = async (req, res, next) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+    const data = await changePassword(req.user.id, currentPassword, newPassword);
+    return success(res, data, data.message);
+  } catch (err) {
+    return next(err);
+  }
+};
+
+export const getMyStatsController = async (req, res, next) => {
+  try {
+    const data = await getMyStats(req.user.id);
+    return success(res, data, "Stats fetched");
   } catch (err) {
     return next(err);
   }

@@ -1,14 +1,15 @@
-const express = require("express");
-const controller = require("./vip.controller");
+import express from "express";
+import { requireAuth } from "../../middleware/auth.js";
+import {
+  getMyVipTierController,
+  getVipBenefitsController,
+  getVipTiersController,
+} from "./vip.controller.js";
 
 const router = express.Router();
 
-// GET    /api/v1/vip/me                 -> my vip tier/progress
-// GET    /api/v1/vip/tiers              -> list tier benefits
-// PATCH  /api/v1/vip/users/:id          -> update user vip tier (admin only)
-router.get("/", controller.comingSoon);
-router.get("/me", controller.comingSoon);
-router.get("/tiers", controller.comingSoon);
-router.patch("/users/:id", controller.comingSoon);
+router.get("/tiers", getVipTiersController);
+router.get("/my-tier", requireAuth, getMyVipTierController);
+router.get("/benefits", getVipBenefitsController);
 
-module.exports = router;
+export default router;
