@@ -1,13 +1,17 @@
-const express = require("express");
-const controller = require("./leaderboard.controller");
+import express from "express";
+import { requireAuth } from "../../middleware/auth.js";
+import {
+  getGlobalLeaderboardController,
+  getGameLeaderboardController,
+  getTournamentLeaderboardController,
+  getMyRankController,
+} from "./leaderboard.controller.js";
 
 const router = express.Router();
 
-// GET    /api/v1/leaderboard                -> global leaderboard
-// GET    /api/v1/leaderboard/games/:gameId  -> leaderboard by game
-// GET    /api/v1/leaderboard/tournaments/:tournamentId -> tournament leaderboard
-router.get("/", controller.comingSoon);
-router.get("/games/:gameId", controller.comingSoon);
-router.get("/tournaments/:tournamentId", controller.comingSoon);
+router.get("/global", getGlobalLeaderboardController);
+router.get("/game/:gameId", getGameLeaderboardController);
+router.get("/tournament/:id", getTournamentLeaderboardController);
+router.get("/me", requireAuth, getMyRankController);
 
-module.exports = router;
+export default router;

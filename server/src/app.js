@@ -4,6 +4,9 @@ import helmet from "helmet";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 import authRoutes from "./modules/auth/auth.routes.js";
+import gamesRoutes from "./modules/games/games.routes.js";
+import leaderboardRoutes from "./modules/leaderboard/leaderboard.routes.js";
+import pointsRoutes from "./modules/points/points.routes.js";
 import errorHandler from "./middleware/errorHandler.js";
 
 const app = express();
@@ -32,9 +35,9 @@ const comingSoon = (req, res) => res.status(200).json({ success: true, message: 
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", comingSoon);
-app.use("/api/v1/games", comingSoon);
-app.use("/api/v1/leaderboard", comingSoon);
-app.use("/api/v1/points", comingSoon);
+app.use("/api/v1/games", gamesRoutes);
+app.use("/api/v1/leaderboard", leaderboardRoutes);
+app.use("/api/v1/points", pointsRoutes);
 app.use("/api/v1/rewards", comingSoon);
 app.use("/api/v1/vip", comingSoon);
 app.use("/api/v1/promotions", comingSoon);
