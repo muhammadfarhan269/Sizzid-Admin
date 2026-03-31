@@ -17,6 +17,20 @@ import adminRoutes from "./modules/admin/admin.routes.js";
 import errorHandler from "./middleware/errorHandler.js";
 
 const app = express();
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator: (req) => {
+    return (
+      req.headers["x-forwarded-for"]?.split(",")[0].trim() ||
+      req.headers["x-real-ip"] ||
+      req.ip ||
+      "unknown"
+    );
+  },
+});
 
 app.get("/health", (req, res) => {
   return res.status(200).json({
@@ -50,12 +64,8 @@ app.use(
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(
-  rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
-  })
-);
+app.set("trust proxy", 1);
+app.use(limiter);
 
 const comingSoon = (req, res) => res.status(200).json({ success: true, message: "coming soon" });
 
