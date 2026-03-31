@@ -1,0 +1,313 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum UserRole {
+  PLAYER
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum VipTier {
+  BRONZE
+  SILVER
+  GOLD
+  PLATINUM
+}
+
+enum GameCategory {
+  PUZZLE
+  ARCADE
+  STRATEGY
+  TRIVIA
+  SPORTS
+  OTHER
+}
+
+enum TournamentStatus {
+  UPCOMING
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum PointTxType {
+  EARNED_GAME
+  EARNED_TOURNAMENT
+  EARNED_STREAK
+  EARNED_REFERRAL
+  EARNED_PROMO
+  REDEEMED
+  ADJUSTED
+}
+
+enum RedemptionStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  FULFILLED
+}
+
+enum PromoType {
+  BONUS_POINTS
+  FREE_ENTRY
+  DISCOUNT
+  SPECIAL_EVENT
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+enum TicketPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum NotifType {
+  SYSTEM
+  REWARD
+  TOURNAMENT
+  PROMO
+  SUPPORT
+}
+
+enum ApprovalType {
+  GAME_UPLOAD
+  REWARD_REQUEST
+  CONTENT
+}
+
+enum ApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model User {
+  id                   String             @id @default(uuid())
+  email                String             @unique
+  username             String             @unique
+  passwordHash         String
+  avatarUrl            String?
+  role                 UserRole           @default(PLAYER)
+  vipTier              VipTier            @default(BRONZE)
+  totalPoints          Int                @default(0)
+  lifetimePoints       Int                @default(0)
+  loginStreak          Int                @default(0)
+  lastLoginAt          DateTime?
+  isActive             Boolean            @default(true)
+  isBanned             Boolean            @default(false)
+  referralCode         String             @unique
+  referredById         String?
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+  referredBy           User?              @relation("UserReferrals", fields: [referredById], references: [id])
+  referrals            User[]             @relation("UserReferrals")
+  gameSessions         GameSession[]
+  tournamentEntries    TournamentEntry[]
+  pointTransactions    PointTransaction[]
+  rewardRedemptions    RewardRedemption[]
+  supportTickets       SupportTicket[]
+  ticketMessages       TicketMessage[]
+  notifications        Notification[]
+  affiliatesAsReferrer Affiliate[]        @relation("AffiliateReferrer")
+  affiliatesAsReferred Affiliate?         @relation("AffiliateReferred")
+  approvalsRequested   Approval[]         @relation("ApprovalsRequestedBy")
+  approvalsReviewed    Approval[]         @relation("ApprovalsReviewedBy")
+}
+
+model Game {
+  id            String       @id @default(uuid())
+  title         String
+  description   String?
+  category      GameCategory
+  thumbnailUrl  String?
+  gameUrl       String
+  isHot         Boolean      @default(false)
+  isActive      Boolean      @default(true)
+  activePlayers Int          @default(0)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  sessions      GameSession[]
+  tournaments   Tournament[]
+}
+
+model GameSession {
+  id           String   @id @default(uuid())
+  userId       String
+  gameId       String
+  score        Int
+  duration     Int
+  pointsEarned Int
+  playedAt     DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  game         Game     @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([gameId])
+}
+
+model Tournament {
+  id         String           @id @default(uuid())
+  title      String
+  gameId     String
+  startAt    DateTime
+  endAt      DateTime
+  prizePool  String
+  maxPlayers Int
+  status     TournamentStatus
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+  game       Game             @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  entries    TournamentEntry[]
+
+  @@index([gameId])
+}
+
+model TournamentEntry {
+  id           String     @id @default(uuid())
+  tournamentId String
+  userId       String
+  score        Int        @default(0)
+  rank         Int?
+  joinedAt     DateTime
+  tournament   Tournament @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([tournamentId])
+  @@index([userId])
+}
+
+model PointTransaction {
+  id          String      @id @default(uuid())
+  userId      String
+  amount      Int
+  type        PointTxType
+  description String?
+  createdAt   DateTime    @default(now())
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Reward {
+  id          String             @id @default(uuid())
+  title       String
+  description String?
+  pointsCost  Int
+  imageUrl    String?
+  stock       Int                @default(-1)
+  isActive    Boolean            @default(true)
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+  redemptions RewardRedemption[]
+}
+
+model RewardRedemption {
+  id         String           @id @default(uuid())
+  userId     String
+  rewardId   String
+  pointsSpent Int
+  status     RedemptionStatus
+  redeemedAt DateTime
+  user       User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reward     Reward           @relation(fields: [rewardId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([rewardId])
+}
+
+model Promotion {
+  id             String    @id @default(uuid())
+  title          String
+  description    String?
+  bannerImageUrl String?
+  type           PromoType
+  pointsBonus    Int       @default(0)
+  startsAt       DateTime
+  endsAt         DateTime
+  isActive       Boolean   @default(true)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model SupportTicket {
+  id        String         @id @default(uuid())
+  userId    String
+  subject   String
+  status    TicketStatus
+  priority  TicketPriority
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages  TicketMessage[]
+
+  @@index([userId])
+}
+
+model TicketMessage {
+  id           String        @id @default(uuid())
+  ticketId     String
+  senderId     String
+  message      String
+  isAdminReply Boolean       @default(false)
+  sentAt       DateTime
+  ticket       SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  sender       User          @relation(fields: [senderId], references: [id], onDelete: Cascade)
+
+  @@index([ticketId])
+  @@index([senderId])
+}
+
+model Notification {
+  id        String    @id @default(uuid())
+  userId    String
+  title     String
+  body      String
+  isRead    Boolean   @default(false)
+  type      NotifType
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Affiliate {
+  id            String   @id @default(uuid())
+  referrerId    String
+  referredId    String   @unique
+  pointsAwarded Int      @default(0)
+  createdAt     DateTime @default(now())
+  referrer      User     @relation("AffiliateReferrer", fields: [referrerId], references: [id], onDelete: Cascade)
+  referred      User     @relation("AffiliateReferred", fields: [referredId], references: [id], onDelete: Cascade)
+
+  @@index([referrerId])
+}
+
+model Approval {
+  id            String         @id @default(uuid())
+  type          ApprovalType
+  requestedById String
+  reviewedById  String?
+  status        ApprovalStatus
+  notes         String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  requestedBy   User           @relation("ApprovalsRequestedBy", fields: [requestedById], references: [id], onDelete: Cascade)
+  reviewedBy    User?          @relation("ApprovalsReviewedBy", fields: [reviewedById], references: [id], onDelete: SetNull)
+
+  @@index([requestedById])
+  @@index([reviewedById])
+}
